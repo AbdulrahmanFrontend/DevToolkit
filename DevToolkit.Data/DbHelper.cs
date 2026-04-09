@@ -1,0 +1,120 @@
+﻿using DevToolkit.LL;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DevToolkit.Data
+{
+    public class DbHelper
+    {
+        private static SqlCommand _PrepareCommand(SqlConnection con,
+            CommandType Type, string CommandText, SqlParameter[] parameters)
+        {
+            SqlCommand cmd = new SqlCommand(CommandText, con);
+            cmd.CommandType = Type;
+            if (parameters != null)
+            {
+                foreach(var p in parameters)
+                {
+                    cmd.Parameters.Add(
+                        new SqlParameter(p.ParameterName, p.Value ?? DBNull.Value)
+                        );
+                }
+            }
+            return cmd;
+        }
+        private static SqlConnection _GetConnection()
+        {
+            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"]
+                        ?.ConnectionString;
+
+            if (string.IsNullOrWhiteSpace(cs))
+                throw new InvalidOperationException("invalid connection string");
+
+            return new SqlConnection(cs);
+        }
+        public static DataTable GetDataTable(CommandType Type, string CommandText, 
+            SqlParameter[] parameters = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = _GetConnection())
+            {
+                using (SqlCommand cmd = 
+                    _PrepareCommand(con, Type, CommandText, parameters))
+                {
+                    try
+                    {
+                        con.Open();
+                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if(reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        Logger.LogError("GetDataTable Failed;", ex);
+                        return new DataTable();
+                    }
+                }
+            }
+            return dt;
+        }
+        public static DataRow GetFirstRow(CommandType Type, string CommandText, 
+            SqlParameter[] parameters = null)
+        {
+            DataTable dt = GetDataTable(Type, CommandText, parameters);
+            return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+        }
+        public static object GetScalar(CommandType Type, string CommandText,
+            SqlParameter[] parameters = null)
+        {
+            using (SqlConnection con = _GetConnection())
+            {
+                using (SqlCommand cmd = 
+                    _PrepareCommand(con, Type, CommandText, parameters))
+                {
+                    try
+                    {
+                        con.Open();
+                        return cmd.ExecuteScalar();
+                    }
+                    catch(SqlException ex)
+                    {
+                        Logger.LogError("GetScalar Failed;", ex);
+                        return null;
+                    }
+                }
+            }
+        }
+        public static int ExecuteNonQuery(CommandType Type, string CommandText, 
+            SqlParameter[] parameters = null)
+        {
+            using (SqlConnection con = _GetConnection())
+            {
+                using (SqlCommand cmd = 
+                    _PrepareCommand(con, Type, CommandText, parameters))
+                {
+                    try
+                    {
+                        con.Open();
+                        clsCacheManager.Cache.Clear();
+                        return cmd.ExecuteNonQuery();
+                    }
+                    catch(SqlException ex)
+                    {
+                        Logger.LogError("ExecuteNonQuery Failed;", ex);
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
+}
