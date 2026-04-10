@@ -59,6 +59,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ucSelectionItemCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSelectionItemCheckBox.Designer.cs">
+      <DependentUpon>ucSelectionItemCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSelectionItemRadioButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSelectionItemRadioButton.Designer.cs">
+      <DependentUpon>ucSelectionItemRadioButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +83,7 @@
     <Compile Include="Utils\clsUIMessageBox.cs" />
     <Compile Include="Utils\clsUIToast.cs" />
     <Compile Include="Utils\clsWindowDragHelper.cs" />
+    <Compile Include="Utils\ISelectionItem.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +106,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSelectionItemCheckBox.resx">
+      <DependentUpon>ucSelectionItemCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSelectionItemRadioButton.resx">
+      <DependentUpon>ucSelectionItemRadioButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
