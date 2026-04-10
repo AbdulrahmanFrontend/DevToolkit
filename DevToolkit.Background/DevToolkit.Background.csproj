@@ -41,14 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="clsBackground.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DevToolkit.BLL\DevToolkit.BLL.csproj">
-      <Project>{6abe846a-2753-4993-bbb3-8119dc11f540}</Project>
-      <Name>DevToolkit.BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DevToolkit.Core\DevToolkit.Core.csproj">
       <Project>{dd97c423-c180-43bd-97c0-8723e8320d4d}</Project>
       <Name>DevToolkit.Core</Name>

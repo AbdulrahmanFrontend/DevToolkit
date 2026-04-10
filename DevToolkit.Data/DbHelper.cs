@@ -105,7 +105,6 @@ namespace DevToolkit.Data
                     try
                     {
                         con.Open();
-                        clsCacheManager.Cache.Clear();
                         return cmd.ExecuteNonQuery();
                     }
                     catch(SqlException ex)

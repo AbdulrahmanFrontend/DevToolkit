@@ -77,7 +77,6 @@
   <ItemGroup>
     <Compile Include="clsCacheManager.cs" />
     <Compile Include="clsDataManager.cs" />
-    <Compile Include="DataService.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

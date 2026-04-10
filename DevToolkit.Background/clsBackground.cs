@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.DAL
+namespace DevToolkit.Background
 {
-    public class DataService
+    public class clsBackground
     {
     }
 }

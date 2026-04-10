@@ -1,6 +1,5 @@
 <Solution>
   <Project Path="DevToolkit.Background/DevToolkit.Background.csproj" Id="3b35189d-cbbf-4728-b250-46929651ecbd" />
-  <Project Path="DevToolkit.BLL/DevToolkit.BLL.csproj" Id="6abe846a-2753-4993-bbb3-8119dc11f540" />
   <Project Path="DevToolkit.Controls/DevToolkit.Controls.csproj" Id="b341f3bf-f574-4c74-9759-9463d14a0580" />
   <Project Path="DevToolkit.Core/DevToolkit.Core.csproj" Id="dd97c423-c180-43bd-97c0-8723e8320d4d" />
   <Project Path="DevToolkit.Data/DevToolkit.Data.csproj" Id="9f9a2e0a-fd76-43d3-8ca5-5e2cde6384b0" />
