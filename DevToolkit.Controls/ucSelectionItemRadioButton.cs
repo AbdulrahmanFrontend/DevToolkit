@@ -60,7 +60,7 @@ namespace DevToolkit.Controls
         public event EventHandler CheckedChanged;
         private void ucSelectionItemRadioButton_Click(object sender, EventArgs e)
         {
-            Checked = !Checked;
+            Checked = true;
             CheckedChanged?.Invoke(this, e);
         }
 
