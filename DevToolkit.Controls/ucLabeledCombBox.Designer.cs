@@ -64,13 +64,14 @@
             // 
             // cmbValues
             // 
+            this.cmbValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbValues.FormattingEnabled = true;
             this.cmbValues.Location = new System.Drawing.Point(3, 26);
             this.cmbValues.Name = "cmbValues";
             this.cmbValues.Size = new System.Drawing.Size(121, 31);
             this.cmbValues.TabIndex = 1;
             // 
-            // ucCombBoxField
+            // ucLabeledCombBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +79,7 @@
             this.Controls.Add(this.tlpContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ucCombBoxField";
+            this.Name = "ucLabeledCombBox";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Size = new System.Drawing.Size(141, 74);
             this.tlpContainer.ResumeLayout(false);
