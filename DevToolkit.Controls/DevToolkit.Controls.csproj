@@ -59,6 +59,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ucLabeledCombBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLabeledCombBox.Designer.cs">
+      <DependentUpon>ucLabeledCombBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucSelectionItemCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLabeledCombBox.resx">
+      <DependentUpon>ucLabeledCombBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucSelectionItemCheckBox.resx">
       <DependentUpon>ucSelectionItemCheckBox.cs</DependentUpon>
