@@ -34,8 +34,6 @@
             // ucLabeledCombBox1
             // 
             this.ucLabeledCombBox1.AutoSize = true;
-            this.ucLabeledCombBox1.ComboBoxAutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.ucLabeledCombBox1.ComboBoxDropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.ucLabeledCombBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucLabeledCombBox1.LabelText = "Title";
             this.ucLabeledCombBox1.Location = new System.Drawing.Point(397, 80);
@@ -43,7 +41,6 @@
             this.ucLabeledCombBox1.Name = "ucLabeledCombBox1";
             this.ucLabeledCombBox1.Padding = new System.Windows.Forms.Padding(3);
             this.ucLabeledCombBox1.Size = new System.Drawing.Size(235, 98);
-            this.ucLabeledCombBox1.SortedComboBoxItems = false;
             this.ucLabeledCombBox1.TabIndex = 0;
             // 
             // Form1

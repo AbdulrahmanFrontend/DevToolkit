@@ -28,21 +28,15 @@ namespace DevToolkit.Data
             }
             return cmd;
         }
-        private static SqlConnection _GetConnection()
+        private static string _GetConnection()
         {
-            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"]
-                        ?.ConnectionString;
-
-            if (string.IsNullOrWhiteSpace(cs))
-                throw new InvalidOperationException("invalid connection string");
-
-            return new SqlConnection(cs);
+            return ConfigurationManager.AppSettings["ConnectionString"];
         }
         public static DataTable GetDataTable(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection con = _GetConnection())
+            using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
                 using (SqlCommand cmd = 
                     _PrepareCommand(con, Type, CommandText, parameters))
@@ -76,7 +70,7 @@ namespace DevToolkit.Data
         public static object GetScalar(CommandType Type, string CommandText,
             SqlParameter[] parameters = null)
         {
-            using (SqlConnection con = _GetConnection())
+            using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
                 using (SqlCommand cmd = 
                     _PrepareCommand(con, Type, CommandText, parameters))
@@ -97,7 +91,7 @@ namespace DevToolkit.Data
         public static int ExecuteNonQuery(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
         {
-            using (SqlConnection con = _GetConnection())
+            using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
                 using (SqlCommand cmd = 
                     _PrepareCommand(con, Type, CommandText, parameters))

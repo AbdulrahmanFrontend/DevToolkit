@@ -42,20 +42,20 @@
             this.tlpContainer.Controls.Add(this.lblTitle, 0, 0);
             this.tlpContainer.Controls.Add(this.cmbValues, 0, 1);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpContainer.Location = new System.Drawing.Point(3, 3);
+            this.tlpContainer.Location = new System.Drawing.Point(1, 1);
             this.tlpContainer.Margin = new System.Windows.Forms.Padding(4);
             this.tlpContainer.Name = "tlpContainer";
-            this.tlpContainer.Padding = new System.Windows.Forms.Padding(3);
+            this.tlpContainer.Padding = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.tlpContainer.RowCount = 2;
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContainer.Size = new System.Drawing.Size(306, 74);
+            this.tlpContainer.Size = new System.Drawing.Size(310, 69);
             this.tlpContainer.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(7, 3);
+            this.lblTitle.Location = new System.Drawing.Point(5, 1);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(42, 23);
@@ -66,9 +66,9 @@
             // 
             this.cmbValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbValues.FormattingEnabled = true;
-            this.cmbValues.Location = new System.Drawing.Point(6, 37);
+            this.cmbValues.Location = new System.Drawing.Point(4, 33);
             this.cmbValues.Name = "cmbValues";
-            this.cmbValues.Size = new System.Drawing.Size(294, 31);
+            this.cmbValues.Size = new System.Drawing.Size(302, 31);
             this.cmbValues.TabIndex = 1;
             // 
             // ucLabeledCombBox
@@ -80,8 +80,8 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucLabeledCombBox";
-            this.Padding = new System.Windows.Forms.Padding(3);
-            this.Size = new System.Drawing.Size(312, 80);
+            this.Padding = new System.Windows.Forms.Padding(1);
+            this.Size = new System.Drawing.Size(312, 71);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
             this.ResumeLayout(false);
