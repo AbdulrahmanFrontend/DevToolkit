@@ -75,7 +75,7 @@ namespace DevToolkit.Controls
         {
             if (Required && string.IsNullOrEmpty(cmbValues.Text))
             {
-                return clsResult.Failure("Requried");
+                return clsResult.Failure($"\"{LabelText}\" is Requried");
             }
             return clsResult.Success();
         }
@@ -83,16 +83,37 @@ namespace DevToolkit.Controls
         [Category("Custom Properties")]
         public string SelectedItem => cmbValues.SelectedItem?.ToString();
 
+        //[Category("Custom Properties")]
+        //public object SelectedValue => cmbValues.SelectedValue;
+
+        //[Category("Custom Properties")]
+        //public object DataSource
+        //{
+        //    get => cmbValues.DataSource;
+        //    set => cmbValues.DataSource = value;
+        //}
+
+        //[Category("Custom Properties")]
+        //public string DisplayMember
+        //{
+        //    get => cmbValues.DisplayMember;
+        //    set => cmbValues.DisplayMember = value;
+        //}
+
+        //[Category("Custom Properties")]
+        //public string ValueMember
+        //{
+        //    get => cmbValues.ValueMember;
+        //    set => cmbValues.ValueMember = value;
+        //}
+
         [Description("Fill ComboBox")]
-        public void SetValues(List<string> Values)
+        public void SetValues(IEnumerable<string> Values)
         {
-            if(Values.Count > 0)
+            if(Values.ToList().Count > 0)
             {
                 cmbValues.Items.Clear();
-                foreach (string Value in Values)
-                {
-                    cmbValues.Items.Add(Value);
-                }
+                cmbValues.Items.AddRange(Values.ToArray());
                 if (HasDefaultValue)
                 {
                     if (string.IsNullOrEmpty(DefaultValue))

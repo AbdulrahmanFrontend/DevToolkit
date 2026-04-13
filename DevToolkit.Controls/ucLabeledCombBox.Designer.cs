@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
             this.cmbValues = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tlpContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpContainer
@@ -60,7 +57,7 @@
             // 
             this.cmbValues.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbValues.FormattingEnabled = true;
-            this.cmbValues.Location = new System.Drawing.Point(4, 31);
+            this.cmbValues.Location = new System.Drawing.Point(4, 38);
             this.cmbValues.Name = "cmbValues";
             this.cmbValues.Size = new System.Drawing.Size(302, 31);
             this.cmbValues.TabIndex = 1;
@@ -75,10 +72,6 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
             // ucLabeledCombBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -92,7 +85,6 @@
             this.Size = new System.Drawing.Size(312, 68);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +95,5 @@
         private System.Windows.Forms.TableLayoutPanel tlpContainer;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cmbValues;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
