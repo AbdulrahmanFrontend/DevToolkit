@@ -29,7 +29,7 @@ namespace DevToolkit.Controls
         }
 
         [Category("Custom Properties")]
-        public Color SelectedColor { get; set; } = Color.LightCyan;
+        public Color SelectedColor { get; set; } = clsAppColors.Highlight;
 
         [Category("Custom Properties")]
         public bool Checked

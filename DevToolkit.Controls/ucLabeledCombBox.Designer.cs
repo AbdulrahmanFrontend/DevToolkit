@@ -28,71 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
             this.cmbValues = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.tlpContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tlpContainer
-            // 
-            this.tlpContainer.AutoSize = true;
-            this.tlpContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpContainer.ColumnCount = 1;
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Controls.Add(this.cmbValues, 0, 1);
-            this.tlpContainer.Controls.Add(this.lblTitle, 0, 0);
-            this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpContainer.Location = new System.Drawing.Point(1, 1);
-            this.tlpContainer.Margin = new System.Windows.Forms.Padding(4);
-            this.tlpContainer.Name = "tlpContainer";
-            this.tlpContainer.Padding = new System.Windows.Forms.Padding(1);
-            this.tlpContainer.RowCount = 2;
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContainer.Size = new System.Drawing.Size(310, 66);
-            this.tlpContainer.TabIndex = 0;
             // 
             // cmbValues
             // 
-            this.cmbValues.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbValues.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cmbValues.FormattingEnabled = true;
-            this.cmbValues.Location = new System.Drawing.Point(4, 38);
+            this.cmbValues.Location = new System.Drawing.Point(1, 26);
             this.cmbValues.Name = "cmbValues";
-            this.cmbValues.Size = new System.Drawing.Size(302, 31);
+            this.cmbValues.Size = new System.Drawing.Size(236, 33);
             this.cmbValues.TabIndex = 1;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(5, 1);
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Location = new System.Drawing.Point(1, 1);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(42, 23);
+            this.lblTitle.Size = new System.Drawing.Size(49, 25);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
             // 
             // ucLabeledCombBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.tlpContainer);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.cmbValues);
+            this.Controls.Add(this.lblTitle);
+            this.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucLabeledCombBox";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.Size = new System.Drawing.Size(312, 68);
-            this.tlpContainer.ResumeLayout(false);
-            this.tlpContainer.PerformLayout();
+            this.Size = new System.Drawing.Size(238, 60);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel tlpContainer;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cmbValues;
     }
