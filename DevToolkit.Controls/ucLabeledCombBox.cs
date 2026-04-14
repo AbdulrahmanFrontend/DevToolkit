@@ -69,17 +69,15 @@ namespace DevToolkit.Controls
         [Category("Custom Properties")]
         public string DefaultValue { get; set; } = string.Empty;
 
-        [Description("Get clsResult.Success(string Message) if it is valid " +
-            "or get clsResult.Failure(string Message) if it is not valid.")]
+        //[Category("Custom Properties")]
         public clsResult Valid()
         {
-            if (Required && string.IsNullOrEmpty(cmbValues.Text))
+            if (Required && !string.IsNullOrEmpty(SelectedItem))
             {
-                return clsResult.Failure($"\"{LabelText}\" is Requried");
+                return clsResult.Success();
             }
-            return clsResult.Success();
+            return clsResult.Failure("Required");
         }
-
         [Category("Custom Properties")]
         public string SelectedItem => cmbValues.SelectedItem?.ToString();
 
@@ -110,7 +108,7 @@ namespace DevToolkit.Controls
         [Description("Fill ComboBox")]
         public void SetValues(IEnumerable<string> Values)
         {
-            if(Values.ToList().Count > 0)
+            if(Values != null && Values.Any())
             {
                 cmbValues.Items.Clear();
                 cmbValues.Items.AddRange(Values.ToArray());

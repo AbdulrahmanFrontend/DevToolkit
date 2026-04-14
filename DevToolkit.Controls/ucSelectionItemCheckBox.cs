@@ -50,7 +50,6 @@ namespace DevToolkit.Controls
         private void ucSelectionItemCheckBox_Load(object sender, EventArgs e)
         {
             _UpdateLabelSize();
-            this.SelectedColor = clsAppColors.Highlight;
         }
 
         private void ucSelectionItemCheckBox_Resize(object sender, EventArgs e)
