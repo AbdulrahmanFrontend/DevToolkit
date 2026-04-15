@@ -65,6 +65,18 @@
     <Compile Include="ucLabeledCombBox.Designer.cs">
       <DependentUpon>ucLabeledCombBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucLabeledTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLabeledTextBox.Designer.cs">
+      <DependentUpon>ucLabeledTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLabeledValue.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLabeledValue.Designer.cs">
+      <DependentUpon>ucLabeledValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucSelectionItemCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucLabeledCombBox.resx">
       <DependentUpon>ucLabeledCombBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLabeledTextBox.resx">
+      <DependentUpon>ucLabeledTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLabeledValue.resx">
+      <DependentUpon>ucLabeledValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucSelectionItemCheckBox.resx">
       <DependentUpon>ucSelectionItemCheckBox.cs</DependentUpon>
