@@ -19,7 +19,7 @@ namespace DevToolkit.Controls
         }
 
         [Category("Custom Properties")]
-        public int ItemId { get; set; }
+        public int ItemID { get; set; }
 
         [Category("Custom Properties")]
         public string ItemText

@@ -8,7 +8,7 @@ namespace DevToolkit.Controls.Utils
 {
     public interface ISelectionItem
     {
-        int ItemId { get; set; }
+        int ItemID { get; set; }
         string ItemText { get; set; }
         bool Checked { get; set; }
         event EventHandler CheckedChanged;
