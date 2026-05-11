@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsBaseBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,10 +51,6 @@
     <ProjectReference Include="..\DevToolkit.Data\DevToolkit.Data.csproj">
       <Project>{9f9a2e0a-fd76-43d3-8ca5-5e2cde6384b0}</Project>
       <Name>DevToolkit.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevToolkit.LL\DevToolkit.LL.csproj">
-      <Project>{2bb1ca29-4bce-43ba-8054-6abdd08387d5}</Project>
-      <Name>DevToolkit.LL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

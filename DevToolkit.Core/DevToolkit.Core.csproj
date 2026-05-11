@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="clsBaseBusiness.cs" />
     <Compile Include="clsEnums.cs" />
-    <Compile Include="Security\clsHashGenerator.cs" />
     <Compile Include="clsMapper.cs" />
     <Compile Include="clsQueryOptions.cs" />
     <Compile Include="clsResult.cs" />

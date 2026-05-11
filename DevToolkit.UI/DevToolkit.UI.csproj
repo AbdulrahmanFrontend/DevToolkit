@@ -67,6 +67,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,10 +87,6 @@
       <Project>{3b35189d-cbbf-4728-b250-46929651ecbd}</Project>
       <Name>DevToolkit.Background</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevToolkit.Controls\DevToolkit.Controls.csproj">
-      <Project>{b341f3bf-f574-4c74-9759-9463d14a0580}</Project>
-      <Name>DevToolkit.Controls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DevToolkit.Core\DevToolkit.Core.csproj">
       <Project>{dd97c423-c180-43bd-97c0-8723e8320d4d}</Project>
       <Name>DevToolkit.Core</Name>
@@ -98,14 +95,13 @@
       <Project>{5d5f3351-858b-4dc3-81c8-8de38739ab27}</Project>
       <Name>DevToolkit.Generator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevToolkit.LL\DevToolkit.LL.csproj">
-      <Project>{2bb1ca29-4bce-43ba-8054-6abdd08387d5}</Project>
-      <Name>DevToolkit.LL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DevToolkit.Reporting\DevToolkit.Reporting.csproj">
       <Project>{16e03a08-cd21-437c-b5a9-4a72befb477e}</Project>
       <Name>DevToolkit.Reporting</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

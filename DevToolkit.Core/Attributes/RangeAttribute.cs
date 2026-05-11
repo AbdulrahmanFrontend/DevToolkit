@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.Core
+namespace DevToolkit.Core.Attributes
 {
     public class RangeAttribute : Attribute
     {

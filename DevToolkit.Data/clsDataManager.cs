@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DevToolkit.Data
@@ -68,6 +67,17 @@ namespace DevToolkit.Data
             //}
 
             return ObjsList;
+        }
+
+        public static T FirstOrDefault<T>(CommandType Type, string CommandText,
+                SqlParameter[] Parameters = null) where T : new()
+        {
+            DataRow dr = DbHelper.GetFirstRow(Type, CommandText, Parameters);
+            if (dr != null)
+            {
+                return clsMapper.Map<T>(dr);
+            }
+            return default(T);
         }
     }
 }

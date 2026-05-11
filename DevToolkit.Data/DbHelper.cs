@@ -1,4 +1,4 @@
-﻿using DevToolkit.LL;
+﻿using DevToolkit.Logging;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -21,16 +21,24 @@ namespace DevToolkit.Data
             {
                 foreach(var p in parameters)
                 {
-                    cmd.Parameters.Add(
-                        new SqlParameter(p.ParameterName, p.Value ?? DBNull.Value)
-                        );
+                    if (p.Value == null)
+                    {
+                        p.Value = DBNull.Value;
+                    }
+                    cmd.Parameters.Add(p);
                 }
             }
             return cmd;
         }
         private static string _GetConnection()
         {
-            return ConfigurationManager.AppSettings["ConnectionString"];
+            string ConnectionString = ConfigurationManager
+                .ConnectionStrings["ConnectionString"]?.ConnectionString;
+            if (string.IsNullOrEmpty(ConnectionString))
+            {
+                return string.Empty;
+            }
+            return ConnectionString;
         }
         public static DataTable GetDataTable(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
