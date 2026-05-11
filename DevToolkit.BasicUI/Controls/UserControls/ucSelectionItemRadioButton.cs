@@ -38,26 +38,13 @@ namespace DevToolkit.BasicUI.Controls.UserControls
             set
             {
                 rbItem.Checked = value;
-                lblItem.ForeColor = value ? 
-                    SelectedColor : clsAppColors.TextSecondary;
+                lblItem.ForeColor = value ? SelectedColor : this.ForeColor;
             }
         }
 
-        //private void _UpdateLabelSize()
-        //{
-        //    lblItem.MaximumSize = new Size(this.Width - rbItem.Width - 5, 0);
-        //}
-
         private void ucSelectionItemRadioButton_Load(object sender, EventArgs e)
         {
-            //_UpdateLabelSize();
-            this.ForeColor = clsAppColors.TextSecondary;
-            this.BackColor = clsAppColors.Background;
-        }
-
-        private void ucSelectionItemRadioButton_Resize(object sender, EventArgs e)
-        {
-            //_UpdateLabelSize();
+            lblItem.ForeColor = this.ForeColor;
         }
 
         public delegate void DataBackCheckedChanged(object sender);

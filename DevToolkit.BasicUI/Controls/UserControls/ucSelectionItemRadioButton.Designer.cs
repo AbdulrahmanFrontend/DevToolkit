@@ -73,7 +73,6 @@
             this.Size = new System.Drawing.Size(109, 38);
             this.Load += new System.EventHandler(this.ucSelectionItemRadioButton_Load);
             this.Click += new System.EventHandler(this.ucSelectionItemRadioButton_Click);
-            this.Resize += new System.EventHandler(this.ucSelectionItemRadioButton_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -35,29 +35,16 @@ namespace DevToolkit.BasicUI.Controls.UserControls
         public bool Checked
         {
             get => chbItem.Checked;
-            set 
-            { 
+            set
+            {
                 chbItem.Checked = value;
-                lblItem.ForeColor = value ? 
-                    SelectedColor : clsAppColors.TextSecondary;
+                lblItem.ForeColor = value ? SelectedColor : this.ForeColor;
             }
         }
-        
-        //private void _UpdateLabelSize()
-        //{
-        //    lblItem.MaximumSize = new Size(this.Width - chbItem.Width - 10, 0);
-        //}
 
         private void ucSelectionItemCheckBox_Load(object sender, EventArgs e)
         {
-            //_UpdateLabelSize();
-            this.ForeColor = clsAppColors.TextSecondary;
-            this.BackColor = clsAppColors.Background;
-        }
-
-        private void ucSelectionItemCheckBox_Resize(object sender, EventArgs e)
-        {
-            //_UpdateLabelSize();
+            lblItem.ForeColor = this.ForeColor;
         }
 
         public delegate void DataBackCheckedChanged(object sender);
@@ -70,8 +57,7 @@ namespace DevToolkit.BasicUI.Controls.UserControls
 
         private void chbItem_Click(object sender, EventArgs e)
         {
-            lblItem.ForeColor = Checked ?
-                    SelectedColor : clsAppColors.TextSecondary;
+            lblItem.ForeColor = Checked ? SelectedColor : this.ForeColor;
             CheckedChanged?.Invoke(this);
         }
     }

@@ -81,7 +81,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utils\clsAppColors.cs" />
     <Compile Include="Utils\clsMessageBoxData.cs" />
     <Compile Include="Utils\clsToastData.cs" />
     <Compile Include="Utils\clsUIMessageBox.cs" />

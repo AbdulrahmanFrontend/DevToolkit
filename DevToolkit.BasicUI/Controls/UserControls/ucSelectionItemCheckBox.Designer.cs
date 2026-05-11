@@ -74,7 +74,6 @@
             this.Size = new System.Drawing.Size(110, 38);
             this.Load += new System.EventHandler(this.ucSelectionItemCheckBox_Load);
             this.Click += new System.EventHandler(this.ucSelectionItemCheckBox_Click);
-            this.Resize += new System.EventHandler(this.ucSelectionItemCheckBox_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
