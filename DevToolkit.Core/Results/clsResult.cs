@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.Core
+namespace DevToolkit.Core.Results
 {
     public class clsResult
     {
@@ -12,11 +12,19 @@ namespace DevToolkit.Core
         public string Message { get; set; } = string.Empty;
         public static clsResult Success(string message = "")
         {
-            return new clsResult { IsSuccess = true, Message = message };
+            return new clsResult
+            {
+                IsSuccess = true,
+                Message = message,
+            };
         }
         public static clsResult Failure(string message = "")
         {
-            return new clsResult { IsSuccess = false, Message = message };
+            return new clsResult
+            {
+                IsSuccess = false,
+                Message = message,
+            };
         }
     }
 }

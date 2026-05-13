@@ -1,4 +1,4 @@
-﻿using DevToolkit.Core;
+﻿using DevToolkit.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,7 +54,7 @@ namespace DevToolkit.Data
                 ObjsList = new List<T>();
                 foreach (DataRow dr in dt.Rows)
                 {
-                    T Obj = clsMapper.Map<T>(dr);
+                    T Obj = DataMapper.Map<T>(dr);
                     ObjsList.Add(Obj);
                 }
 
@@ -75,7 +75,7 @@ namespace DevToolkit.Data
             DataRow dr = DbHelper.GetFirstRow(Type, CommandText, Parameters);
             if (dr != null)
             {
-                return clsMapper.Map<T>(dr);
+                return DataMapper.Map<T>(dr);
             }
             return default(T);
         }

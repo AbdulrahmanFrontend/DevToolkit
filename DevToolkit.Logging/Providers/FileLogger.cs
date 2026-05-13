@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.Logging
+namespace DevToolkit.Logging.Providers
 {
-    public class Logger
+    public class FileLogger
     {
         private static string _LogFilePath
         {
@@ -18,7 +18,7 @@ namespace DevToolkit.Logging
                     "AppLog.txt");
             }
         }
-        static Logger()
+        static FileLogger()
         {
             string Folder = Path.GetDirectoryName(_LogFilePath);
             if (!Directory.Exists(Folder))

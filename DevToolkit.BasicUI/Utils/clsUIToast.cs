@@ -34,7 +34,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsToastData
             {
                 Message = msg,
-                DialogType = clsEnums.enDialogType.enSuccess,
+                DialogType = Enums.enDialogType.enSuccess,
             };
         }
 
@@ -43,7 +43,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsToastData
             {
                 Message = msg,
-                DialogType = clsEnums.enDialogType.enError,
+                DialogType = Enums.enDialogType.enError,
             };
         }
 
@@ -52,7 +52,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsToastData
             {
                 Message = msg,
-                DialogType = clsEnums.enDialogType.enWarning,
+                DialogType = Enums.enDialogType.enWarning,
             };
         }
 
@@ -61,7 +61,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsToastData
             {
                 Message = msg,
-                DialogType = clsEnums.enDialogType.enInfo,
+                DialogType = Enums.enDialogType.enInfo,
             };
         }
     }

@@ -1,4 +1,4 @@
-﻿using DevToolkit.Logging;
+﻿using DevToolkit.Logging.Providers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -62,7 +62,7 @@ namespace DevToolkit.Data
                     }
                     catch (SqlException ex)
                     {
-                        Logger.LogError("GetDataTable Failed;", ex);
+                        FileLogger.LogError("GetDataTable Failed;", ex);
                         return new DataTable();
                     }
                 }
@@ -90,7 +90,7 @@ namespace DevToolkit.Data
                     }
                     catch(SqlException ex)
                     {
-                        Logger.LogError("GetScalar Failed;", ex);
+                        FileLogger.LogError("GetScalar Failed;", ex);
                         return null;
                     }
                 }
@@ -111,7 +111,7 @@ namespace DevToolkit.Data
                     }
                     catch(SqlException ex)
                     {
-                        Logger.LogError("ExecuteNonQuery Failed;", ex);
+                        FileLogger.LogError("ExecuteNonQuery Failed;", ex);
                         return 0;
                     }
                 }

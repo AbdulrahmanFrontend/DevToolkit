@@ -1,4 +1,4 @@
-﻿using DevToolkit.Core;
+﻿using DevToolkit.Core.Results;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

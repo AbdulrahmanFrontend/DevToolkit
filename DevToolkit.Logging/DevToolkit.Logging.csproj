@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger.cs" />
+    <Compile Include="Abstractions\ILogger.cs" />
+    <Compile Include="Managers\LogManager.cs" />
+    <Compile Include="Models\LogEntry.cs" />
+    <Compile Include="Providers\EventLogger.cs" />
+    <Compile Include="Providers\FileLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

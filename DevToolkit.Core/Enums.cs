@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core
 {
-    public class clsEnums
+    public class Enums
     {
         public enum enMode { enAddNew, enEdit, enUpdate }
         public enum enDialogType 

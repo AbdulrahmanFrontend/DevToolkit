@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsBaseBusiness.cs" />
-    <Compile Include="clsEnums.cs" />
-    <Compile Include="clsMapper.cs" />
-    <Compile Include="clsQueryOptions.cs" />
-    <Compile Include="clsResult.cs" />
+    <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="QueryOptions.cs" />
+    <Compile Include="Common\FilterBase.cs" />
+    <Compile Include="Common\Pagination.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Guards\Guard.cs" />
+    <Compile Include="Results\clsResult.cs" />
+    <Compile Include="Results\Result.cs" />
     <Compile Include="clsValidator.cs" />
     <Compile Include="Attributes\ColumnAttribute.cs" />
     <Compile Include="Attributes\MaxLengthAttribute.cs" />

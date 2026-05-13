@@ -5,12 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevToolkit.Core.Results;
 
 namespace DevToolkit.Core
 {
     public abstract class clsBaseBusiness
     {
-        public clsEnums.enMode Mode { get; protected set; }
+        public Enums.enMode Mode { get; protected set; }
         public virtual clsResult Validate() => clsResult.Success();
         protected abstract bool _AddNew();
         protected abstract bool _Update();
@@ -23,14 +24,14 @@ namespace DevToolkit.Core
             }
             switch (Mode)
             {
-                case clsEnums.enMode.enAddNew:
+                case Enums.enMode.enAddNew:
                     if (_AddNew())
                     {
-                        Mode = clsEnums.enMode.enUpdate;
+                        Mode = Enums.enMode.enUpdate;
                         return clsResult.Success("Saved Successfully");
                     }
                     return clsResult.Failure("Insert Failed");
-                case clsEnums.enMode.enUpdate:
+                case Enums.enMode.enUpdate:
                     return _Update() ? 
                         clsResult.Success("Updated Successfully") : 
                         clsResult.Failure("Update Failed");

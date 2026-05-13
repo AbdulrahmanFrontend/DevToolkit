@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.IO;
 
-namespace DevToolKit.Infrastructure
+namespace DevToolKit.Infrastructure.Serialization
 {
     public class clsCacheManager
     {

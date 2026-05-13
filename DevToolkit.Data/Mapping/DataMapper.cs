@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DevToolkit.Core.Attributes;
 
-namespace DevToolkit.Core
+namespace DevToolkit.Data.Mapping
 {
-    public class clsMapper
+    public class DataMapper
     {
         public static T Map<T>(DataRow row) where T : new()
         {
@@ -22,7 +22,8 @@ namespace DevToolkit.Core
                 if (row.Table.Columns.Contains(ColumnName))
                 {
                     var Value = row[ColumnName];
-                    var PropType = Nullable.GetUnderlyingType(prop.PropertyType)?? prop.PropertyType;
+                    var PropType = Nullable.GetUnderlyingType(prop.PropertyType) ?? 
+                        prop.PropertyType;
                     var SafeValue = Convert.ChangeType(Value, PropType);
                     prop.SetValue(obj, SafeValue);
                 }

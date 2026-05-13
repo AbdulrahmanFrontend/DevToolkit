@@ -105,22 +105,22 @@ namespace DevToolkit.BasicUI.Forms
         {
             switch (ToastData.DialogType)
             {
-                case clsEnums.enDialogType.enSuccess:
+                case Enums.enDialogType.enSuccess:
                     System.Media.SystemSounds.Asterisk.Play();
                     this.BackColor = Color.SeaGreen;
                     this.pbIcon.Image = Resources.icons8_checkmark_36;
                     break;
-                case clsEnums.enDialogType.enError:
+                case Enums.enDialogType.enError:
                     System.Media.SystemSounds.Hand.Play();
                     this.BackColor = Color.DarkRed;
                     this.pbIcon.Image = Resources.icons8_close_36;
                     break;
-                case clsEnums.enDialogType.enWarning:
+                case Enums.enDialogType.enWarning:
                     System.Media.SystemSounds.Exclamation.Play();
                     this.BackColor = Color.DarkOrange;
                     this.pbIcon.Image = Resources.icons8_brake_warning_36;
                     break;
-                case clsEnums.enDialogType.enInfo:
+                case Enums.enDialogType.enInfo:
                     System.Media.SystemSounds.Asterisk.Play();
                     this.BackColor = Color.DodgerBlue;
                     this.pbIcon.Image = Resources.icons8_information_50;
