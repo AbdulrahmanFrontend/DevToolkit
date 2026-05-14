@@ -1,4 +1,5 @@
 ﻿using DevToolkit.Data.Mapping;
+using DevToolkit.Data.Executors;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,7 +51,7 @@ namespace DevToolkit.Data
             //else
             //{
                 DataTable dt = 
-                    DbHelper.GetDataTable(Type, CommandText, Parameters);
+                    DbExecutor.GetDataTable(Type, CommandText, Parameters);
                 ObjsList = new List<T>();
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -72,7 +73,7 @@ namespace DevToolkit.Data
         public static T FirstOrDefault<T>(CommandType Type, string CommandText,
                 SqlParameter[] Parameters = null) where T : new()
         {
-            DataRow dr = DbHelper.GetFirstRow(Type, CommandText, Parameters);
+            DataRow dr = DbExecutor.GetFirstRow(Type, CommandText, Parameters);
             if (dr != null)
             {
                 return DataMapper.Map<T>(dr);

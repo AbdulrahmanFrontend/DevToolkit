@@ -11,7 +11,7 @@ namespace DevToolkit.Core
 {
     public abstract class clsBaseBusiness
     {
-        public Enums.enMode Mode { get; protected set; }
+        public Enums.Mode Mode { get; protected set; }
         public virtual clsResult Validate() => clsResult.Success();
         protected abstract bool _AddNew();
         protected abstract bool _Update();
@@ -24,14 +24,14 @@ namespace DevToolkit.Core
             }
             switch (Mode)
             {
-                case Enums.enMode.enAddNew:
+                case Enums.Mode.AddNew:
                     if (_AddNew())
                     {
-                        Mode = Enums.enMode.enUpdate;
+                        Mode = Enums.Mode.Update;
                         return clsResult.Success("Saved Successfully");
                     }
                     return clsResult.Failure("Insert Failed");
-                case Enums.enMode.enUpdate:
+                case Enums.Mode.Update:
                     return _Update() ? 
                         clsResult.Success("Updated Successfully") : 
                         clsResult.Failure("Update Failed");

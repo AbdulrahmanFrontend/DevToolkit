@@ -20,13 +20,13 @@ namespace DevToolkit.Core.Results
                 Data = data,
             };
         }
-        public static Result<T> Failure(T data, string message = "")
+        public static Result<T> Failure(string message = "")
         {
             return new Result<T> 
             { 
                 IsSuccess = false,
                 Message = message,
-                Data = data,
+                Data = default,
             };
         }
     }

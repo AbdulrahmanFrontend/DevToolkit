@@ -22,6 +22,11 @@ namespace DevToolkit.Data.Mapping
                 if (row.Table.Columns.Contains(ColumnName))
                 {
                     var Value = row[ColumnName];
+                    if (Value == DBNull.Value)
+                    {
+                        prop.SetValue(obj, null);
+                        continue;
+                    }
                     var PropType = Nullable.GetUnderlyingType(prop.PropertyType) ?? 
                         prop.PropertyType;
                     var SafeValue = Convert.ChangeType(Value, PropType);

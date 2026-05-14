@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevToolkit.Logging.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Logging.Providers
 {
-    public class FileLogger
+    public class FileLogger : ILogger
     {
         private static string _LogFilePath
         {
@@ -42,8 +43,7 @@ namespace DevToolkit.Logging.Providers
         {
             Writer.WriteLine("----------------------------------------");
             Writer.WriteLine("_____" + Bahavior.ToString() + "_____");
-            Writer.WriteLine($"[{DateTime.Now: yyyy-MM-dd HH:mm}] " +
-                $"[{Bahavior.ToString()}];");
+            Writer.WriteLine($"Date & Time: [{DateTime.Now: yyyy-MM-dd HH:mm}] ");
             Writer.WriteLine("Message: {0};", message);
         }
         private static void _GeneralLog(string message, _enLogBehavior Behavior,
@@ -72,19 +72,19 @@ namespace DevToolkit.Logging.Providers
                 //If logging fails, we silently ignore to avoid crashing the application
             }
         }
-        public static void LogError(string message, Exception Ex)
+        public void LogError(string message, Exception Ex)
         {
             _GeneralLog(message, _enLogBehavior.ERROR, Ex);
         }
-        public static void LogError(string message, SqlException Ex)
+        public void LogError(string message, SqlException Ex)
         {
             _GeneralLog(message, _enLogBehavior.ERROR, null, Ex);
         }
-        public static void LogInfo(string message)
+        public void LogInfo(string message)
         {
             _GeneralLog(message, _enLogBehavior.INFO);
         }
-        public static void LogWarning(string message)
+        public void LogWarning(string message)
         {
             _GeneralLog(message, _enLogBehavior.WARNING);
         }

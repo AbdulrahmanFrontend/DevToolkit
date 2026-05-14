@@ -50,27 +50,27 @@ namespace DevToolkit.BasicUI.Forms
         {
             switch (MessageBoxData.DialogType)
             {
-                case Enums.enDialogType.enSuccess:
+                case Enums.DialogType.Success:
                     System.Media.SystemSounds.Asterisk.Play();
                     lblMessageCaption.Text = "Success";
                     pbIcon.Image = SystemIcons.Information.ToBitmap();
                     break;
-                case Enums.enDialogType.enError:
+                case Enums.DialogType.Error:
                     System.Media.SystemSounds.Hand.Play();
                     lblMessageCaption.Text = "Error";
                     pbIcon.Image = SystemIcons.Error.ToBitmap();
                     break;
-                case Enums.enDialogType.enWarning:
+                case Enums.DialogType.Warning:
                     System.Media.SystemSounds.Exclamation.Play();
                     lblMessageCaption.Text = "Warning";
                     pbIcon.Image = SystemIcons.Warning.ToBitmap();
                     break;
-                case Enums.enDialogType.enInfo:
+                case Enums.DialogType.Info:
                     System.Media.SystemSounds.Asterisk.Play();
                     lblMessageCaption.Text = "Information";
                     pbIcon.Image = SystemIcons.Information.ToBitmap();
                     break;
-                case Enums.enDialogType.enConfirm:
+                case Enums.DialogType.Confirm:
                     System.Media.SystemSounds.Question.Play();
                     lblMessageCaption.Text = "Confirmation";
                     pbIcon.Image = SystemIcons.Question.ToBitmap();

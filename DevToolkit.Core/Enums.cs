@@ -8,11 +8,11 @@ namespace DevToolkit.Core
 {
     public class Enums
     {
-        public enum enMode { enAddNew, enEdit, enUpdate }
-        public enum enDialogType 
+        public enum Mode { AddNew, Edit, Update }
+        public enum DialogType 
         { 
-            enSuccess, enWarning, enError, enInfo, enConfirm
+            Success, Warning, Error, Info, Confirm
         }
-        public enum enStatus { Active, Inactive }
+        public enum Status { Active, Inactive }
     }
 }

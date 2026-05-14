@@ -11,6 +11,6 @@ namespace DevToolkit.BasicUI.Utils
     public class clsToastData
     {
         public string Message { get; set; }
-        public Enums.enDialogType DialogType { get; set; }
+        public Enums.DialogType DialogType { get; set; }
     }
 }

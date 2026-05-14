@@ -38,7 +38,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsMessageBoxData
             {
                 Message = msg,
-                DialogType = Enums.enDialogType.enSuccess
+                DialogType = Enums.DialogType.Success
             };
         }
 
@@ -47,7 +47,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsMessageBoxData
             {
                 Message = msg,
-                DialogType = Enums.enDialogType.enError
+                DialogType = Enums.DialogType.Error
             };
         }
 
@@ -56,7 +56,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsMessageBoxData
             {
                 Message = msg,
-                DialogType = Enums.enDialogType.enWarning
+                DialogType = Enums.DialogType.Warning
             };
         }
 
@@ -65,7 +65,7 @@ namespace DevToolkit.BasicUI.Utils
             return new clsMessageBoxData
             {
                 Message = msg,
-                DialogType = Enums.enDialogType.enInfo
+                DialogType = Enums.DialogType.Info
             };
         }
 
@@ -75,7 +75,7 @@ namespace DevToolkit.BasicUI.Utils
             {
                 Message = msg,
                 Buttons = MessageBoxButtons.YesNo,
-                DialogType = Enums.enDialogType.enConfirm
+                DialogType = Enums.DialogType.Confirm
             };
         }
     }

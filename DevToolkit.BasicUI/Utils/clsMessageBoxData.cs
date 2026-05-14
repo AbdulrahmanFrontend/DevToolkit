@@ -13,6 +13,6 @@ namespace DevToolkit.BasicUI.Utils
     {
         public string Message { get; set; }
         public MessageBoxButtons Buttons { get; set; } = MessageBoxButtons.OK;
-        public Enums.enDialogType DialogType { get; set; }
+        public Enums.DialogType DialogType { get; set; }
     }
 }
