@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevToolkit.Core;
+using DevToolkit.Core.Common;
 using DevToolkit.BasicUI.Forms;
 
 namespace DevToolkit.BasicUI.Utils

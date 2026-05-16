@@ -5,11 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using DevToolkit.Core.Attributes;
+using DevToolkit.Core.Validation.Attributes;
 
-namespace DevToolkit.Core
+namespace DevToolkit.Core.Validation
 {
-    public class clsValidator
+    public class ObjectValidator
     {
         public static List<string> ValidateProperty<T>(PropertyInfo Prop, T obj)
         {

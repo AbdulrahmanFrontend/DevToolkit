@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DevToolkit.Core;
+using DevToolkit.Core.Common;
 using DevToolkit.BasicUI.Utils;
 
 namespace DevToolkit.BasicUI.Forms

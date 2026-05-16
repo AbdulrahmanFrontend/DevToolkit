@@ -11,22 +11,23 @@ namespace DevToolKit.Infrastructure.Serialization
 {
     public class JsonStorageService
     {
-        public static void Load<T>(T Cache, string FilePath) where T : new()
+        public static T Load<T>(string FilePath) where T : new()
         {
+            T Cache = new T();
             try
             {
                 if (!File.Exists(FilePath))
                 {
-                    Cache = new T();
                     Save<T>(Cache, FilePath);
-                    return;
+                    return Cache;
                 }
                 string Json = File.ReadAllText(FilePath);
-                Cache = JsonSerializer.Deserialize<T>(Json);
+                return JsonSerializer.Deserialize<T>(Json);
             }
             catch (Exception ex)
             {
                 LogManager.Current.LogError("Failed to Load Questions", ex);
+                return new T();
             }
         }
 

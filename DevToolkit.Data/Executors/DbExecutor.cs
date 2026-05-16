@@ -63,7 +63,7 @@ namespace DevToolkit.Data.Executors
                     }
                     catch (SqlException ex)
                     {
-                        LogManager.Current.LogError("GetDataTable Failed;", ex);
+                        LogManager.Current?.LogError("GetDataTable Failed;", ex);
                         return new DataTable();
                     }
                 }
@@ -91,7 +91,7 @@ namespace DevToolkit.Data.Executors
                     }
                     catch(SqlException ex)
                     {
-                        LogManager.Current.LogError("GetScalar Failed;", ex);
+                        LogManager.Current?.LogError("GetScalar Failed;", ex);
                         return null;
                     }
                 }
@@ -112,7 +112,7 @@ namespace DevToolkit.Data.Executors
                     }
                     catch(SqlException ex)
                     {
-                        LogManager.Current.LogError("ExecuteNonQuery Failed;", ex);
+                        LogManager.Current?.LogError("ExecuteNonQuery Failed;", ex);
                         return 0;
                     }
                 }

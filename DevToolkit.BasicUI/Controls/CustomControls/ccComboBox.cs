@@ -27,9 +27,9 @@ namespace DevToolkit.BasicUI.Controls.CustomControls
         public bool Required { get; set; }
 
         [Category("Custom Properties")]
-        public clsResult IsValid => 
+        public Result<string> IsValid => 
             (Required && !string.IsNullOrEmpty(this.Text)) ? 
-            clsResult.Success() : 
-            clsResult.Failure("Required");
+            Result<string>.Success(this.Text) : 
+            Result<string>.Failure("Required");
     }
 }

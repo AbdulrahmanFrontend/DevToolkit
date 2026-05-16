@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="QueryOptions.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\QueryOptions.cs" />
     <Compile Include="Common\FilterBase.cs" />
     <Compile Include="Common\Pagination.cs" />
     <Compile Include="Extensions\CollectionExtensions.cs" />
@@ -51,12 +51,20 @@
     <Compile Include="Guards\Guard.cs" />
     <Compile Include="Results\clsResult.cs" />
     <Compile Include="Results\Result.cs" />
-    <Compile Include="clsValidator.cs" />
-    <Compile Include="Attributes\ColumnAttribute.cs" />
-    <Compile Include="Attributes\MaxLengthAttribute.cs" />
+    <Compile Include="Validation\Attributes\EmailAttribute.cs" />
+    <Compile Include="Validation\Attributes\LengthAttribute.cs" />
+    <Compile Include="Validation\Attributes\MainAttribute.cs" />
+    <Compile Include="Validation\Attributes\MinLengthAttribute.cs" />
+    <Compile Include="Validation\Attributes\NationalNoAttribute.cs" />
+    <Compile Include="Validation\Attributes\PhoneAttribute.cs" />
+    <Compile Include="Validation\ValidationError.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="Validation\ObjectValidator.cs" />
+    <Compile Include="Validation\Attributes\ColumnAttribute.cs" />
+    <Compile Include="Validation\Attributes\MaxLengthAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Attributes\RangeAttribute.cs" />
-    <Compile Include="Attributes\RequiredAttribute.cs" />
+    <Compile Include="Validation\Attributes\RangeAttribute.cs" />
+    <Compile Include="Validation\Attributes\RequiredAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

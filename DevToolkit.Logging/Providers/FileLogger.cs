@@ -47,7 +47,7 @@ namespace DevToolkit.Logging.Providers
             Writer.WriteLine("Message: {0};", message);
         }
         private static void _GeneralLog(string message, _enLogBehavior Behavior,
-            Exception Ex = null, SqlException SqlEx = null)
+            Exception Ex = null)
         {
             try
             {
@@ -59,12 +59,6 @@ namespace DevToolkit.Logging.Providers
                         Writer.WriteLine("Exception: {0};", Ex.Message);
                         Writer.WriteLine("Stack Trace: {0};", Ex.StackTrace);
                     }
-                    if (SqlEx != null)
-                    {
-                        Writer.WriteLine("SQL Error Code: {0};", SqlEx.Number);
-                        Writer.WriteLine("Sql Exception: {0};", SqlEx.Message);
-                        Writer.WriteLine("State: {0};", SqlEx.State);
-                    }
                 }
             }
             catch
@@ -75,10 +69,6 @@ namespace DevToolkit.Logging.Providers
         public void LogError(string message, Exception Ex)
         {
             _GeneralLog(message, _enLogBehavior.ERROR, Ex);
-        }
-        public void LogError(string message, SqlException Ex)
-        {
-            _GeneralLog(message, _enLogBehavior.ERROR, null, Ex);
         }
         public void LogInfo(string message)
         {

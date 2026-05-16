@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.Core
+namespace DevToolkit.Core.Validation
 {
-    public class clsQueryOptions
+    public class ValidationResult
     {
-        public bool UseCache { get; set; }
     }
 }

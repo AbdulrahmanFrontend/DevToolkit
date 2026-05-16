@@ -15,7 +15,7 @@ namespace DevToolKit.Infrastructure.Serialization
         private static readonly string _FilePath = "QueryCache.json";
         private static void _LoadCache()
         {
-            JsonStorageService.Load<Dictionary<string, string>>(Cache, _FilePath);
+            Cache = JsonStorageService.Load<Dictionary<string, string>>(_FilePath);
         }
         static CacheService()
         {

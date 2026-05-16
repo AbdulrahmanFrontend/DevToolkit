@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevToolkit.Core.Attributes
+namespace DevToolkit.Core.Validation.Attributes
 {
-    public class RangeAttribute : Attribute
+    public class RangeAttribute : MainAttribute
     {
         public int Min { get; }
         public int Max { get; }
-        public string ErrorMessage { get; }
         public RangeAttribute(int min, int max, string errorMessage = null)
         {
             this.Min = min;
