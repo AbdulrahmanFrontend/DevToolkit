@@ -26,8 +26,7 @@ namespace DevToolkit.Data.Mapping
                         prop.PropertyType;
                     if (Value == DBNull.Value)
                     {
-                        if (Nullable.GetUnderlyingType(prop.PropertyType) != null
-                            || !prop.PropertyType.IsValueType)
+                        if (PropType != null || !PropType.IsValueType)
                         {
                             prop.SetValue(obj, null);
                         }

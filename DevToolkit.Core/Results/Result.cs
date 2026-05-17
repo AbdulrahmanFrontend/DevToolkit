@@ -11,6 +11,7 @@ namespace DevToolkit.Core.Results
         public bool IsSuccess { get; set; } = false;
         public string Message { get; set; } = string.Empty;
         public T Data { get; set; }
+
         public static Result<T> Success(T data, string message = "")
         {
             return new Result<T> 
@@ -20,6 +21,7 @@ namespace DevToolkit.Core.Results
                 Data = data,
             };
         }
+
         public static Result<T> Failure(string message = "")
         {
             return new Result<T> 
@@ -27,6 +29,30 @@ namespace DevToolkit.Core.Results
                 IsSuccess = false,
                 Message = message,
                 Data = default,
+            };
+        }
+    }
+
+    public class Result
+    {
+        public bool IsSuccess { get; set; } = false;
+        public string Message { get; set; } = string.Empty;
+
+        public static Result Success(string message = "")
+        {
+            return new Result
+            {
+                IsSuccess = true,
+                Message = message,
+            };
+        }
+
+        public static Result Failure(string message = "")
+        {
+            return new Result
+            {
+                IsSuccess = false,
+                Message = message,
             };
         }
     }

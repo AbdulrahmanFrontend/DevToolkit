@@ -13,10 +13,10 @@ namespace DevToolkit.Core
     public abstract class BaseBusiness
     {
         public Enums.Mode Mode { get; protected set; }
-        public virtual clsResult Validate() => clsResult.Success();
+        public virtual Result Validate() => Result.Success();
         protected abstract bool _AddNew();
         protected abstract bool _Update();
-        public clsResult Save()
+        public Result Save()
         {
             var Result = Validate();
             if (!Result.IsSuccess)
@@ -29,15 +29,15 @@ namespace DevToolkit.Core
                     if (_AddNew())
                     {
                         Mode = Enums.Mode.Update;
-                        return clsResult.Success("Saved Successfully");
+                        return Result.Success("Saved Successfully");
                     }
-                    return clsResult.Failure("Insert Failed");
+                    return Result.Failure("Insert Failed");
                 case Enums.Mode.Update:
                     return _Update() ? 
-                        clsResult.Success("Updated Successfully") : 
-                        clsResult.Failure("Update Failed");
+                        Result.Success("Updated Successfully") : 
+                        Result.Failure("Update Failed");
                 default:
-                    return clsResult.Failure("Invalid Mode");
+                    return Result.Failure("Invalid Mode");
             }
         }
     }

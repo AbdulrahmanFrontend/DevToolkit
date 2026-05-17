@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DevToolkit.Core.Validation.Attributes;
+using DevToolkit.Core.Validation.Patterns;
 
 namespace DevToolkit.Core.Validation
 {
@@ -13,24 +15,20 @@ namespace DevToolkit.Core.Validation
     {
         public static List<ValidationError> ValidateProperty<T>(PropertyInfo Prop, T obj)
         {
-            var Errors = new List<ValidationError>();
+            List<ValidationError> Errors = new List<ValidationError>();
 
             var Value = Prop.GetValue(obj);
-            var RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
+            RequiredAttribute RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
             if (RequiredAttr != null)
             {
                 if(Value == null ||
-                    (Value is string Str && string.IsNullOrWhiteSpace(Str)))
+                    (Value is string Str && string.IsNullOrEmpty(Str)))
                 {
-                    Errors.Add(new ValidationError 
-                        { 
-                            PropertyName = Prop.Name,
-                            ErrorMessage = RequiredAttr.ErrorMessage
-                        });
+                    _AddError(ref Errors, Prop.Name, RequiredAttr.ErrorMessage);
                 }
             }
 
-            var RangeAttr = Prop.GetCustomAttribute<RangeAttribute>();
+            RangeAttribute RangeAttr = Prop.GetCustomAttribute<RangeAttribute>();
             if (RangeAttr != null)
             {
                 if (Value != null)
@@ -38,16 +36,25 @@ namespace DevToolkit.Core.Validation
                     if (Value is int IntValue && (IntValue < RangeAttr.Min
                         || IntValue > RangeAttr.Max))
                     {
-                        Errors.Add(new ValidationError 
-                            { 
-                                PropertyName = Prop.Name,
-                                ErrorMessage = RangeAttr.ErrorMessage
-                            });
+                        _AddError(ref Errors, Prop.Name, RangeAttr.ErrorMessage);
                     }
                 }
             }
 
             var StrValue = Value as string;
+
+            LengthAttribute LengthAttr = Prop.GetCustomAttribute<LengthAttribute>();
+            if (LengthAttr != null)
+            {
+                if (StrValue != null)
+                {
+                    if (StrValue.Length != LengthAttr.Length)
+                    {
+                        _AddError(ref Errors, Prop.Name, LengthAttr.ErrorMessage);
+                    }
+                }
+            }
+
             var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
             if (MaxLengthAttr != null)
             {
@@ -55,17 +62,72 @@ namespace DevToolkit.Core.Validation
                 {
                     if (StrValue.Length > MaxLengthAttr.Length)
                     {
-                        Errors.Add(new ValidationError 
-                            { 
-                                PropertyName = Prop.Name,
-                                ErrorMessage = MaxLengthAttr.ErrorMessage
-                            });
+                        _AddError(ref Errors, Prop.Name, MaxLengthAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var MinLengthAttr = Prop.GetCustomAttribute<MinLengthAttribute>();
+            if (MinLengthAttr != null)
+            {
+                if (StrValue != null)
+                {
+                    if (StrValue.Length < MinLengthAttr.Length)
+                    {
+                        _AddError(ref Errors, Prop.Name, MinLengthAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var NationalNoAttr = Prop.GetCustomAttribute<NationalNoAttribute>();
+            if (NationalNoAttr != null)
+            {
+                if (StrValue != null)
+                {
+                    if (!Regex.IsMatch(StrValue, ValidationPatterns.NationalNoPattern))
+                    {
+                        _AddError(ref Errors, Prop.Name, NationalNoAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var EmailAttr = Prop.GetCustomAttribute<EmailAttribute>();
+            if (EmailAttr != null)
+            {
+                if (StrValue != null)
+                {
+                    if (!Regex.IsMatch(StrValue, ValidationPatterns.EmailPattern))
+                    {
+                        _AddError(ref Errors, Prop.Name, EmailAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var PhoneAttr = Prop.GetCustomAttribute<PhoneAttribute>();
+            if (PhoneAttr != null)
+            {
+                if (StrValue != null)
+                {
+                    if (!Regex.IsMatch(StrValue, ValidationPatterns.PhonePattern))
+                    {
+                        _AddError(ref Errors, Prop.Name, PhoneAttr.ErrorMessage);
                     }
                 }
             }
 
             return Errors;
         }
+
+        private static void _AddError(ref List<ValidationError> Errors, 
+            string PropertyName, string errorMessage)
+        {
+            Errors.Add(new ValidationError
+            {
+                PropertyName = PropertyName,
+                ErrorMessage = errorMessage
+            });
+        }
+
         public static ValidationResult ValidateObject<T>(T obj)
         {
             var Type = typeof(T);

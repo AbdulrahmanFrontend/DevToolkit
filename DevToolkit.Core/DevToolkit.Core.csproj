@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Common\QueryOptions.cs" />
     <Compile Include="Common\FilterBase.cs" />
@@ -49,7 +50,6 @@
     <Compile Include="Extensions\CollectionExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Guards\Guard.cs" />
-    <Compile Include="Results\clsResult.cs" />
     <Compile Include="Results\Result.cs" />
     <Compile Include="Validation\Attributes\EmailAttribute.cs" />
     <Compile Include="Validation\Attributes\LengthAttribute.cs" />
@@ -57,6 +57,7 @@
     <Compile Include="Validation\Attributes\MinLengthAttribute.cs" />
     <Compile Include="Validation\Attributes\NationalNoAttribute.cs" />
     <Compile Include="Validation\Attributes\PhoneAttribute.cs" />
+    <Compile Include="Validation\Patterns\ValidationPatterns.cs" />
     <Compile Include="Validation\ValidationError.cs" />
     <Compile Include="Validation\ValidationResult.cs" />
     <Compile Include="Validation\ObjectValidator.cs" />

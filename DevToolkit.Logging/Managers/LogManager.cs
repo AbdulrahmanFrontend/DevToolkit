@@ -9,21 +9,21 @@ namespace DevToolkit.Logging.Managers
 {
     public class LogManager
     {
-        private static ILogger _Current { get; set; }
+        public static ILogger Current { get; set; }
 
         public static void LogError(string ErrorMessage, Exception ex)
         {
-            _Current?.LogError(ErrorMessage, ex);
+            Current?.LogError(ErrorMessage, ex);
         }
 
         public static void LogInfo(string InfoMessage)
         {
-            _Current?.LogInfo(InfoMessage);
+            Current?.LogInfo(InfoMessage);
         }
 
         public static void LogWarning(string WarningMessage)
         {
-            _Current?.LogWarning(WarningMessage);
+            Current?.LogWarning(WarningMessage);
         }
     }
 }
