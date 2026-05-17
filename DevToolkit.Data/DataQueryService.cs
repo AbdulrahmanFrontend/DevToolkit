@@ -1,24 +1,24 @@
-﻿using DevToolkit.Data.Mapping;
+﻿using DevToolkit.Data.Abstractions;
 using DevToolkit.Data.Executors;
+using DevToolkit.Data.Managers;
+using DevToolkit.Data.Mapping;
+using DevToolkit.Data.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevToolkit.Data.Builders;
-using DevToolkit.Data.Managers;
-using DevToolkit.Data.Abstractions;
-using System.Data.Common;
 
 namespace DevToolkit.Data
 {
     public class DataQueryService
     {
         public static List<T> Query<T>(CommandType Type, string CommandText,
-            DbParameter[] Parameters = null
+            DbParameterInfo[] Parameters = null
             /*, Action<clsQueryOptions> OptionsAction = null*/) where T : new()
         {
             //var Options = new clsQueryOptions 
@@ -75,7 +75,7 @@ namespace DevToolkit.Data
         }
 
         public static T FirstOrDefault<T>(CommandType Type, string CommandText,
-                DbParameter[] Parameters = null) where T : new()
+                DbParameterInfo[] Parameters = null) where T : new()
         {
             DataRow dr = DbManager.Current?.GetFirstRow(Type, CommandText, Parameters);
             if (dr != null)

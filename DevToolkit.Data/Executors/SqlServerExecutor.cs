@@ -1,23 +1,23 @@
 ﻿using DevToolkit.Data.Abstractions;
-using DevToolkit.Data.Builders;
+using DevToolkit.Data.Parameters;
 using DevToolkit.Logging.Managers;
 using DevToolkit.Logging.Providers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Common;
 
 namespace DevToolkit.Data.Executors
 {
     public class SqlServerExecutor : IDbExecutor
     {
         private SqlCommand _PrepareCommand(SqlConnection con,
-            CommandType Type, string CommandText, DbParameter[] Parameters)
+            CommandType Type, string CommandText, SqlParameter[] Parameters)
         {
             SqlCommand cmd = new SqlCommand(CommandText, con);
             cmd.CommandType = Type;
@@ -35,6 +35,15 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
+        private SqlParameter[] _CreateParameters(DbParameterInfo[] Parameters)
+        {
+            if (Parameters == null)
+            {
+                return new SqlParameter[0];
+            }
+            return Parameters.Select(p => new SqlParameter(p.Name, p.Value)).ToArray();
+        }
+
         private string _GetConnection()
         {
             string ConnectionString = ConfigurationManager
@@ -46,14 +55,14 @@ namespace DevToolkit.Data.Executors
             return ConnectionString;
         }
 
-        public DataTable GetDataTable(CommandType commandType, string CommandText, 
-            DbParameter[] Parameters = null)
+        public DataTable GetDataTable(CommandType commandType, string CommandText,
+            DbParameterInfo[] Parameters = null)
         {
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
-                using (SqlCommand cmd =
-                    _PrepareCommand(con, commandType, CommandText, Parameters))
+                using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                    _CreateParameters(Parameters)))
                 {
                     try
                     {
@@ -76,20 +85,20 @@ namespace DevToolkit.Data.Executors
             return dt;
         }
 
-        public DataRow GetFirstRow(CommandType commandType, string CommandText, 
-            DbParameter[] parameters = null)
+        public DataRow GetFirstRow(CommandType commandType, string CommandText,
+            DbParameterInfo[] Parameters = null)
         {
-            DataTable dt = GetDataTable(commandType, CommandText, parameters);
+            DataTable dt = GetDataTable(commandType, CommandText, Parameters);
             return dt.Rows.Count > 0 ? dt.Rows[0] : null;
         }
 
         public object GetScalar(CommandType commandType, string CommandText,
-            DbParameter[] Parameters = null)
+            DbParameterInfo[] Parameters = null)
         {
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
-                using (SqlCommand cmd = 
-                    _PrepareCommand(con, commandType, CommandText, Parameters))
+                using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText, 
+                    _CreateParameters(Parameters)))
                 {
                     try
                     {
@@ -105,13 +114,13 @@ namespace DevToolkit.Data.Executors
             }
         }
 
-        public int ExecuteNonQuery(CommandType commandType, string CommandText, 
-            DbParameter[] Parameters = null)
+        public int ExecuteNonQuery(CommandType commandType, string CommandText,
+            DbParameterInfo[] Parameters = null)
         {
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
-                using (SqlCommand cmd = 
-                    _PrepareCommand(con, commandType, CommandText, Parameters))
+                using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                    _CreateParameters(Parameters)))
                 {
                     try
                     {

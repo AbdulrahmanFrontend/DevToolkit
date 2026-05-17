@@ -1,11 +1,11 @@
-﻿using DevToolkit.Data.Builders;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
+using DevToolkit.Data.Parameters;
 
 namespace DevToolkit.Data.Abstractions
 {
@@ -14,21 +14,21 @@ namespace DevToolkit.Data.Abstractions
         DataTable GetDataTable(
             CommandType commandType, 
             string CommandText,
-            DbParameter[] Parameters = null);
+            DbParameterInfo[] Parameters = null);
 
         DataRow GetFirstRow(
             CommandType commandType,
             string CommandText,
-            DbParameter[] parameters = null);
+            DbParameterInfo[] parameters = null);
 
         object GetScalar(
             CommandType commandType,
             string CommandText,
-            DbParameter[] Parameters = null);
+            DbParameterInfo[] Parameters = null);
 
         int ExecuteNonQuery(
             CommandType commandType,
             string CommandText,
-            DbParameter[] Parameters = null);
+            DbParameterInfo[] Parameters = null);
     }
 }

@@ -8,6 +8,6 @@ namespace DevToolkit.Core.Validation.Attributes
 {
     public abstract class MainAttribute : Attribute
     {
-        public string ErrorMessage { get; set; }
+        public string ErrorMessage { get; protected set; }
     }
 }

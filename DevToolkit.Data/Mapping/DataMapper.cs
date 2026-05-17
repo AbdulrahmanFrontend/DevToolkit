@@ -22,22 +22,27 @@ namespace DevToolkit.Data.Mapping
                 if (row.Table.Columns.Contains(ColumnName))
                 {
                     var Value = row[ColumnName];
-                    var PropType = Nullable.GetUnderlyingType(prop.PropertyType) ??
-                        prop.PropertyType;
+                    Type PropertyType = prop.PropertyType;
+
+                    Type TargetType =
+                        Nullable.GetUnderlyingType(PropertyType) ?? PropertyType;
+
                     if (Value == DBNull.Value)
                     {
-                        if (!PropType.IsValueType)
+                        if (!PropertyType.IsValueType ||
+                            Nullable.GetUnderlyingType(PropertyType) != null)
                         {
                             prop.SetValue(obj, null);
                         }
                         else
                         {
-                            prop.SetValue(obj, default);
+                            prop.SetValue(obj, Activator.CreateInstance(PropertyType));
                         }
 
                         continue;
                     }
-                    var SafeValue = Convert.ChangeType(Value, PropType);
+
+                    var SafeValue = Convert.ChangeType(Value, TargetType);
                     prop.SetValue(obj, SafeValue);
                 }
             }

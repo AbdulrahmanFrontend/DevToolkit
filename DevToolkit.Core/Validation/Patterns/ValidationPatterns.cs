@@ -8,9 +8,9 @@ namespace DevToolkit.Core.Validation.Patterns
 {
     public class ValidationPatterns
     {
-        public const string EmailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        public const string EmailAddrPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
-        public const string PhonePattern = @"^\+?[0-9]{10,15}$";
+        public const string PhoneNoPattern = @"^\+?[0-9]{10,15}$";
 
         public const string NationalNoPattern = @"^[0-9]{14}$";
     }

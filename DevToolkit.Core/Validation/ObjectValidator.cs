@@ -13,6 +13,22 @@ namespace DevToolkit.Core.Validation
 {
     public class ObjectValidator
     {
+        public static ValidationResult ValidateObject<T>(T obj)
+        {
+            Type type = typeof(T);
+            ValidationResult Result = new ValidationResult();
+            List<ValidationError> PropErrors = new List<ValidationError>();
+            foreach (PropertyInfo prop in type.GetProperties())
+            {
+                PropErrors = ValidateProperty<T>(prop, obj);
+                if (PropErrors.Count > 0)
+                {
+                    Result.Errors.AddRange(PropErrors);
+                }
+            }
+            return Result;
+        }
+
         public static List<ValidationError> ValidateProperty<T>(PropertyInfo Prop, T obj)
         {
             List<ValidationError> Errors = new List<ValidationError>();
@@ -21,8 +37,8 @@ namespace DevToolkit.Core.Validation
             RequiredAttribute RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
             if (RequiredAttr != null)
             {
-                if(Value == null ||
-                    (Value is string Str && string.IsNullOrEmpty(Str)))
+                if(Value == null || (Value is string Str && 
+                    (Str == string.Empty || string.IsNullOrWhiteSpace(Str))))
                 {
                     _AddError(ref Errors, Prop.Name, RequiredAttr.ErrorMessage);
                 }
@@ -46,7 +62,7 @@ namespace DevToolkit.Core.Validation
             LengthAttribute LengthAttr = Prop.GetCustomAttribute<LengthAttribute>();
             if (LengthAttr != null)
             {
-                if (StrValue != null)
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
                 {
                     if (StrValue.Length != LengthAttr.Length)
                     {
@@ -58,7 +74,7 @@ namespace DevToolkit.Core.Validation
             var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
             if (MaxLengthAttr != null)
             {
-                if(StrValue != null)
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
                 {
                     if (StrValue.Length > MaxLengthAttr.Length)
                     {
@@ -70,7 +86,7 @@ namespace DevToolkit.Core.Validation
             var MinLengthAttr = Prop.GetCustomAttribute<MinLengthAttribute>();
             if (MinLengthAttr != null)
             {
-                if (StrValue != null)
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
                 {
                     if (StrValue.Length < MinLengthAttr.Length)
                     {
@@ -79,14 +95,38 @@ namespace DevToolkit.Core.Validation
                 }
             }
 
-            RegexAttribute RegexAttr = Prop.GetCustomAttribute<RegexAttribute>();
-            if (RegexAttr != null)
+            PhoneNoAttribute PhoneNoAttr = Prop.GetCustomAttribute<PhoneNoAttribute>();
+            if (PhoneNoAttr != null)
             {
-                if (StrValue != null)
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
                 {
-                    if (!Regex.IsMatch(StrValue, RegexAttr.Pattern))
+                    if (!Regex.IsMatch(StrValue, PhoneNoAttr.Pattern))
                     {
-                        _AddError(ref Errors, Prop.Name, RegexAttr.ErrorMessage);
+                        _AddError(ref Errors, Prop.Name, PhoneNoAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var NationalNoAttr = Prop.GetCustomAttribute<NationalNoAttribute>();
+            if (NationalNoAttr != null)
+            {
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                {
+                    if (!Regex.IsMatch(StrValue, NationalNoAttr.Pattern))
+                    {
+                        _AddError(ref Errors, Prop.Name, NationalNoAttr.ErrorMessage);
+                    }
+                }
+            }
+
+            var EmailAttr = Prop.GetCustomAttribute<EmailAddrAttribute>();
+            if (EmailAttr != null)
+            {
+                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                {
+                    if (!Regex.IsMatch(StrValue, EmailAttr.Pattern))
+                    {
+                        _AddError(ref Errors, Prop.Name, EmailAttr.ErrorMessage);
                     }
                 }
             }
@@ -102,22 +142,6 @@ namespace DevToolkit.Core.Validation
                 PropertyName = PropertyName,
                 ErrorMessage = errorMessage
             });
-        }
-
-        public static ValidationResult ValidateObject<T>(T obj)
-        {
-            Type type = typeof(T);
-            ValidationResult Result = new ValidationResult();
-            List<ValidationError> PropErrors = new List<ValidationError>();
-            foreach (PropertyInfo prop in type.GetProperties())
-            {
-                PropErrors = ValidateProperty<T>(prop, obj);
-                if (PropErrors.Count > 0)
-                {
-                    Result.Errors.AddRange(PropErrors);
-                }
-            }
-            return Result;
         }
     }
 }
