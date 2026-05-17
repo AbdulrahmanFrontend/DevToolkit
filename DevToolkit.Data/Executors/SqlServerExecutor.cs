@@ -41,7 +41,18 @@ namespace DevToolkit.Data.Executors
             {
                 return new SqlParameter[0];
             }
-            return Parameters.Select(p => new SqlParameter(p.Name, p.Value)).ToArray();
+
+            return Parameters.Select(p =>
+            {
+                SqlParameter param = new SqlParameter();
+
+                param.ParameterName = p.Name;
+                param.Value = p.Value ?? DBNull.Value;
+                param.DbType = p.DbType;
+
+                return param;
+
+            }).ToArray();
         }
 
         private string _GetConnection()

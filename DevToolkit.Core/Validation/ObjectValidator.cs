@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using DevToolkit.Core.Guards;
 using DevToolkit.Core.Validation.Attributes;
 using DevToolkit.Core.Validation.Patterns;
 
@@ -37,8 +38,7 @@ namespace DevToolkit.Core.Validation
             RequiredAttribute RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
             if (RequiredAttr != null)
             {
-                if(Value == null || (Value is string Str && 
-                    (Str == string.Empty || string.IsNullOrWhiteSpace(Str))))
+                if(Value == null || (Value is string Str && !Guard.HasValue(Str)))
                 {
                     _AddError(ref Errors, Prop.Name, RequiredAttr.ErrorMessage);
                 }
@@ -58,11 +58,12 @@ namespace DevToolkit.Core.Validation
             }
 
             var StrValue = Value as string;
+            bool HasValue = Guard.HasValue(StrValue);
 
             LengthAttribute LengthAttr = Prop.GetCustomAttribute<LengthAttribute>();
             if (LengthAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (StrValue.Length != LengthAttr.Length)
                     {
@@ -74,7 +75,7 @@ namespace DevToolkit.Core.Validation
             var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
             if (MaxLengthAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (StrValue.Length > MaxLengthAttr.Length)
                     {
@@ -86,7 +87,7 @@ namespace DevToolkit.Core.Validation
             var MinLengthAttr = Prop.GetCustomAttribute<MinLengthAttribute>();
             if (MinLengthAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (StrValue.Length < MinLengthAttr.Length)
                     {
@@ -98,7 +99,7 @@ namespace DevToolkit.Core.Validation
             PhoneNoAttribute PhoneNoAttr = Prop.GetCustomAttribute<PhoneNoAttribute>();
             if (PhoneNoAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (!Regex.IsMatch(StrValue, PhoneNoAttr.Pattern))
                     {
@@ -110,7 +111,7 @@ namespace DevToolkit.Core.Validation
             var NationalNoAttr = Prop.GetCustomAttribute<NationalNoAttribute>();
             if (NationalNoAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (!Regex.IsMatch(StrValue, NationalNoAttr.Pattern))
                     {
@@ -122,7 +123,7 @@ namespace DevToolkit.Core.Validation
             var EmailAttr = Prop.GetCustomAttribute<EmailAddrAttribute>();
             if (EmailAttr != null)
             {
-                if (StrValue != string.Empty && !string.IsNullOrWhiteSpace(StrValue))
+                if (HasValue)
                 {
                     if (!Regex.IsMatch(StrValue, EmailAttr.Pattern))
                     {

@@ -8,5 +8,7 @@ namespace DevToolkit.Core.Guards
 {
     public class Guard
     {
+        public static bool HasValue(string Value)
+            => Value != string.Empty && !string.IsNullOrEmpty(Value);
     }
 }
