@@ -79,38 +79,14 @@ namespace DevToolkit.Core.Validation
                 }
             }
 
-            var NationalNoAttr = Prop.GetCustomAttribute<NationalNoAttribute>();
-            if (NationalNoAttr != null)
+            RegexAttribute RegexAttr = Prop.GetCustomAttribute<RegexAttribute>();
+            if (RegexAttr != null)
             {
                 if (StrValue != null)
                 {
-                    if (!Regex.IsMatch(StrValue, ValidationPatterns.NationalNoPattern))
+                    if (!Regex.IsMatch(StrValue, RegexAttr.Pattern))
                     {
-                        _AddError(ref Errors, Prop.Name, NationalNoAttr.ErrorMessage);
-                    }
-                }
-            }
-
-            var EmailAttr = Prop.GetCustomAttribute<EmailAttribute>();
-            if (EmailAttr != null)
-            {
-                if (StrValue != null)
-                {
-                    if (!Regex.IsMatch(StrValue, ValidationPatterns.EmailPattern))
-                    {
-                        _AddError(ref Errors, Prop.Name, EmailAttr.ErrorMessage);
-                    }
-                }
-            }
-
-            var PhoneAttr = Prop.GetCustomAttribute<PhoneAttribute>();
-            if (PhoneAttr != null)
-            {
-                if (StrValue != null)
-                {
-                    if (!Regex.IsMatch(StrValue, ValidationPatterns.PhonePattern))
-                    {
-                        _AddError(ref Errors, Prop.Name, PhoneAttr.ErrorMessage);
+                        _AddError(ref Errors, Prop.Name, RegexAttr.ErrorMessage);
                     }
                 }
             }
@@ -130,10 +106,10 @@ namespace DevToolkit.Core.Validation
 
         public static ValidationResult ValidateObject<T>(T obj)
         {
-            var Type = typeof(T);
-            var Result = new ValidationResult();
-            var PropErrors = new List<ValidationError>();
-            foreach (var prop in Type.GetProperties())
+            Type type = typeof(T);
+            ValidationResult Result = new ValidationResult();
+            List<ValidationError> PropErrors = new List<ValidationError>();
+            foreach (PropertyInfo prop in type.GetProperties())
             {
                 PropErrors = ValidateProperty<T>(prop, obj);
                 if (PropErrors.Count > 0)

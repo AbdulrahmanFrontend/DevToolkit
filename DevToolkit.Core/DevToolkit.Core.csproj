@@ -51,12 +51,10 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Guards\Guard.cs" />
     <Compile Include="Results\Result.cs" />
-    <Compile Include="Validation\Attributes\EmailAttribute.cs" />
     <Compile Include="Validation\Attributes\LengthAttribute.cs" />
     <Compile Include="Validation\Attributes\MainAttribute.cs" />
     <Compile Include="Validation\Attributes\MinLengthAttribute.cs" />
-    <Compile Include="Validation\Attributes\NationalNoAttribute.cs" />
-    <Compile Include="Validation\Attributes\PhoneAttribute.cs" />
+    <Compile Include="Validation\Attributes\RegexAttribute.cs" />
     <Compile Include="Validation\Patterns\ValidationPatterns.cs" />
     <Compile Include="Validation\ValidationError.cs" />
     <Compile Include="Validation\ValidationResult.cs" />

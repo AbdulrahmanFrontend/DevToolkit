@@ -1,4 +1,6 @@
-﻿using DevToolkit.Logging.Managers;
+﻿using DevToolkit.Data.Abstractions;
+using DevToolkit.Data.Builders;
+using DevToolkit.Logging.Managers;
 using DevToolkit.Logging.Providers;
 using System;
 using System.Collections.Generic;
@@ -8,19 +10,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Common;
 
 namespace DevToolkit.Data.Executors
 {
-    public class DbExecutor
+    public class SqlServerExecutor : IDbExecutor
     {
-        private static SqlCommand _PrepareCommand(SqlConnection con,
-            CommandType Type, string CommandText, SqlParameter[] parameters)
+        private SqlCommand _PrepareCommand(SqlConnection con,
+            CommandType Type, string CommandText, DbParameter[] Parameters)
         {
             SqlCommand cmd = new SqlCommand(CommandText, con);
             cmd.CommandType = Type;
-            if (parameters != null)
+            if (Parameters != null)
             {
-                foreach(var p in parameters)
+                foreach (var p in Parameters)
                 {
                     if (p.Value == null)
                     {
@@ -32,7 +35,7 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
-        private static string _GetConnection()
+        private string _GetConnection()
         {
             string ConnectionString = ConfigurationManager
                 .ConnectionStrings["ConnectionString"]?.ConnectionString;
@@ -43,21 +46,21 @@ namespace DevToolkit.Data.Executors
             return ConnectionString;
         }
 
-        public static DataTable GetDataTable(CommandType Type, string CommandText, 
-            SqlParameter[] parameters = null)
+        public DataTable GetDataTable(CommandType commandType, string CommandText, 
+            DbParameter[] Parameters = null)
         {
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
-                using (SqlCommand cmd = 
-                    _PrepareCommand(con, Type, CommandText, parameters))
+                using (SqlCommand cmd =
+                    _PrepareCommand(con, commandType, CommandText, Parameters))
                 {
                     try
                     {
                         con.Open();
-                        using(SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if(reader.HasRows)
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }
@@ -73,20 +76,20 @@ namespace DevToolkit.Data.Executors
             return dt;
         }
 
-        public static DataRow GetFirstRow(CommandType Type, string CommandText, 
-            SqlParameter[] parameters = null)
+        public DataRow GetFirstRow(CommandType commandType, string CommandText, 
+            DbParameter[] parameters = null)
         {
-            DataTable dt = GetDataTable(Type, CommandText, parameters);
+            DataTable dt = GetDataTable(commandType, CommandText, parameters);
             return dt.Rows.Count > 0 ? dt.Rows[0] : null;
         }
 
-        public static object GetScalar(CommandType Type, string CommandText,
-            SqlParameter[] parameters = null)
+        public object GetScalar(CommandType commandType, string CommandText,
+            DbParameter[] Parameters = null)
         {
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
                 using (SqlCommand cmd = 
-                    _PrepareCommand(con, Type, CommandText, parameters))
+                    _PrepareCommand(con, commandType, CommandText, Parameters))
                 {
                     try
                     {
@@ -102,13 +105,13 @@ namespace DevToolkit.Data.Executors
             }
         }
 
-        public static int ExecuteNonQuery(CommandType Type, string CommandText, 
-            SqlParameter[] parameters = null)
+        public int ExecuteNonQuery(CommandType commandType, string CommandText, 
+            DbParameter[] Parameters = null)
         {
             using (SqlConnection con = new SqlConnection(_GetConnection()))
             {
                 using (SqlCommand cmd = 
-                    _PrepareCommand(con, Type, CommandText, parameters))
+                    _PrepareCommand(con, commandType, CommandText, Parameters))
                 {
                     try
                     {

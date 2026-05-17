@@ -22,13 +22,17 @@ namespace DevToolkit.Data.Mapping
                 if (row.Table.Columns.Contains(ColumnName))
                 {
                     var Value = row[ColumnName];
-                    var PropType = Nullable.GetUnderlyingType(prop.PropertyType) ?? 
+                    var PropType = Nullable.GetUnderlyingType(prop.PropertyType) ??
                         prop.PropertyType;
                     if (Value == DBNull.Value)
                     {
-                        if (PropType != null || !PropType.IsValueType)
+                        if (!PropType.IsValueType)
                         {
                             prop.SetValue(obj, null);
+                        }
+                        else
+                        {
+                            prop.SetValue(obj, default);
                         }
 
                         continue;

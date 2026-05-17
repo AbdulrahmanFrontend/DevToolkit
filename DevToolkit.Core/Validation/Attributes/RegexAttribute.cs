@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Validation.Attributes
 {
-    public class NationalNoAttribute : MainAttribute
+    public class RegexAttribute : MainAttribute
     {
-        public NationalNoAttribute(string errorMessage = "Invalid National Number Format.")
+        public string Pattern { get; }
+        public RegexAttribute(string pattern, string errorMessage)
         {
+            this.Pattern = pattern;
             this.ErrorMessage = errorMessage;
         }
     }

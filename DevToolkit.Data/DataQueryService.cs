@@ -8,13 +8,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevToolkit.Data.Builders;
+using DevToolkit.Data.Managers;
+using DevToolkit.Data.Abstractions;
+using System.Data.Common;
 
 namespace DevToolkit.Data
 {
     public class DataQueryService
     {
         public static List<T> Query<T>(CommandType Type, string CommandText,
-            SqlParameter[] Parameters = null
+            DbParameter[] Parameters = null
             /*, Action<clsQueryOptions> OptionsAction = null*/) where T : new()
         {
             //var Options = new clsQueryOptions 
@@ -51,7 +55,7 @@ namespace DevToolkit.Data
             //else
             //{
                 DataTable dt = 
-                    DbExecutor.GetDataTable(Type, CommandText, Parameters);
+                    DbManager.Current?.GetDataTable(Type, CommandText, Parameters);
                 ObjsList = new List<T>();
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -71,9 +75,9 @@ namespace DevToolkit.Data
         }
 
         public static T FirstOrDefault<T>(CommandType Type, string CommandText,
-                SqlParameter[] Parameters = null) where T : new()
+                DbParameter[] Parameters = null) where T : new()
         {
-            DataRow dr = DbExecutor.GetFirstRow(Type, CommandText, Parameters);
+            DataRow dr = DbManager.Current?.GetFirstRow(Type, CommandText, Parameters);
             if (dr != null)
             {
                 return DataMapper.Map<T>(dr);

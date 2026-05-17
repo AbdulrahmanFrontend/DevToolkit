@@ -75,10 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IDbExecutor.cs" />
     <Compile Include="Builders\DbParameterBuilder.cs" />
     <Compile Include="DataQueryService.cs" />
+    <Compile Include="Managers\DbManager.cs" />
     <Compile Include="Mapping\DataMapper.cs" />
-    <Compile Include="Executors\DbExecutor.cs" />
+    <Compile Include="Executors\SqlServerExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transactions\DbTransactionManager.cs" />
   </ItemGroup>
