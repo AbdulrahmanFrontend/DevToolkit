@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Common
 {
-    public class clsQueryOptions
+    public class QueryOptions
     {
         public bool UseCache { get; set; }
     }

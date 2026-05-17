@@ -11,18 +11,25 @@ namespace DevToolkit.Core.Validation
 {
     public class ObjectValidator
     {
-        public static List<string> ValidateProperty<T>(PropertyInfo Prop, T obj)
+        public static List<ValidationError> ValidateProperty<T>(PropertyInfo Prop, T obj)
         {
-            List<string> Errors = new List<string>();
+            var Errors = new List<ValidationError>();
+
             var Value = Prop.GetValue(obj);
             var RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
             if (RequiredAttr != null)
             {
-                if(Value == null || (Value is string Str && string.IsNullOrWhiteSpace(Str)))
+                if(Value == null ||
+                    (Value is string Str && string.IsNullOrWhiteSpace(Str)))
                 {
-                    Errors.Add(RequiredAttr.ErrorMessage);
+                    Errors.Add(new ValidationError 
+                        { 
+                            PropertyName = Prop.Name,
+                            ErrorMessage = RequiredAttr.ErrorMessage
+                        });
                 }
             }
+
             var RangeAttr = Prop.GetCustomAttribute<RangeAttribute>();
             if (RangeAttr != null)
             {
@@ -31,10 +38,15 @@ namespace DevToolkit.Core.Validation
                     if (Value is int IntValue && (IntValue < RangeAttr.Min
                         || IntValue > RangeAttr.Max))
                     {
-                        Errors.Add(RangeAttr.ErrorMessage);
+                        Errors.Add(new ValidationError 
+                            { 
+                                PropertyName = Prop.Name,
+                                ErrorMessage = RangeAttr.ErrorMessage
+                            });
                     }
                 }
             }
+
             var StrValue = Value as string;
             var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
             if (MaxLengthAttr != null)
@@ -43,30 +55,31 @@ namespace DevToolkit.Core.Validation
                 {
                     if (StrValue.Length > MaxLengthAttr.Length)
                     {
-                        Errors.Add(MaxLengthAttr.ErrorMessage);
+                        Errors.Add(new ValidationError 
+                            { 
+                                PropertyName = Prop.Name,
+                                ErrorMessage = MaxLengthAttr.ErrorMessage
+                            });
                     }
                 }
             }
+
             return Errors;
         }
-        public static Dictionary<string, List<string>> ValidateObject<T>(T obj)
+        public static ValidationResult ValidateObject<T>(T obj)
         {
             var Type = typeof(T);
-            var Errors = new Dictionary<string, List<string>>();
-            var PropErrors = new List<string>();
+            var Result = new ValidationResult();
+            var PropErrors = new List<ValidationError>();
             foreach (var prop in Type.GetProperties())
             {
                 PropErrors = ValidateProperty<T>(prop, obj);
                 if (PropErrors.Count > 0)
                 {
-                    Errors[prop.Name] = PropErrors;
+                    Result.Errors.AddRange(PropErrors);
                 }
             }
-            return Errors;
-        }
-        public static bool IsValid<T>(T obj)
-        {
-            return ValidateObject<T>(obj).Count == 0;
+            return Result;
         }
     }
 }

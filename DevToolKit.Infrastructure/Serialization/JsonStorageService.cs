@@ -26,7 +26,7 @@ namespace DevToolKit.Infrastructure.Serialization
             }
             catch (Exception ex)
             {
-                LogManager.Current.LogError("Failed to Load Questions", ex);
+                LogManager.LogError("Failed to Load Questions", ex);
                 return new T();
             }
         }
@@ -40,7 +40,7 @@ namespace DevToolKit.Infrastructure.Serialization
             }
             catch (Exception ex)
             {
-                LogManager.Current.LogError("Failed to Save Questions", ex);
+                LogManager.LogError("Failed to Save Questions", ex);
             }
         }
     }

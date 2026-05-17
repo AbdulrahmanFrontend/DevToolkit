@@ -10,7 +10,7 @@ using DevToolkit.Core.Common;
 
 namespace DevToolkit.Core
 {
-    public abstract class clsBaseBusiness
+    public abstract class BaseBusiness
     {
         public Enums.Mode Mode { get; protected set; }
         public virtual clsResult Validate() => clsResult.Success();

@@ -31,6 +31,7 @@ namespace DevToolkit.Data.Executors
             }
             return cmd;
         }
+
         private static string _GetConnection()
         {
             string ConnectionString = ConfigurationManager
@@ -41,6 +42,7 @@ namespace DevToolkit.Data.Executors
             }
             return ConnectionString;
         }
+
         public static DataTable GetDataTable(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
         {
@@ -63,19 +65,21 @@ namespace DevToolkit.Data.Executors
                     }
                     catch (SqlException ex)
                     {
-                        LogManager.Current?.LogError("GetDataTable Failed;", ex);
+                        LogManager.LogError("GetDataTable Failed;", ex);
                         return new DataTable();
                     }
                 }
             }
             return dt;
         }
+
         public static DataRow GetFirstRow(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
         {
             DataTable dt = GetDataTable(Type, CommandText, parameters);
             return dt.Rows.Count > 0 ? dt.Rows[0] : null;
         }
+
         public static object GetScalar(CommandType Type, string CommandText,
             SqlParameter[] parameters = null)
         {
@@ -91,12 +95,13 @@ namespace DevToolkit.Data.Executors
                     }
                     catch(SqlException ex)
                     {
-                        LogManager.Current?.LogError("GetScalar Failed;", ex);
+                        LogManager.LogError("GetScalar Failed;", ex);
                         return null;
                     }
                 }
             }
         }
+
         public static int ExecuteNonQuery(CommandType Type, string CommandText, 
             SqlParameter[] parameters = null)
         {
@@ -112,7 +117,7 @@ namespace DevToolkit.Data.Executors
                     }
                     catch(SqlException ex)
                     {
-                        LogManager.Current?.LogError("ExecuteNonQuery Failed;", ex);
+                        LogManager.LogError("ExecuteNonQuery Failed;", ex);
                         return 0;
                     }
                 }

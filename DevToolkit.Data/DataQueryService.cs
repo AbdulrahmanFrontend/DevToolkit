@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Data
 {
-    public class clsDataManager
+    public class DataQueryService
     {
         public static List<T> Query<T>(CommandType Type, string CommandText,
             SqlParameter[] Parameters = null

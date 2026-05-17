@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\DbParameterBuilder.cs" />
-    <Compile Include="clsDataManager.cs" />
+    <Compile Include="DataQueryService.cs" />
     <Compile Include="Mapping\DataMapper.cs" />
     <Compile Include="Executors\DbExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
