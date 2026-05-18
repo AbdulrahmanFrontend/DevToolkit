@@ -49,8 +49,7 @@ namespace DevToolkit.Core.Validation
             {
                 if (Value != null)
                 {
-                    if (Value is int IntValue && (IntValue < RangeAttr.Min
-                        || IntValue > RangeAttr.Max))
+                    if (Value is int IntValue && !Guard.Range(IntValue, RangeAttr.Min, RangeAttr.Max))
                     {
                         _AddError(ref Errors, Prop.Name, RangeAttr.ErrorMessage);
                     }

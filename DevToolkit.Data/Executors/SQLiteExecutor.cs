@@ -47,6 +47,8 @@ namespace DevToolkit.Data.Executors
                 param.ParameterName = p.Name;
                 param.Value = p.Value ?? DBNull.Value;
                 param.DbType = p.DbType;
+                param.Size = p.Size;
+                param.Direction = p.Direction;
 
                 return param;
 

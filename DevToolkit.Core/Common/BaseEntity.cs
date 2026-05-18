@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Common
 {
-    public class BaseEntity
+    public interface IBaseEntity
     {
-        public int ID { get; set; }
+        int ID { get; set; }
     }
 }
