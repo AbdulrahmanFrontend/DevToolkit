@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Validation.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     public class MinLengthAttribute : LengthAttribute
     {
         public MinLengthAttribute(int length, string errorMessage = null) : 

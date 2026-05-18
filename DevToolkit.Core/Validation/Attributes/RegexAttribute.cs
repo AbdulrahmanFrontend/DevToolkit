@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Validation.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public abstract class RegexAttribute : MainAttribute
     {
         public string Pattern { get; }

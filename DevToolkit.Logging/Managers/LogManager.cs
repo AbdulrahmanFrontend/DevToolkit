@@ -25,5 +25,9 @@ namespace DevToolkit.Logging.Managers
         {
             Current?.LogWarning(WarningMessage);
         }
+        public static void LogDebug(string DebugMessage, Exception ex = null)
+        {
+            Current?.LogDebug(DebugMessage, ex);
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Core.Validation.Attributes
 {
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
     public class NationalNoAttribute : RegexAttribute
     {
         public NationalNoAttribute(string errorMessage = "Invalid National Number")

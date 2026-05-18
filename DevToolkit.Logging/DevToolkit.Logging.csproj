@@ -47,6 +47,8 @@
     <Compile Include="Abstractions\ILogger.cs" />
     <Compile Include="Managers\LogManager.cs" />
     <Compile Include="Models\LogEntry.cs" />
+    <Compile Include="Providers\CompositeLogger.cs" />
+    <Compile Include="Providers\ConsoleLogger.cs" />
     <Compile Include="Providers\EventLogger.cs" />
     <Compile Include="Providers\FileLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

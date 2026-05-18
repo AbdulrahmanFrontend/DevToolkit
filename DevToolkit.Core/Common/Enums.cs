@@ -8,7 +8,7 @@ namespace DevToolkit.Core.Common
 {
     public class Enums
     {
-        public enum Mode { AddNew, Edit, Update }
+        public enum Mode { AddNew, Update }
 
         public enum DialogType 
         { 
