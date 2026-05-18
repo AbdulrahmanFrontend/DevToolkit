@@ -93,6 +93,8 @@
     <Compile Include="Parameters\DbParameterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\DbProviderFactory.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Transactions\DbTransactionManager.cs" />
   </ItemGroup>
   <ItemGroup>

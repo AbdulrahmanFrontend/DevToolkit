@@ -17,14 +17,14 @@ namespace DevToolkit.Core.Guards
 
         public static bool IsPositive(int value)
             => value > 0;
-
-        public static bool Range(int value, int min, int max)
+        
+        public static bool InRange(int value, int min, int max)
             => value >= min && value <= max;
 
-        public static bool Range(DateTime value, DateTime min, DateTime max)
+        public static bool InRange(DateTime value, DateTime min, DateTime max)
             => value >= min && value <= max;
 
-        public static bool CorrectLength(string value, int minLength, int maxLength)
+        public static bool HasValidLength(string value, int minLength, int maxLength)
             => HasValue(value) && value.Length >= minLength && value.Length <= maxLength;
 
         public static bool MatchesPattern(string value, string pattern)

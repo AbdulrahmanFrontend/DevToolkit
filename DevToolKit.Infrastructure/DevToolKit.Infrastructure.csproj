@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevToolkit.Data">
+      <HintPath>..\DevToolkit.Data\bin\Debug\DevToolkit.Data.dll</HintPath>
+    </Reference>
     <Reference Include="DevToolkit.Logging">
       <HintPath>..\DevToolkit.Logging\bin\Debug\DevToolkit.Logging.dll</HintPath>
     </Reference>
@@ -75,7 +78,7 @@
   <ItemGroup>
     <Compile Include="Serialization\CacheService.cs" />
     <Compile Include="Serialization\JsonStorageService.cs" />
-    <Compile Include="Configuration\ConfigManager.cs" />
+    <Compile Include="Configuration\ToolkitConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registry\RegistryHelper.cs" />
   </ItemGroup>

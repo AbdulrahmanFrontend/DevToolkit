@@ -49,7 +49,7 @@ namespace DevToolkit.Core.Validation
             {
                 if (Value != null)
                 {
-                    if (Value is int IntValue && !Guard.Range(IntValue, RangeAttr.Min, RangeAttr.Max))
+                    if (Value is int IntValue && !Guard.InRange(IntValue, RangeAttr.Min, RangeAttr.Max))
                     {
                         _AddError(ref Errors, Prop.Name, RangeAttr.ErrorMessage);
                     }
@@ -100,7 +100,7 @@ namespace DevToolkit.Core.Validation
             {
                 if (HasValue)
                 {
-                    if (!Regex.IsMatch(StrValue, PhoneNoAttr.Pattern))
+                    if (!Guard.MatchesPattern(StrValue, PhoneNoAttr.Pattern))
                     {
                         _AddError(ref Errors, Prop.Name, PhoneNoAttr.ErrorMessage);
                     }
@@ -112,7 +112,7 @@ namespace DevToolkit.Core.Validation
             {
                 if (HasValue)
                 {
-                    if (!Regex.IsMatch(StrValue, NationalNoAttr.Pattern))
+                    if (!Guard.MatchesPattern(StrValue, NationalNoAttr.Pattern))
                     {
                         _AddError(ref Errors, Prop.Name, NationalNoAttr.ErrorMessage);
                     }
@@ -124,7 +124,7 @@ namespace DevToolkit.Core.Validation
             {
                 if (HasValue)
                 {
-                    if (!Regex.IsMatch(StrValue, EmailAttr.Pattern))
+                    if (!Guard.MatchesPattern(StrValue, EmailAttr.Pattern))
                     {
                         _AddError(ref Errors, Prop.Name, EmailAttr.ErrorMessage);
                     }
