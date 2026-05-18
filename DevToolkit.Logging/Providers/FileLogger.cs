@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevToolkit.Core.Common;
 
 namespace DevToolkit.Logging.Providers
 {
@@ -32,28 +33,22 @@ namespace DevToolkit.Logging.Providers
                 File.Delete(_LogFilePath);
             }
         }
-        private enum _enLogBehavior
-        {
-            ERROR,
-            INFO,
-            WARNING
-        }
-        private static void _Log(StreamWriter Writer, _enLogBehavior Bahavior,
+        private static void _Log(StreamWriter Writer, Enums.LogLevel Level,
             string message)
         {
             Writer.WriteLine("----------------------------------------");
-            Writer.WriteLine("_____" + Bahavior.ToString() + "_____");
+            Writer.WriteLine("_____" + Level.ToString() + "_____");
             Writer.WriteLine($"Date & Time: [{DateTime.Now: yyyy-MM-dd HH:mm}] ");
             Writer.WriteLine("Message: {0};", message);
         }
-        private static void _GeneralLog(string message, _enLogBehavior Behavior,
+        private void _GeneralLog(string message, Enums.LogLevel Level,
             Exception Ex = null)
         {
             try
             {
                 using (StreamWriter Writer = new StreamWriter(_LogFilePath, true))
                 {
-                    _Log(Writer, Behavior, message);
+                    _Log(Writer, Level, message);
                     if (Ex != null)
                     {
                         Writer.WriteLine("Exception: {0};", Ex.Message);
@@ -68,15 +63,15 @@ namespace DevToolkit.Logging.Providers
         }
         public void LogError(string message, Exception Ex)
         {
-            _GeneralLog(message, _enLogBehavior.ERROR, Ex);
+            _GeneralLog(message, Enums.LogLevel.Error, Ex);
         }
         public void LogInfo(string message)
         {
-            _GeneralLog(message, _enLogBehavior.INFO);
+            _GeneralLog(message, Enums.LogLevel.Info);
         }
         public void LogWarning(string message)
         {
-            _GeneralLog(message, _enLogBehavior.WARNING);
+            _GeneralLog(message, Enums.LogLevel.Warning);
         }
     }
 }

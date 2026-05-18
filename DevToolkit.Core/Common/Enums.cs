@@ -9,10 +9,24 @@ namespace DevToolkit.Core.Common
     public class Enums
     {
         public enum Mode { AddNew, Edit, Update }
+
         public enum DialogType 
         { 
-            Success, Warning, Error, Info, Confirm
+            Success,
+            Warning,
+            Error, 
+            Info,
+            Confirm
         }
+
         public enum Status { Active, Inactive }
+
+        public enum LogLevel
+        {
+            Info,
+            Warning,
+            Error,
+            Debug
+        }
     }
 }
