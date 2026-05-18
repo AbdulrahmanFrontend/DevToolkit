@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Data.Repositories
 {
-    public interface IRepository<T> : IReadRepository<T>, IWriteRepository<T>
+    public interface IReadRepository<T>
     {
+        T GetById(int id);
+        List<T> GetAll();
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Data.Repositories
 {
-    public interface IRepository<T> : IReadRepository<T>, IWriteRepository<T>
+    public interface IWriteRepository<T>
     {
+        int Insert(T entity);
+        bool Update(T entity);
+        bool Delete(int ID);
     }
 }
