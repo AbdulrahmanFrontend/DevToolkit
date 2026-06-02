@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DevToolkit.Core.Validation
+{
+    public class ValidationError
+    {
+        public string PropertyName { get; set; } = string.Empty;
+        public string ErrorMessage { get; set; } = string.Empty;
+    }
+}
