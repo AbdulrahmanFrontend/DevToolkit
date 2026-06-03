@@ -3,19 +3,20 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevToolkit.Core.Common;
+using DevToolkit.BaseWinForms.Models;
 using DevToolkit.BaseWinForms.Utils;
 
 namespace DevToolkit.BaseWinForms.Forms
 {
     public partial class frmUIMessageBox : Form
     {
-        public frmUIMessageBox(clsMessageBoxData MessageBoxData)
+        public frmUIMessageBox(MessageBoxModel MessageBoxData)
         {
             InitializeComponent();
             _Initialize(MessageBoxData);
         }
 
-        private void _Initialize(clsMessageBoxData MessageBoxData)
+        private void _Initialize(MessageBoxModel MessageBoxData)
         {
             lblMessage.Text = MessageBoxData.Message;
             lblMessage.MaximumSize = new Size(350, 0);
@@ -46,7 +47,7 @@ namespace DevToolkit.BaseWinForms.Forms
             }
         }
 
-        private void _ShowMessage(clsMessageBoxData MessageBoxData)
+        private void _ShowMessage(MessageBoxModel MessageBoxData)
         {
             switch (MessageBoxData.DialogType)
             {
@@ -109,17 +110,17 @@ namespace DevToolkit.BaseWinForms.Forms
 
         private void _DragMouseDown(object sender, MouseEventArgs e)
         {
-            clsWindowDragHelper.DragMouseDown(sender, e);
+            WindowDragHelper.DragMouseDown(sender, e);
         }
 
         private void _DragMouseMove(object sender, MouseEventArgs e)
         {
-            clsWindowDragHelper.DragMouseMove(sender, e);
+            WindowDragHelper.DragMouseMove(sender, e);
         }
 
         private void _DragMouseUp(object sender, MouseEventArgs e)
         {
-            clsWindowDragHelper.DragMouseUp(sender, e);
+            WindowDragHelper.DragMouseUp(sender, e);
         }
     }
 }

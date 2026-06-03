@@ -2,7 +2,7 @@
 
 namespace DevToolkit.BaseWinForms.Utils
 {
-    public static class clsWindowDragHelper
+    public static class WindowDragHelper
     {
         public static bool Drag;
         public static int MouseX;

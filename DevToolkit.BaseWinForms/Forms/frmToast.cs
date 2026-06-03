@@ -5,12 +5,13 @@ using System.Windows.Forms;
 using DevToolkit.BaseWinForms.Utils;
 using DevToolkit.Core.Common;
 using DevToolkit.BaseWinForms.Properties;
+using DevToolkit.BaseWinForms.Models;
 
 namespace DevToolkit.BaseWinForms.Forms
 {
     public partial class frmToast : Form
     {
-        public frmToast(clsToastData ToastData)
+        public frmToast(ToastModel ToastData)
         {
             InitializeComponent();
             this.TopMost = true;
@@ -84,7 +85,7 @@ namespace DevToolkit.BaseWinForms.Forms
             this._x = Screen.PrimaryScreen.WorkingArea.Width - base.Width - 5;
         }
 
-        private void _Initialize(clsToastData ToastData)
+        private void _Initialize(ToastModel ToastData)
         {
             this.lblMsg.Text = ToastData.Message;
             
@@ -101,7 +102,7 @@ namespace DevToolkit.BaseWinForms.Forms
             this.timer1.Start();
         }
 
-        private void _ShowMessage(clsToastData ToastData)
+        private void _ShowMessage(ToastModel ToastData)
         {
             switch (ToastData.DialogType)
             {

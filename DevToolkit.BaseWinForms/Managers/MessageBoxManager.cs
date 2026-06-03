@@ -6,11 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevToolkit.Core.Common;
+using DevToolkit.BaseWinForms.Models;
 using DevToolkit.BaseWinForms.Forms;
 
-namespace DevToolkit.BaseWinForms.Utils
+namespace DevToolkit.BaseWinForms.Managers
 {
-    public class clsUIMessageBox
+    public class MessageBoxManager
     {
         public static DialogResult ShowSuccess(string Message)
             => Show(_Success(Message));
@@ -27,42 +28,42 @@ namespace DevToolkit.BaseWinForms.Utils
         public static DialogResult ShowInfo(string Message)
             => Show(_Info(Message));
 
-        public static DialogResult Show(clsMessageBoxData MessageBoxData)
+        public static DialogResult Show(MessageBoxModel MessageBoxData)
         {
             var messageBox = new frmUIMessageBox(MessageBoxData);
             return messageBox.ShowDialog();
         }
 
-        private static clsMessageBoxData _Success(string msg) =>
-            new clsMessageBoxData
+        private static MessageBoxModel _Success(string msg) =>
+            new MessageBoxModel
             {
                 Message = msg,
                 DialogType = DialogType.Success
             };
 
-        private static clsMessageBoxData _Error(string msg) =>
-            new clsMessageBoxData
+        private static MessageBoxModel _Error(string msg) =>
+            new MessageBoxModel
             {
                 Message = msg,
                 DialogType = DialogType.Error
             };
 
-        private static clsMessageBoxData _Warning(string msg) =>
-            new clsMessageBoxData
+        private static MessageBoxModel _Warning(string msg) =>
+            new MessageBoxModel
             {
                 Message = msg,
                 DialogType = DialogType.Warning
             };
 
-        private static clsMessageBoxData _Info(string msg) =>
-            new clsMessageBoxData
+        private static MessageBoxModel _Info(string msg) =>
+            new MessageBoxModel
             {
                 Message = msg,
                 DialogType = DialogType.Info
             };
 
-        private static clsMessageBoxData _Confirm(string msg) => 
-            new clsMessageBoxData
+        private static MessageBoxModel _Confirm(string msg) => 
+            new MessageBoxModel
             {
                 Message = msg,
                 Buttons = MessageBoxButtons.YesNo,

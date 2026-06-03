@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevToolkit.Core.Common;
 
-namespace DevToolkit.BaseWinForms.Utils
+namespace DevToolkit.BaseWinForms.Models
 {
-    public class clsMessageBoxData
+    public class MessageBoxModel
     {
         public string Message { get; set; }
         public MessageBoxButtons Buttons { get; set; } = MessageBoxButtons.OK;

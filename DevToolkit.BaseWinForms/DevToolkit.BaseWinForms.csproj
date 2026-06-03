@@ -51,6 +51,12 @@
     <Compile Include="Controls\CustomControls\ccComboBox.Designer.cs">
       <DependentUpon>ccComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UserControls\ucHeaderbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ucHeaderbar.Designer.cs">
+      <DependentUpon>ucHeaderbar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserControls\ucSelectionItemCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -62,6 +68,18 @@
     </Compile>
     <Compile Include="Controls\UserControls\ucSelectionItemRadioButton.Designer.cs">
       <DependentUpon>ucSelectionItemRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UserControls\ucSidebar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ucSidebar.Designer.cs">
+      <DependentUpon>ucSidebar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBase.Designer.cs">
+      <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmToast.cs">
       <SubType>Form</SubType>
@@ -75,26 +93,45 @@
     <Compile Include="Forms\frmUIMessageBox.Designer.cs">
       <DependentUpon>frmUIMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ToastManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\clsMessageBoxData.cs" />
-    <Compile Include="Utils\clsToastData.cs" />
-    <Compile Include="Utils\clsUIMessageBox.cs" />
-    <Compile Include="Utils\clsUIToast.cs" />
-    <Compile Include="Utils\clsWindowDragHelper.cs" />
+    <Compile Include="Theming\ThemeManager.cs" />
+    <Compile Include="Theming\ThemeColors.cs" />
+    <Compile Include="Theming\ThemeType.cs" />
+    <Compile Include="Models\MessageBoxModel.cs" />
+    <Compile Include="Models\ToastModel.cs" />
+    <Compile Include="Managers\MessageBoxManager.cs" />
+    <Compile Include="Controls\UserControls\ucSplashScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ucSplashScreen.Designer.cs">
+      <DependentUpon>ucSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\WindowDragHelper.cs" />
     <Compile Include="Utils\ISelectionItem.cs" />
+    <Compile Include="Models\NavigationButtonModel.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UserControls\ucHeaderbar.resx">
+      <DependentUpon>ucHeaderbar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControls\ucSelectionItemCheckBox.resx">
       <DependentUpon>ucSelectionItemCheckBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControls\ucSelectionItemRadioButton.resx">
       <DependentUpon>ucSelectionItemRadioButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserControls\ucSidebar.ar-EG.resx">
+      <DependentUpon>ucSidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserControls\ucSidebar.resx">
+      <DependentUpon>ucSidebar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmToast.resx">
       <DependentUpon>frmToast.cs</DependentUpon>
@@ -105,6 +142,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UserControls\ucSplashScreen.resx">
+      <DependentUpon>ucSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
