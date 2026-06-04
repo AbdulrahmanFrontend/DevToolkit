@@ -26,9 +26,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public IEnumerable<NavigationButtonModel> ButtonsInfo
+        public IEnumerable<NavigationItem> ButtonsInfo
         {
-            get => _buttons.Select(b => new NavigationButtonModel
+            get => _buttons.Select(b => new NavigationItem
                 {
                     Title = b.Text,
                     Icon = b.Image,
@@ -65,7 +65,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
                     btn.Click += (s, e) => {
                         var b = s as Button;
-                        ScreenSelected?.Invoke(b, new ScreenSelectedEventArgs(btn.Text));
+
+                        if(ScreenSelected != null)
+                            RaiseScreenSelected(b.Text);
 
                         if (_buttons.Count() > 0)
                             foreach (var button in _buttons)
@@ -86,19 +88,15 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         [Category("Custom Properties")]
         public Color SelectedButtonColor { get; set; }
-
-        public class ScreenSelectedEventArgs : EventArgs
-        {
-            public string ScreenName { get; }
-
-            public ScreenSelectedEventArgs(string screenName)
-            {
-                this.ScreenName = screenName;
-            }
-        }
-
+        
         [Category("Custom Events")]
-        public event EventHandler<ScreenSelectedEventArgs> ScreenSelected;
+        public event Action<string> ScreenSelected;
+        protected virtual void RaiseScreenSelected(string ScreenName)
+        {
+            Action<string> Handler = ScreenSelected;
+            if (Handler != null)
+                Handler(ScreenName);
+        }
 
         private IEnumerable<Button> _buttons => pnlButtons.Controls.OfType<Button>();
         private ContentAlignment _btnIconAlignment = ContentAlignment.MiddleLeft;

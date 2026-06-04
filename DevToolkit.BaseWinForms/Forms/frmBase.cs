@@ -23,8 +23,5 @@ namespace DevToolkit.BaseWinForms.Forms
             this.BackColor = theme.Background;
             this.ForeColor = theme.TextPrimary;
         }
-
-        protected delegate void ThemeChangedEventHandler(ThemeColors newTheme);
-        protected ThemeChangedEventHandler ThemeChanged;
     }
 }

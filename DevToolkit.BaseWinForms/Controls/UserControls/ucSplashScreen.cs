@@ -29,12 +29,14 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             else
             {
                 tSplash.Stop();
-                OnSplashCompleted();
+                if(SplashCompleted != null)
+                    RaiseSplashCompleted();
             }
         }
 
+        [Category("Custom Events")]
         public event Action SplashCompleted;
-        protected virtual void OnSplashCompleted()
+        protected virtual void RaiseSplashCompleted()
         {
             Action Handler = SplashCompleted;
             if (Handler != null)
@@ -88,6 +90,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             get => lblTitle.Font;
             set => lblTitle.Font = value;
+        }
+
+        [Category("Custom Properties")]
+        public Font SubTitleFont
+        {
+            get => lblSubTitle.Font;
+            set => lblSubTitle.Font = value;
         }
     }
 }

@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.lblFooter = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbLoading = new System.Windows.Forms.ProgressBar();
             this.picbLogo = new System.Windows.Forms.PictureBox();
-            this.lblFooter = new System.Windows.Forms.Label();
             this.tSplash = new System.Windows.Forms.Timer(this.components);
             this.tlpContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picbLogo)).BeginInit();
@@ -64,37 +64,48 @@
             this.tlpContainer.Size = new System.Drawing.Size(652, 404);
             this.tlpContainer.TabIndex = 2;
             // 
+            // lblFooter
+            // 
+            this.lblFooter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblFooter.AutoSize = true;
+            this.lblFooter.Location = new System.Drawing.Point(305, 376);
+            this.lblFooter.Name = "lblFooter";
+            this.lblFooter.Size = new System.Drawing.Size(41, 16);
+            this.lblFooter.TabIndex = 6;
+            this.lblFooter.Text = "الخاتمة";
+            this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblLoading
             // 
             this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLoading.AutoSize = true;
             this.lblLoading.Location = new System.Drawing.Point(272, 300);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(107, 16);
+            this.lblLoading.Size = new System.Drawing.Size(108, 16);
             this.lblLoading.TabIndex = 3;
-            this.lblLoading.Text = "...جاري تحميل النظام";
+            this.lblLoading.Text = "رسائل/رسالة التحميل";
             this.lblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSubTitle
             // 
             this.lblSubTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSubTitle.AutoSize = true;
-            this.lblSubTitle.Location = new System.Drawing.Point(250, 259);
+            this.lblSubTitle.Location = new System.Drawing.Point(264, 259);
             this.lblSubTitle.Name = "lblSubTitle";
-            this.lblSubTitle.Size = new System.Drawing.Size(152, 16);
+            this.lblSubTitle.Size = new System.Drawing.Size(124, 16);
             this.lblSubTitle.TabIndex = 2;
-            this.lblSubTitle.Text = "AutoParts Pro | الإصدار 1.0";
+            this.lblSubTitle.Text = "عنوان فرعي/رقم الإصدار";
             this.lblSubTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTitle
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(239, 207);
+            this.lblTitle.Location = new System.Drawing.Point(264, 207);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(173, 16);
+            this.lblTitle.Size = new System.Drawing.Size(123, 16);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "نظام إدارة محل قطع غيار السيارات";
+            this.lblTitle.Text = "اسم الشركة/المحل/النظام";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pbLoading
@@ -119,17 +130,6 @@
             this.picbLogo.TabIndex = 0;
             this.picbLogo.TabStop = false;
             this.picbLogo.WaitOnLoad = true;
-            // 
-            // lblFooter
-            // 
-            this.lblFooter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblFooter.AutoSize = true;
-            this.lblFooter.Location = new System.Drawing.Point(240, 376);
-            this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(172, 16);
-            this.lblFooter.TabIndex = 6;
-            this.lblFooter.Text = "تطوير م/عبدالرحمن ناصر عبدالستار";
-            this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tSplash
             // 

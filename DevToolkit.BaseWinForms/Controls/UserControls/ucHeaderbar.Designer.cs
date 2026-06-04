@@ -30,70 +30,47 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
-            this.lblTime = new System.Windows.Forms.Label();
             this.lblSystemName = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.tDateTime = new System.Windows.Forms.Timer(this.components);
+            this.btnAction = new System.Windows.Forms.Button();
             this.tlpContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpContainer
             // 
-            this.tlpContainer.AutoSize = true;
-            this.tlpContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpContainer.ColumnCount = 4;
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tlpContainer.Controls.Add(this.lblTime, 3, 0);
+            this.tlpContainer.ColumnCount = 5;
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tlpContainer.Controls.Add(this.lblSystemName, 0, 0);
-            this.tlpContainer.Controls.Add(this.lblDate, 2, 0);
             this.tlpContainer.Controls.Add(this.lblUserName, 1, 0);
+            this.tlpContainer.Controls.Add(this.lblDate, 2, 0);
+            this.tlpContainer.Controls.Add(this.lblTime, 3, 0);
+            this.tlpContainer.Controls.Add(this.btnAction, 4, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(5, 5);
             this.tlpContainer.Name = "tlpContainer";
             this.tlpContainer.RowCount = 1;
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Size = new System.Drawing.Size(448, 16);
+            this.tlpContainer.Size = new System.Drawing.Size(1048, 33);
             this.tlpContainer.TabIndex = 1;
-            // 
-            // lblTime
-            // 
-            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(3, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTime.Size = new System.Drawing.Size(44, 16);
-            this.lblTime.TabIndex = 4;
-            this.lblTime.Text = "label2";
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSystemName
             // 
             this.lblSystemName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSystemName.AutoSize = true;
             this.lblSystemName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSystemName.Location = new System.Drawing.Point(272, 0);
+            this.lblSystemName.Location = new System.Drawing.Point(953, 8);
             this.lblSystemName.Name = "lblSystemName";
-            this.lblSystemName.Size = new System.Drawing.Size(173, 16);
+            this.lblSystemName.Size = new System.Drawing.Size(92, 16);
             this.lblSystemName.TabIndex = 1;
-            this.lblSystemName.Text = "نظام إدارة محل قطع غيار السيارات";
+            this.lblSystemName.Text = "اسم الشركة/المحل";
             this.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(80, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDate.Size = new System.Drawing.Size(44, 16);
-            this.lblDate.TabIndex = 2;
-            this.lblDate.Text = "label2";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUserName
             // 
@@ -101,11 +78,35 @@
             this.lblUserName.AutoSize = true;
             this.lblUserName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUserName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblUserName.Location = new System.Drawing.Point(167, 0);
+            this.lblUserName.Location = new System.Drawing.Point(680, 8);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(70, 16);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Text = "اسم المستخدم";
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(471, 8);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDate.Size = new System.Drawing.Size(44, 16);
+            this.lblDate.TabIndex = 2;
+            this.lblDate.Text = "label2";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(249, 8);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTime.Size = new System.Drawing.Size(44, 16);
+            this.lblTime.TabIndex = 4;
+            this.lblTime.Text = "label2";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tDateTime
             // 
@@ -113,23 +114,36 @@
             this.tDateTime.Interval = 1000;
             this.tDateTime.Tick += new System.EventHandler(this.tDateTime_Tick);
             // 
+            // btnAction
+            // 
+            this.btnAction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAction.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAction.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAction.FlatAppearance.BorderSize = 0;
+            this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAction.Location = new System.Drawing.Point(3, 3);
+            this.btnAction.Name = "btnAction";
+            this.btnAction.Size = new System.Drawing.Size(154, 27);
+            this.btnAction.TabIndex = 6;
+            this.btnAction.Text = "Action";
+            this.btnAction.UseVisualStyleBackColor = true;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
+            // 
             // ucHeaderbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tlpContainer);
             this.DoubleBuffered = true;
             this.Name = "ucHeaderbar";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(458, 26);
+            this.Size = new System.Drawing.Size(1058, 43);
             this.Load += new System.EventHandler(this.ucHeaderbar_Load);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -140,5 +154,6 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Button btnAction;
     }
 }

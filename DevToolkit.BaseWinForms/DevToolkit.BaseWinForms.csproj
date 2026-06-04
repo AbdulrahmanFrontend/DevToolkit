@@ -114,7 +114,7 @@
     </Compile>
     <Compile Include="Utils\WindowDragHelper.cs" />
     <Compile Include="Utils\ISelectionItem.cs" />
-    <Compile Include="Models\NavigationButtonModel.cs" />
+    <Compile Include="Models\NavigationItem.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>

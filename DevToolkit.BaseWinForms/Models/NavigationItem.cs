@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.BaseWinForms.Models
 {
-    public class NavigationButtonModel
+    public class NavigationItem
     {
         public string Title { get; set; }
 
