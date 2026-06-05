@@ -48,6 +48,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\Dialogs\DialogService.cs" />
+    <Compile Include="Services\Dialogs\IDialogService.cs" />
+    <Compile Include="Services\Navigation\INavigationService.cs" />
+    <Compile Include="Services\Navigation\NavigationService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Page Include="Controls\SplashScreenControl.xaml">
@@ -81,5 +85,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
