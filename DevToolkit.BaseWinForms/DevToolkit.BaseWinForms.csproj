@@ -51,6 +51,12 @@
     <Compile Include="Controls\CustomControls\ccComboBox.Designer.cs">
       <DependentUpon>ccComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UserControls\ucDashboardCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UserControls\ucDashboardCard.Designer.cs">
+      <DependentUpon>ucDashboardCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserControls\ucHeaderbar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     <Compile Include="Forms\frmBase.Designer.cs">
       <DependentUpon>frmBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmMainLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMainLayout.Designer.cs">
+      <DependentUpon>frmMainLayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmToast.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,7 @@
     <Compile Include="Forms\frmUIMessageBox.Designer.cs">
       <DependentUpon>frmUIMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ScreenManager.cs" />
     <Compile Include="Managers\ToastManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -118,6 +131,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\UserControls\ucDashboardCard.resx">
+      <DependentUpon>ucDashboardCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControls\ucHeaderbar.resx">
       <DependentUpon>ucHeaderbar.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControls\ucSidebar.resx">
       <DependentUpon>ucSidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMainLayout.resx">
+      <DependentUpon>frmMainLayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmToast.resx">
       <DependentUpon>frmToast.cs</DependentUpon>

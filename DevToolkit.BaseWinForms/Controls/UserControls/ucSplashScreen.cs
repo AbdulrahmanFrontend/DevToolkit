@@ -34,13 +34,22 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             }
         }
 
-        [Category("Custom Events")]
-        public event Action SplashCompleted;
-        protected virtual void RaiseSplashCompleted()
+        public void RaiseSplashCompleted()
         {
-            Action Handler = SplashCompleted;
-            if (Handler != null)
-                Handler();
+            RaiseSplashCompleted(new SplashCompletedEventArgs());
+        }
+
+        protected virtual void RaiseSplashCompleted(SplashCompletedEventArgs e)
+        {
+            SplashCompleted?.Invoke(this, e);
+        }
+
+        [Category("Custom Events")]
+        public event EventHandler<SplashCompletedEventArgs> SplashCompleted;
+
+        public class SplashCompletedEventArgs : EventArgs
+        {
+            // You can add custom properties here if needed
         }
 
         [Category("Custom Properties")]

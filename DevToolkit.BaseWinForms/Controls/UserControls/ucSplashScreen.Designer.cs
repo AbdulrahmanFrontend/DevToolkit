@@ -52,7 +52,7 @@
             this.tlpContainer.Controls.Add(this.pbLoading, 0, 4);
             this.tlpContainer.Controls.Add(this.picbLogo, 0, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpContainer.Location = new System.Drawing.Point(10, 10);
+            this.tlpContainer.Location = new System.Drawing.Point(5, 5);
             this.tlpContainer.Name = "tlpContainer";
             this.tlpContainer.RowCount = 6;
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.4F));
@@ -61,14 +61,14 @@
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.66667F));
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.13333F));
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpContainer.Size = new System.Drawing.Size(652, 404);
+            this.tlpContainer.Size = new System.Drawing.Size(662, 414);
             this.tlpContainer.TabIndex = 2;
             // 
             // lblFooter
             // 
             this.lblFooter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFooter.AutoSize = true;
-            this.lblFooter.Location = new System.Drawing.Point(305, 376);
+            this.lblFooter.Location = new System.Drawing.Point(310, 386);
             this.lblFooter.Name = "lblFooter";
             this.lblFooter.Size = new System.Drawing.Size(41, 16);
             this.lblFooter.TabIndex = 6;
@@ -79,7 +79,7 @@
             // 
             this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLoading.AutoSize = true;
-            this.lblLoading.Location = new System.Drawing.Point(272, 300);
+            this.lblLoading.Location = new System.Drawing.Point(277, 309);
             this.lblLoading.Name = "lblLoading";
             this.lblLoading.Size = new System.Drawing.Size(108, 16);
             this.lblLoading.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             this.lblSubTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSubTitle.AutoSize = true;
-            this.lblSubTitle.Location = new System.Drawing.Point(264, 259);
+            this.lblSubTitle.Location = new System.Drawing.Point(269, 266);
             this.lblSubTitle.Name = "lblSubTitle";
             this.lblSubTitle.Size = new System.Drawing.Size(124, 16);
             this.lblSubTitle.TabIndex = 2;
@@ -101,7 +101,7 @@
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(264, 207);
+            this.lblTitle.Location = new System.Drawing.Point(269, 213);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(123, 16);
             this.lblTitle.TabIndex = 1;
@@ -111,7 +111,7 @@
             // pbLoading
             // 
             this.pbLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLoading.Location = new System.Drawing.Point(55, 336);
+            this.pbLoading.Location = new System.Drawing.Point(60, 345);
             this.pbLoading.MarqueeAnimationSpeed = 0;
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.RightToLeftLayout = true;
@@ -123,7 +123,7 @@
             // picbLogo
             // 
             this.picbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picbLogo.Location = new System.Drawing.Point(211, 7);
+            this.picbLogo.Location = new System.Drawing.Point(216, 9);
             this.picbLogo.Name = "picbLogo";
             this.picbLogo.Size = new System.Drawing.Size(229, 171);
             this.picbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -143,7 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpContainer);
             this.Name = "ucSplashScreen";
-            this.Padding = new System.Windows.Forms.Padding(10);
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(672, 424);
             this.Load += new System.EventHandler(this.ucSplashScreen_Load);
             this.tlpContainer.ResumeLayout(false);

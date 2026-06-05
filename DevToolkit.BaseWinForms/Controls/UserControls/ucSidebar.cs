@@ -37,6 +37,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             {
                 pnlButtons.Controls.Clear();
 
+                if (value == null) return;
+
                 var buttonsInfo = value.ToList();
 
                 int Index = 0;
@@ -88,14 +90,27 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         [Category("Custom Properties")]
         public Color SelectedButtonColor { get; set; }
-        
-        [Category("Custom Events")]
-        public event Action<string> ScreenSelected;
-        protected virtual void RaiseScreenSelected(string ScreenName)
+
+        public void RaiseScreenSelected(string screenName)
         {
-            Action<string> Handler = ScreenSelected;
-            if (Handler != null)
-                Handler(ScreenName);
+            RaiseScreenSelected(new ScreenSelectedEventArgs(screenName));
+        }
+
+        protected virtual void RaiseScreenSelected(ScreenSelectedEventArgs e)
+        {
+            ScreenSelected?.Invoke(this, e);
+        }
+
+        [Category("Custom Events")]
+        public event EventHandler<ScreenSelectedEventArgs> ScreenSelected;
+
+        public class ScreenSelectedEventArgs : EventArgs
+        {
+            public string ScreenName { get; set; }
+            public ScreenSelectedEventArgs(string screenName)
+            {
+                ScreenName = screenName;
+            }
         }
 
         private IEnumerable<Button> _buttons => pnlButtons.Controls.OfType<Button>();

@@ -7,8 +7,10 @@ using DevToolkit.Core.Common;
 
 namespace DevToolkit.BaseWinForms.Theming
 {
-    public class ThemeManager
+    public static class ThemeManager
     {
         public static ThemeType CurrentTheme { get; set; } = ThemeType.Light;
+
+        public static ThemeColors CurrentColors { get; set; }
     }
 }

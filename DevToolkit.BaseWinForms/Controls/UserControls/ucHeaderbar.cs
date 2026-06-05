@@ -19,7 +19,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public string Title
+        public string SystemName
         {
             get => lblSystemName.Text;
             set => lblSystemName.Text = value;
@@ -72,6 +72,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
+        public Color ButtonColor
+        {
+            get => btnAction.BackColor;
+            set => btnAction.BackColor = value;
+        }
+
+        [Category("Custom Properties")]
         public ContentAlignment ButtonTextAlign
         {
             get => btnAction.TextAlign;
@@ -100,19 +107,29 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 tDateTime.Start();
         }
 
-        [Category("Custom Events")]
-        [Description("Occurs when the action button is clicked.")]
-        public event Action BackupClick;
-        protected virtual void RaiseBackupClick()
-        {
-            Action Handler = BackupClick;
-            if (Handler != null)
-                Handler();
-        }
         private void btnAction_Click(object sender, EventArgs e)
         {
-            if (BackupClick != null)
-                RaiseBackupClick();
+            if (ActionClick != null)
+                RaiseActionClick();
+        }
+
+        public void RaiseActionClick()
+        {
+            RaiseActionClick(new ActionClickEventArgs());
+        }
+
+        protected virtual void RaiseActionClick(ActionClickEventArgs e)
+        {
+            ActionClick?.Invoke(this, e);
+        }
+
+        [Category("Custom Events")]
+        [Description("Occurs when the action button is clicked.")]
+        public event EventHandler<ActionClickEventArgs> ActionClick;
+
+        public class ActionClickEventArgs : EventArgs
+        {
+            // You can add properties here if you want to pass additional data with the event
         }
     }
 }

@@ -96,7 +96,6 @@ namespace DevToolkit.BaseWinForms.Forms
 
             _ShowMessage(ToastData);
 
-            this.Show();
             this._action = _enAction.start;
             this.timer1.Interval = 1;
             this.timer1.Start();
