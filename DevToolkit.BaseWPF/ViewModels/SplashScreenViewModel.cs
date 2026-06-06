@@ -23,79 +23,37 @@ namespace DevToolkit.BaseWPF.ViewModels
         public string LogoPath 
         { 
             get => _logoPath;
-            set
-            {
-                if(_logoPath != value)
-                {
-                    _logoPath = value;
-                    OnPropertyChanged();
-                }
-            } 
+            set => _SetProperty<string>(ref _logoPath, value);
         }
 
         public string Title
         { 
             get => _title;
-            set
-            {
-                if(_title != value)
-                {
-                    _title = value;
-                    OnPropertyChanged();
-                }
-            } 
+            set => _SetProperty<string>(ref _title, value);
         }
 
         public string SubTitle
         { 
             get => _subTitle;
-            set
-            {
-                if(_subTitle != value)
-                {
-                    _subTitle = value;
-                    OnPropertyChanged();
-                }
-            } 
+            set => _SetProperty<string>(ref _subTitle, value);
         }
 
         public string StatusMessage 
         { 
             get => _statusMessage;
-            set
-            {
-                if(_statusMessage != value)
-                {
-                    _statusMessage = value;
-                    OnPropertyChanged();
-                }
-            } 
+            set => _SetProperty<string>(ref _statusMessage, value);
         }
 
         public int ProgressValue
         {
             get => _progressValue;
-            set
-            {
-                if(_progressValue != value)
-                {
-                    _progressValue = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => _SetProperty<int>(ref _progressValue, value);
         }
 
         public string Version
         { 
             get => _version;
-            set
-            {
-                if(_version != value)
-                {
-                    _version = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => _SetProperty<string>(ref _version, value);
         }
     }
 }
