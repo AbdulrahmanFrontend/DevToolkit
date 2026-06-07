@@ -65,5 +65,19 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             get => lblValue.Font;
             set => lblValue.Font = value;
         }
+
+        [Category("Custom Properties")]
+        public override RightToLeft RightToLeft
+        {
+            get => base.RightToLeft;
+            set
+            {
+                if (base.RightToLeft != value)
+                {
+                    base.RightToLeft = value;
+                    lblTitle.RightToLeft = value;
+                }
+            }
+        }
     }
 }
