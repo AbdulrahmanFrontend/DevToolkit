@@ -49,10 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Services\Dialogs\DialogService.cs" />
-    <Compile Include="Services\Dialogs\IDialogService.cs" />
-    <Compile Include="Services\Navigation\INavigationService.cs" />
-    <Compile Include="Services\Navigation\NavigationService.cs" />
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenViewModel.cs" />
     <Page Include="Controls\SplashScreenControl.xaml">

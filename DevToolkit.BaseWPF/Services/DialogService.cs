@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DevToolkit.BaseWPF.Services.Dialogs
+namespace DevToolkit.BaseWPF.Services
 {
-    public class DialogService : IDialogService
+    public class DialogService
     {
         public void ShowInfo(string message)
             => MessageBox.Show(message, "Information", MessageBoxButton.OK, 
