@@ -32,17 +32,17 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 {
                     Title = b.Text,
                     Icon = b.Image,
-                });
+                    Index = b.TabIndex
+            });
             set
             {
-                pnlButtons.Controls.Clear();
-
                 if (value == null) return;
+
+                pnlButtons.Controls.Clear();
 
                 var buttonsInfo = value.ToList();
 
-                int Index = 0;
-                int lastIndex = buttonsInfo.Count - 1;
+                List<Button> buttons = new List<Button>();
 
                 foreach (var buttonInfo in buttonsInfo)
                 {
@@ -64,12 +64,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
                     btn.Text = buttonInfo.Title;
                     btn.Image = buttonInfo.Icon;
+                    btn.TabIndex = buttonInfo.Index;
 
                     btn.Click += (s, e) => {
                         var b = s as Button;
 
                         if(ScreenSelected != null)
-                            RaiseScreenSelected(b.Text);
+                            RaiseScreenSelected(b.TabIndex);
 
                         if (_buttons.Count() > 0)
                             foreach (var button in _buttons)
@@ -78,22 +79,24 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                         b.BackColor = SelectedButtonColor;
                     };
 
-                    pnlButtons.Controls.Add(btn);
+                    buttons.Add(btn);
 
-                    if (Index == lastIndex)
+                    if (buttonInfo.Index == 0)
                         btn.BackColor = SelectedButtonColor;
-
-                    Index++;
                 }
+
+                buttons.Reverse();
+
+                pnlButtons.Controls.AddRange(buttons.ToArray());
             }
         }
 
         [Category("Custom Properties")]
         public Color SelectedButtonColor { get; set; }
 
-        public void RaiseScreenSelected(string screenName)
+        public void RaiseScreenSelected(int index)
         {
-            RaiseScreenSelected(new ScreenSelectedEventArgs(screenName));
+            RaiseScreenSelected(new ScreenSelectedEventArgs(index));
         }
 
         protected virtual void RaiseScreenSelected(ScreenSelectedEventArgs e)
@@ -106,10 +109,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         public class ScreenSelectedEventArgs : EventArgs
         {
-            public string ScreenName { get; set; }
-            public ScreenSelectedEventArgs(string screenName)
+            public int Index { get; set; }
+            public ScreenSelectedEventArgs(int index)
             {
-                ScreenName = screenName;
+                Index = index;
             }
         }
 

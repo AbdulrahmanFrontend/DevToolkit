@@ -12,5 +12,7 @@ namespace DevToolkit.BaseWinForms.Models
         public string Title { get; set; }
 
         public Image Icon { get; set; }
+
+        public int Index { get; set; }
     }
 }

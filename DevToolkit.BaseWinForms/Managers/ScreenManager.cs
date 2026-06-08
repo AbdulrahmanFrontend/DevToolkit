@@ -11,7 +11,11 @@ namespace DevToolkit.BaseWinForms.Managers
     {
         public static void ShowScreen(Panel host, UserControl screen)
         {
+            if (host == null) return;
+
             host.Controls.Clear();
+
+            if (screen == null) return;
 
             screen.Dock = DockStyle.Fill;
 
