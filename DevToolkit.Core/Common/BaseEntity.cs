@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevToolkit.Core.Validation.Attributes;
 
 namespace DevToolkit.Core.Common
 {
-    public abstract class BaseEntity<TKey>
+    public abstract class BaseEntity
     {
-        public TKey ID { get; set; }
+        [Required]
+        public int ID { get; set; }
     }
 }
