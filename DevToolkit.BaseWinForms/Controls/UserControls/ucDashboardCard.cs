@@ -20,8 +20,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         [Category("Custom Properties")]
         public Image CardIcon
         {
-            get => picbIcon.Image;
-            set => picbIcon.Image = value;
+            get => scContainer.Panel1.BackgroundImage;
+            set => scContainer.Panel1.BackgroundImage = value;
         }
 
         [Category("Custom Properties")]
@@ -75,7 +75,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 if (base.RightToLeft != value)
                 {
                     base.RightToLeft = value;
-                    lblTitle.RightToLeft = value;
+                    scContainer.RightToLeft = value;
                 }
             }
         }

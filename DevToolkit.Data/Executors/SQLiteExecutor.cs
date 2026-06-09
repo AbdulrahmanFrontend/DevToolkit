@@ -3,6 +3,7 @@ using DevToolkit.Core.Results;
 using DevToolkit.Data.Core;
 using DevToolkit.Logging.Managers;
 using Microsoft.Data.Sqlite;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
