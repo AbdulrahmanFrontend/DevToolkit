@@ -2,8 +2,7 @@
 using DevToolkit.Core.Results;
 using DevToolkit.Data.Core;
 using DevToolkit.Logging.Managers;
-using Microsoft.Data.Sqlite;
-using SQLitePCL;
+using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,10 +15,10 @@ namespace DevToolkit.Data.Executors
 {
     public class SQLiteExecutor : IDbExecutor
     {
-        private SqliteCommand _PrepareCommand(SqliteConnection con,
-            CommandType commandType, string CommandText, IEnumerable<SqliteParameter> Parameters)
+        private SQLiteCommand _PrepareCommand(SQLiteConnection con,
+            CommandType commandType, string CommandText, IEnumerable<SQLiteParameter> Parameters)
         {
-            SqliteCommand cmd = new SqliteCommand(CommandText, con);
+            SQLiteCommand cmd = new SQLiteCommand(CommandText, con);
             cmd.CommandType = commandType;
 
             if (Guard.HasItems(Parameters))
@@ -34,15 +33,15 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
-        private IEnumerable<SqliteParameter> _CreateParameters(
+        private IEnumerable<SQLiteParameter> _CreateParameters(
             IEnumerable<DbParameterInfo> Parameters)
         {
             if (!Guard.HasItems(Parameters))
-                return new SqliteParameter[0];
+                return new SQLiteParameter[0];
 
             return Parameters.Select(p =>
             {
-                SqliteParameter param = new SqliteParameter();
+                SQLiteParameter param = new SQLiteParameter();
 
                 param.ParameterName = p.Name;
                 param.Value = p.Value ?? DBNull.Value;
@@ -60,16 +59,16 @@ namespace DevToolkit.Data.Executors
         {
             try
             {
-                using (SqliteConnection con = 
-                    new SqliteConnection(DataConfiguration.ConnectionString))
-                    using (SqliteCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SQLiteConnection con = 
+                    new SQLiteConnection(DataConfiguration.ConnectionString))
+                    using (SQLiteCommand cmd = _PrepareCommand(con, commandType, CommandText,
                         _CreateParameters(Parameters)))
                     {
                         DataTable dt = new DataTable();
 
                         con.Open();
 
-                        using (SqliteDataReader reader = cmd.ExecuteReader())
+                        using (SQLiteDataReader reader = cmd.ExecuteReader())
                             if (reader.HasRows)
                                 dt.Load(reader);
 
@@ -100,9 +99,9 @@ namespace DevToolkit.Data.Executors
         {
             try
             {
-                using (SqliteConnection con = 
-                    new SqliteConnection(DataConfiguration.ConnectionString))
-                    using (SqliteCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SQLiteConnection con = 
+                    new SQLiteConnection(DataConfiguration.ConnectionString))
+                    using (SQLiteCommand cmd = _PrepareCommand(con, commandType, CommandText,
                         _CreateParameters(Parameters)))
                     {
                         con.Open();
@@ -127,9 +126,9 @@ namespace DevToolkit.Data.Executors
         {
             try
             {
-                using (SqliteConnection con = 
-                    new SqliteConnection(DataConfiguration.ConnectionString))
-                    using (SqliteCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SQLiteConnection con = 
+                    new SQLiteConnection(DataConfiguration.ConnectionString))
+                    using (SQLiteCommand cmd = _PrepareCommand(con, commandType, CommandText,
                         _CreateParameters(Parameters)))
                     {
                         con.Open();
@@ -148,16 +147,16 @@ namespace DevToolkit.Data.Executors
         {
             try
             {
-                using(SqliteConnection con = 
-                    new SqliteConnection(DataConfiguration.ConnectionString))
-                    using (SqliteCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using(SQLiteConnection con = 
+                    new SQLiteConnection(DataConfiguration.ConnectionString))
+                    using (SQLiteCommand cmd = _PrepareCommand(con, commandType, CommandText,
                         _CreateParameters(Parameters)))
                     {
                         con.Open();
 
                         DataSet ds = new DataSet();
 
-                        using(SqliteDataReader reader = cmd.ExecuteReader())
+                        using(SQLiteDataReader reader = cmd.ExecuteReader())
                         {
                             DataTable dt = new DataTable();
                             dt.Load(reader);
@@ -178,12 +177,12 @@ namespace DevToolkit.Data.Executors
         {
             try
             {
-                using (SqliteConnection con = 
-                    new SqliteConnection(DataConfiguration.ConnectionString))
+                using (SQLiteConnection con = 
+                    new SQLiteConnection(DataConfiguration.ConnectionString))
                 {
                     con.Open();
 
-                    using (SqliteTransaction transaction = con.BeginTransaction())
+                    using (SQLiteTransaction transaction = con.BeginTransaction())
                     {
                         try
                         {

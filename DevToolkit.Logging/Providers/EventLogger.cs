@@ -21,7 +21,7 @@ namespace DevToolkit.Logging.Providers
             if (_initialized)
                 return;
 
-            if (Guard.HasValue(SourceName))
+            if (!Guard.HasValue(SourceName))
                 throw new InvalidOperationException("EventLogger SourceName must be set before" +
                     " logging.");
 
