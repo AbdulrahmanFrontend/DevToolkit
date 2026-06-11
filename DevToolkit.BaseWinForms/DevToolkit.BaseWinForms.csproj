@@ -51,6 +51,12 @@
     <Compile Include="Controls\CustomControls\ccComboBox.Designer.cs">
       <DependentUpon>ccComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomControls\ccDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CustomControls\ccDataGridView.Designer.cs">
+      <DependentUpon>ccDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UserControls\ucDashboardCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
