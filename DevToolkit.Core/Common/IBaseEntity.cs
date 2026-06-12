@@ -7,9 +7,8 @@ using DevToolkit.Core.Validation.Attributes;
 
 namespace DevToolkit.Core.Common
 {
-    public abstract class BaseEntity
+    public interface IBaseEntity
     {
-        [Required]
-        public int ID { get; set; }
+        int ID { get; set; }
     }
 }

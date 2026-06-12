@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
-    <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Common\IBaseEntity.cs" />
     <Compile Include="Common\Enums.cs" />
     <Compile Include="Guards\Guard.cs" />
     <Compile Include="Results\Result.cs" />

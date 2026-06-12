@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Data.Repositories
 {
-    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity, new()
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : IBaseEntity, new()
     {
         protected abstract string TableName { get; }
 
