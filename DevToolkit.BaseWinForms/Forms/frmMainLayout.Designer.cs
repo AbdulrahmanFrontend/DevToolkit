@@ -30,8 +30,8 @@
         {
             this.Sidebar = new DevToolkit.BaseWinForms.Controls.UserControls.ucSidebar();
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.Headerbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucHeaderbar();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.Headerbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucHeaderbar();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,15 @@
             this.pnlMain.Size = new System.Drawing.Size(1120, 493);
             this.pnlMain.TabIndex = 1;
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.AutoScroll = true;
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContainer.Location = new System.Drawing.Point(0, 43);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1120, 450);
+            this.pnlContainer.TabIndex = 1;
+            // 
             // Headerbar
             // 
             this.Headerbar.ButtonColor = System.Drawing.SystemColors.Control;
@@ -83,18 +92,11 @@
             this.Headerbar.TabIndex = 0;
             this.Headerbar.UserName = "اسم المستخدم";
             // 
-            // pnlContainer
-            // 
-            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(0, 43);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1120, 450);
-            this.pnlContainer.TabIndex = 1;
-            // 
             // frmMainLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1343, 493);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.Sidebar);
