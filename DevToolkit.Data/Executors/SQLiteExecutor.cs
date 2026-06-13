@@ -91,7 +91,7 @@ namespace DevToolkit.Data.Executors
 
             DataTable dt = dtResult.Data;
             return dt.Rows.Count > 0 ? Result<DataRow>.Success(dt.Rows[0]) : 
-                Result<DataRow>.Failure("No rows found.");
+                Result<DataRow>.Success(default(DataRow) ,"No rows found.");
         }
 
         public Result<T> GetScalar<T>(CommandType commandType, string CommandText,
@@ -109,7 +109,8 @@ namespace DevToolkit.Data.Executors
                         object result = cmd.ExecuteScalar();
 
                         if (result == null || result == DBNull.Value)
-                            return Result<T>.Failure("Failed to retrieve scalar value.");
+                            return Result<T>.Success(default
+                                ,"Failed to retrieve scalar value.");
 
                         return Result<T>.Success((T)Convert.ChangeType(result, typeof(T)));
                     }

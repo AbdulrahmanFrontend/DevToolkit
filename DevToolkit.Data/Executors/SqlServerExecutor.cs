@@ -34,7 +34,8 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
-        private IEnumerable<SqlParameter> _CreateParameters(IEnumerable<DbParameterInfo> Parameters)
+        private IEnumerable<SqlParameter> 
+            _CreateParameters(IEnumerable<DbParameterInfo> Parameters)
         {
             if (!Guard.HasItems(Parameters))
                 return new SqlParameter[0];
@@ -90,7 +91,9 @@ namespace DevToolkit.Data.Executors
                 return Result<DataRow>.Failure("Failed to retrieve data row.");
 
             DataTable dt = dtResult.Data;
-            return dt.Rows.Count > 0 ? Result<DataRow>.Success(dt.Rows[0]) : Result<DataRow>.Failure("No rows found.");
+            return dt.Rows.Count > 0 ?
+                Result<DataRow>.Success(dt.Rows[0]) :
+                Result<DataRow>.Success(default(DataRow) ,"No rows found.");
         }
 
         public Result<T> GetScalar<T>(CommandType commandType, string CommandText,
@@ -107,7 +110,8 @@ namespace DevToolkit.Data.Executors
                         object result = cmd.ExecuteScalar();
 
                         if (result == null || result == DBNull.Value)
-                            return Result<T>.Failure("Failed to retrieve scalar value.");
+                            return Result<T>.Success(default 
+                                ,"Failed to retrieve scalar value.");
 
                         return Result<T>.Success((T)Convert.ChangeType(result, typeof(T)));
                     }

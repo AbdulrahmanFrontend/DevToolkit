@@ -16,8 +16,8 @@ namespace DevToolkit.Data
 {
     public static class DataQueryService
     {
-        public static Result<IEnumerable<T>> Query<T>(CommandType commandType, string CommandText,
-            IEnumerable<DbParameterInfo> Parameters = null) where T : new()
+        public static Result<IEnumerable<T>> Query<T>(CommandType commandType, 
+            string CommandText, IEnumerable<DbParameterInfo> Parameters = null) where T : new()
         {
             List<T> ObjsList = new List<T>();
 

@@ -20,7 +20,7 @@ namespace DevToolkit.Data.Mapping
                 var Attr = prop.GetCustomAttribute<ColumnAttribute>();
                 string ColumnName = Attr != null ? Attr.ColumnName : prop.Name;
 
-                if (row.Table.Columns.Contains(ColumnName))
+                if (row != null && row.Table.Columns.Contains(ColumnName))
                 {
                     var Value = row[ColumnName];
                     Type PropertyType = prop.PropertyType;
