@@ -72,27 +72,17 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                         if(ScreenSelected != null)
                             RaiseScreenSelected(b.TabIndex);
 
-                        if (_buttons.Count() > 0)
-                            foreach (var button in _buttons)
-                                button.BackColor = BackColor;
-
-                        b.BackColor = SelectedButtonColor;
+                        _SelectButton(b);
                     };
 
                     buttons.Add(btn);
-
-                    if (buttonInfo.Index == 0)
-                        btn.BackColor = SelectedButtonColor;
                 }
 
                 buttons.Reverse();
 
-                pnlButtons.Controls.AddRange(buttons.ToArray());
+                this.pnlButtons.Controls.AddRange(buttons.ToArray());
             }
         }
-
-        [Category("Custom Properties")]
-        public Color SelectedButtonColor { get; set; }
 
         public void RaiseScreenSelected(int index)
         {
@@ -101,7 +91,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         protected virtual void RaiseScreenSelected(ScreenSelectedEventArgs e)
         {
-            ScreenSelected?.Invoke(this, e);
+            this.ScreenSelected?.Invoke(this, e);
         }
 
         [Category("Custom Events")]
@@ -116,13 +106,16 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             }
         }
 
-        private IEnumerable<Button> _buttons => pnlButtons.Controls.OfType<Button>();
+        private Color _selectedButtonColor;
+        private IEnumerable<Button> _buttons => 
+            pnlButtons.Controls.OfType<Button>();
         private ContentAlignment _btnIconAlignment = ContentAlignment.MiddleLeft;
         private ContentAlignment _btnTextAlignment = ContentAlignment.MiddleCenter;
         private Padding _btnPadding = new Padding(0);
         private Padding _btnMargin = new Padding(0, 0, 0, 5);
         private int _btnHeight = 50;
-        private TextImageRelation _btnTextImageRelation = TextImageRelation.Overlay;
+        private TextImageRelation _btnTextImageRelation = 
+            TextImageRelation.Overlay;
 
         [Category("Custom Properties")]
         public ContentAlignment ButtonIconAlignment
@@ -237,6 +230,36 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 btn.Height = ButtonHeight;
                 btn.TextImageRelation = ButtonTextImageRelation;
             }
+        }
+
+        [Category("Custom Properties")]
+        public Color SelectedButtonColor
+        {
+            get => _selectedButtonColor;
+            set
+            {
+                _selectedButtonColor = value;
+                if (_buttons.Any())
+                    foreach (var b in _buttons)
+                        b.Click += (s, e) => _SelectButton(s as Button);
+            }
+        }
+
+        public void SelectButton(int index)
+        {
+            if (index >= _buttons.Count()) return;
+
+            _SelectButton(
+                _buttons.ElementAtOrDefault(_buttons.Count() - index - 1));
+        }
+
+        private void _SelectButton(Button btn)
+        {
+            if (_buttons.Any())
+                foreach (var button in _buttons)
+                    button.BackColor = this.BackColor;
+
+            btn.BackColor = this.SelectedButtonColor;
         }
     }
 }
