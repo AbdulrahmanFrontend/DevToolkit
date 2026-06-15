@@ -54,7 +54,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                     btn.Margin = ButtonMargin;
                     btn.Height = ButtonHeight;
                     btn.TextImageRelation = ButtonTextImageRelation;
-                    btn.RightToLeft = this.RightToLeft;
 
                     btn.Dock = DockStyle.Top;
                     btn.Cursor = Cursors.Hand;
@@ -85,14 +84,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         public void RaiseScreenSelected(int index)
-        {
-            RaiseScreenSelected(new ScreenSelectedEventArgs(index));
-        }
+            => RaiseScreenSelected(new ScreenSelectedEventArgs(index));
 
         protected virtual void RaiseScreenSelected(ScreenSelectedEventArgs e)
-        {
-            this.ScreenSelected?.Invoke(this, e);
-        }
+            => this.ScreenSelected?.Invoke(this, e);
 
         [Category("Custom Events")]
         public event EventHandler<ScreenSelectedEventArgs> ScreenSelected;
@@ -174,20 +169,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public override RightToLeft RightToLeft
-        {
-            get => base.RightToLeft;
-            set
-            {
-                if (base.RightToLeft != value)
-                {
-                    base.RightToLeft = value;
-                    _UpdateButtonsStyles();
-                }
-            }
-        }
-
-        [Category("Custom Properties")]
         public int ButtonHeight
         {
             get => _btnHeight;
@@ -226,7 +207,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 btn.TextAlign = ButtonTextAlignment;
                 btn.Padding = ButtonPadding;
                 btn.Margin = ButtonMargin;
-                btn.RightToLeft = this.RightToLeft;
                 btn.Height = ButtonHeight;
                 btn.TextImageRelation = ButtonTextImageRelation;
             }

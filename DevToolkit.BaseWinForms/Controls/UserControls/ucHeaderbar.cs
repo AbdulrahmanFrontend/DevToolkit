@@ -131,5 +131,11 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             // You can add properties here if you want to pass additional data with the event
         }
+
+        public float ButtonWidth
+        {
+            get => tlpContainer.ColumnStyles[4].Width;
+            set => tlpContainer.ColumnStyles[4].Width = value;
+        }
     }
 }

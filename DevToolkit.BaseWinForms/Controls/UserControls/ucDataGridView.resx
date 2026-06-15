@@ -117,23 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="icons8-close-window-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-close-window-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-brake-warning-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-brake-warning-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-checkmark-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-checkmark-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-information-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-information-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-close-36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-close-36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Searchbar.ButtonBackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
 </root>
