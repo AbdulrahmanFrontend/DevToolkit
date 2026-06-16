@@ -40,7 +40,7 @@
             // 
             this.tlpContainer.ColumnCount = 4;
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 169F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tlpContainer.Controls.Add(this.cbFilterMethod, 1, 0);
@@ -63,11 +63,11 @@
             this.cbFilterMethod.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbFilterMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterMethod.FormattingEnabled = true;
-            this.cbFilterMethod.Location = new System.Drawing.Point(632, 9);
+            this.cbFilterMethod.Location = new System.Drawing.Point(628, 9);
             this.cbFilterMethod.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbFilterMethod.MaxDropDownItems = 5;
             this.cbFilterMethod.Name = "cbFilterMethod";
-            this.cbFilterMethod.Size = new System.Drawing.Size(163, 28);
+            this.cbFilterMethod.Size = new System.Drawing.Size(167, 28);
             this.cbFilterMethod.TabIndex = 4;
             this.cbFilterMethod.SelectedIndexChanged += new System.EventHandler(this.cbFilterMethod_SelectedIndexChanged);
             // 
@@ -78,7 +78,7 @@
             this.tbInput.Location = new System.Drawing.Point(41, 7);
             this.tbInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInput.Name = "tbInput";
-            this.tbInput.Size = new System.Drawing.Size(585, 27);
+            this.tbInput.Size = new System.Drawing.Size(581, 27);
             this.tbInput.TabIndex = 2;
             this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
             // 

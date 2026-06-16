@@ -39,9 +39,9 @@
             this.pnlButtons.AutoSize = true;
             this.pnlButtons.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlButtons.Location = new System.Drawing.Point(0, 163);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 133);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(229, 353);
+            this.pnlButtons.Size = new System.Drawing.Size(229, 383);
             this.pnlButtons.TabIndex = 1;
             // 
             // picbLogo
@@ -49,7 +49,7 @@
             this.picbLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.picbLogo.Location = new System.Drawing.Point(0, 0);
             this.picbLogo.Name = "picbLogo";
-            this.picbLogo.Size = new System.Drawing.Size(229, 163);
+            this.picbLogo.Size = new System.Drawing.Size(229, 133);
             this.picbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picbLogo.TabIndex = 0;
             this.picbLogo.TabStop = false;

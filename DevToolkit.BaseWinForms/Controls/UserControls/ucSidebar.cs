@@ -50,10 +50,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
                     btn.ImageAlign = ButtonIconAlignment;
                     btn.TextAlign = ButtonTextAlignment;
-                    btn.Padding = ButtonPadding;
-                    btn.Margin = ButtonMargin;
-                    btn.Height = ButtonHeight;
                     btn.TextImageRelation = ButtonTextImageRelation;
+                    btn.AutoSize = true;
+                    btn.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
                     btn.Dock = DockStyle.Top;
                     btn.Cursor = Cursors.Hand;
@@ -102,14 +101,11 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         private Color _selectedButtonColor;
-        private IEnumerable<Button> _buttons => 
+        private IEnumerable<Button> _buttons =>
             pnlButtons.Controls.OfType<Button>();
         private ContentAlignment _btnIconAlignment = ContentAlignment.MiddleLeft;
         private ContentAlignment _btnTextAlignment = ContentAlignment.MiddleCenter;
-        private Padding _btnPadding = new Padding(0);
-        private Padding _btnMargin = new Padding(0, 0, 0, 5);
-        private int _btnHeight = 50;
-        private TextImageRelation _btnTextImageRelation = 
+        private TextImageRelation _btnTextImageRelation =
             TextImageRelation.Overlay;
 
         [Category("Custom Properties")]
@@ -141,48 +137,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public Padding ButtonPadding
-        {
-            get => _btnPadding;
-            set
-            {
-                if (_btnPadding != value)
-                {
-                    _btnPadding = value;
-                    _UpdateButtonsStyles();
-                }
-            }
-        }
-
-        [Category("Custom Properties")]
-        public Padding ButtonMargin
-        {
-            get => _btnMargin;
-            set
-            {
-                if (_btnMargin != value)
-                {
-                    _btnMargin = value;
-                    _UpdateButtonsStyles();
-                }
-            }
-        }
-
-        [Category("Custom Properties")]
-        public int ButtonHeight
-        {
-            get => _btnHeight;
-            set
-            {
-                if (_btnHeight != value)
-                {
-                    _btnHeight = value;
-                    _UpdateButtonsStyles();
-                }
-            }
-        }
-
-        [Category("Custom Properties")]
         public TextImageRelation ButtonTextImageRelation
         {
             get => _btnTextImageRelation;
@@ -205,9 +159,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             {
                 btn.ImageAlign = ButtonIconAlignment;
                 btn.TextAlign = ButtonTextAlignment;
-                btn.Padding = ButtonPadding;
-                btn.Margin = ButtonMargin;
-                btn.Height = ButtonHeight;
                 btn.TextImageRelation = ButtonTextImageRelation;
             }
         }

@@ -20,8 +20,8 @@ namespace DevToolkit.BaseWinForms.Forms
 
         protected Panel pnlContent => pnlContainer;
 
-        protected ucSidebar sidebar => Sidebar;
+        protected ucSidebar Sidebar => sidebar;
 
-        protected ucHeaderbar headerbar => Headerbar;
+        protected ucHeaderbar Headerbar => headerbar;
     }
 }
