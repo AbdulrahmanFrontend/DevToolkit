@@ -44,8 +44,10 @@
             this.Sidebar.ButtonTextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.Sidebar.ButtonTextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.Sidebar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Sidebar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Sidebar.Location = new System.Drawing.Point(1120, 0);
             this.Sidebar.Logo = null;
+            this.Sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.Sidebar.Name = "Sidebar";
             this.Sidebar.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.Sidebar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -67,9 +69,9 @@
             // 
             this.pnlContainer.AutoScroll = true;
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(0, 43);
+            this.pnlContainer.Location = new System.Drawing.Point(0, 50);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1120, 450);
+            this.pnlContainer.Size = new System.Drawing.Size(1120, 443);
             this.pnlContainer.TabIndex = 1;
             // 
             // Headerbar
@@ -79,15 +81,18 @@
             this.Headerbar.ButtonImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Headerbar.ButtonText = "Action";
             this.Headerbar.ButtonTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Headerbar.ButtonWidth = 143F;
             this.Headerbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Headerbar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Headerbar.Location = new System.Drawing.Point(0, 0);
+            this.Headerbar.Margin = new System.Windows.Forms.Padding(0);
             this.Headerbar.Name = "Headerbar";
             this.Headerbar.Padding = new System.Windows.Forms.Padding(5);
             this.Headerbar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Headerbar.ShowDate = true;
             this.Headerbar.ShowTime = true;
             this.Headerbar.ShowUserName = true;
-            this.Headerbar.Size = new System.Drawing.Size(1120, 43);
+            this.Headerbar.Size = new System.Drawing.Size(1120, 50);
             this.Headerbar.SystemName = "اسم الشركة/المحل";
             this.Headerbar.TabIndex = 0;
             this.Headerbar.UserName = "اسم المستخدم";

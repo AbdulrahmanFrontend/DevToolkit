@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevToolkit.BaseWinForms.Controls.CustomControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,35 +19,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public string RecordsCountPhrase
-        {
-            get => lblRecordsCount.Text;
-            set => lblRecordsCount.Text = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color RecordsCountPhraseColor
-        {
-            get => lblRecordsCount.ForeColor;
-            set => lblRecordsCount.ForeColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Font FooterFont
-        {
-            get => tlpFooter.Font;
-            set => tlpFooter.Font = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color PagePhraseColor
-        {
-            get => lblPage.ForeColor;
-            set => lblPage.ForeColor = value;
-        }
-
-        [Category("Custom Properties")]
         public DataGridViewColumnCollection Columns => ctrlDgvMain.Columns;
+
+        [Category("Custom Properties")]
+        public ucSearchbar Searchbar => searchbar;
 
         [Category("Custom Properties")]
         public ContextMenuStrip cmsData
@@ -60,6 +36,14 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             get => ctrlDgvMain.DataSource;
             set => ctrlDgvMain.DataSource = value;
+        }
+
+        public void SetCountPages(int count)
+        {
+            if (RightToLeft == RightToLeft.Yes)
+                lblRecordsCount.Text = $"عدد الصفوف: {count}";
+            else
+                lblRecordsCount.Text = $"Records Count: {count}";
         }
 
         public object GetSelectedRow(string columnName) 
@@ -111,7 +95,5 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             else
                 lblPage.Text = "Page: ";
         }
-
-        public ucSearchbar searchbar => Searchbar;
     }
 }

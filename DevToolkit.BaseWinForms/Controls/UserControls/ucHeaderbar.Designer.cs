@@ -46,7 +46,7 @@
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tlpContainer.Controls.Add(this.lblSystemName, 0, 0);
             this.tlpContainer.Controls.Add(this.lblUserName, 1, 0);
             this.tlpContainer.Controls.Add(this.lblDate, 2, 0);
@@ -54,10 +54,11 @@
             this.tlpContainer.Controls.Add(this.btnAction, 4, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
+            this.tlpContainer.Margin = new System.Windows.Forms.Padding(0);
             this.tlpContainer.Name = "tlpContainer";
             this.tlpContainer.RowCount = 1;
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Size = new System.Drawing.Size(1058, 43);
+            this.tlpContainer.Size = new System.Drawing.Size(591, 39);
             this.tlpContainer.TabIndex = 1;
             // 
             // lblSystemName
@@ -65,9 +66,9 @@
             this.lblSystemName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblSystemName.AutoSize = true;
             this.lblSystemName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblSystemName.Location = new System.Drawing.Point(963, 13);
+            this.lblSystemName.Location = new System.Drawing.Point(482, 11);
             this.lblSystemName.Name = "lblSystemName";
-            this.lblSystemName.Size = new System.Drawing.Size(92, 16);
+            this.lblSystemName.Size = new System.Drawing.Size(106, 17);
             this.lblSystemName.TabIndex = 1;
             this.lblSystemName.Text = "اسم الشركة/المحل";
             this.lblSystemName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -78,9 +79,9 @@
             this.lblUserName.AutoSize = true;
             this.lblUserName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblUserName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblUserName.Location = new System.Drawing.Point(687, 13);
+            this.lblUserName.Location = new System.Drawing.Point(380, 11);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(70, 16);
+            this.lblUserName.Size = new System.Drawing.Size(87, 17);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Text = "اسم المستخدم";
             // 
@@ -88,10 +89,10 @@
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(476, 13);
+            this.lblDate.Location = new System.Drawing.Point(290, 11);
             this.lblDate.Name = "lblDate";
             this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDate.Size = new System.Drawing.Size(44, 16);
+            this.lblDate.Size = new System.Drawing.Size(43, 17);
             this.lblDate.TabIndex = 2;
             this.lblDate.Text = "label2";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -100,10 +101,10 @@
             // 
             this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(252, 13);
+            this.lblTime.Location = new System.Drawing.Point(178, 11);
             this.lblTime.Name = "lblTime";
             this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTime.Size = new System.Drawing.Size(44, 16);
+            this.lblTime.Size = new System.Drawing.Size(43, 17);
             this.lblTime.TabIndex = 4;
             this.lblTime.Text = "label2";
             this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,9 +117,10 @@
             this.btnAction.FlatAppearance.BorderSize = 0;
             this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAction.Location = new System.Drawing.Point(3, 3);
+            this.btnAction.Location = new System.Drawing.Point(0, 0);
+            this.btnAction.Margin = new System.Windows.Forms.Padding(0);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(156, 37);
+            this.btnAction.Size = new System.Drawing.Size(143, 39);
             this.btnAction.TabIndex = 6;
             this.btnAction.Text = "Action";
             this.btnAction.UseVisualStyleBackColor = true;
@@ -132,13 +134,15 @@
             // 
             // ucHeaderbar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpContainer);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ucHeaderbar";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(1058, 43);
+            this.Size = new System.Drawing.Size(591, 39);
             this.Load += new System.EventHandler(this.ucHeaderbar_Load);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();

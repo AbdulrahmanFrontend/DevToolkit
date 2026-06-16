@@ -36,9 +36,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         private void tbInput_TextChanged(object sender, EventArgs e)
         {
             if (InputChanged != null)
-            {
                 RaiseInputChanged(Input, SelectedFilter);
-            }
         }
 
         public void RaiseInputChanged(string filteringMethod, string input)
@@ -70,30 +68,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         private void btnCancel_Click(object sender, EventArgs e)
         {
             tbInput.Text = string.Empty;
-            tbInput.Enabled = false;
-
             cbFilterMethod.SelectedIndex = -1;
-        }
-
-        [Category("Custom Properties")]
-        public Color SearchByColor
-        {
-            get => lblSearchBy.ForeColor;
-            set => lblSearchBy.ForeColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color FilteringMethodBackColor
-        {
-            get => cbFilterMethod.BackColor;
-            set => cbFilterMethod.BackColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color FilteringMethodForeColor
-        {
-            get => cbFilterMethod.ForeColor;
-            set => cbFilterMethod.ForeColor = value;
         }
 
         [Category("Custom Properties")]
@@ -103,48 +78,14 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             set => tbInput.Text = value;
         }
 
+        [Category("Custom Properties")]
         public string SelectedFilter => cbFilterMethod?.Text.ToString();
 
         [Category("Custom Properties")]
-        public Color InputBackColor
+        public bool ShowCancelButton
         {
-            get => tbInput.BackColor;
-            set => tbInput.BackColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color InputForeColor
-        {
-            get => tbInput.ForeColor;
-            set => tbInput.ForeColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Image ButtonBackgroundImage
-        {
-            get => btnCancel.BackgroundImage;
-            set => btnCancel.BackgroundImage = value;
-        }
-
-        [Category("Custom Properties")]
-        public string ButtonTitle
-        {
-            get => btnCancel.Text;
-            set => btnCancel.Text = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color ButtonBackColor
-        {
-            get => btnCancel.BackColor;
-            set => btnCancel.BackColor = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color ButtonForeColor
-        {
-            get => btnCancel.ForeColor;
-            set => btnCancel.ForeColor = value;
+            get => btnCancel.Visible;
+            set => btnCancel.Visible = value;
         }
 
         [Category("Custom Properties")]
@@ -152,13 +93,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             get => tlpContainer.ColumnStyles[3].Width;
             set => tlpContainer.ColumnStyles[3].Width = value;
-        }
-
-        [Category("Custom Properties")]
-        public float FilteringMethodField
-        {
-            get => tlpContainer.ColumnStyles[1].Width;
-            set => tlpContainer.ColumnStyles[1].Width = value;
         }
     }
 }

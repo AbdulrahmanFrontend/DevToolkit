@@ -25,24 +25,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public Color TitleColor
-        {
-            get => lblTitle.ForeColor;
-            set => lblTitle.ForeColor = value;
-        }
-
-        [Category("Custom Properties")]
         public Image ButtonBackgroundImage
         {
             get => btnAction.BackgroundImage;
             set => btnAction.BackgroundImage = value;
-        }
-
-        [Category("Custom Properties")]
-        public Color ButtonBackColor
-        {
-            get => btnAction.BackColor;
-            set => btnAction.BackColor = value;
         }
 
         [Category("Custom Properties")]

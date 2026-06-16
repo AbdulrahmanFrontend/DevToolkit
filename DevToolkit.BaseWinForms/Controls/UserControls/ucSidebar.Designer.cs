@@ -36,35 +36,39 @@
             // pnlButtons
             // 
             this.pnlButtons.AutoScroll = true;
+            this.pnlButtons.AutoSize = true;
+            this.pnlButtons.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlButtons.Location = new System.Drawing.Point(5, 153);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 163);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(213, 363);
+            this.pnlButtons.Size = new System.Drawing.Size(229, 353);
             this.pnlButtons.TabIndex = 1;
             // 
             // picbLogo
             // 
             this.picbLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picbLogo.Location = new System.Drawing.Point(5, 0);
+            this.picbLogo.Location = new System.Drawing.Point(0, 0);
             this.picbLogo.Name = "picbLogo";
-            this.picbLogo.Size = new System.Drawing.Size(213, 153);
+            this.picbLogo.Size = new System.Drawing.Size(229, 163);
             this.picbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picbLogo.TabIndex = 0;
             this.picbLogo.TabStop = false;
             // 
             // ucSidebar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.picbLogo);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ucSidebar";
-            this.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(223, 516);
+            this.Size = new System.Drawing.Size(229, 516);
             ((System.ComponentModel.ISupportInitialize)(this.picbLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -35,6 +35,10 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
             this.ShowImageMargin = true;
             this.ImageScalingSize = new Size(16, 16); 
             // الحجم القياسي للأيقونات UX
+
+            this.Cursor = Cursors.Hand;
+
+            this.DoubleBuffered = true;
         }
 
         protected override void OnPaint(PaintEventArgs pe)

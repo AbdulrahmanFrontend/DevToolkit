@@ -35,14 +35,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         public void RaiseSplashCompleted()
-        {
-            RaiseSplashCompleted(new SplashCompletedEventArgs());
-        }
+            => RaiseSplashCompleted(new SplashCompletedEventArgs());
 
         protected virtual void RaiseSplashCompleted(SplashCompletedEventArgs e)
-        {
-            SplashCompleted?.Invoke(this, e);
-        }
+            => SplashCompleted?.Invoke(this, e);
 
         [Category("Custom Events")]
         public event EventHandler<SplashCompletedEventArgs> SplashCompleted;

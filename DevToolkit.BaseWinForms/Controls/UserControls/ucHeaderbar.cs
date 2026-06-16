@@ -92,6 +92,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             set => btnAction.ImageAlign = value;
         }
 
+        [Category("Custom Properties")]
+        public float ButtonWidth
+        {
+            get => tlpContainer.ColumnStyles[4].Width;
+            set => tlpContainer.ColumnStyles[4].Width = value;
+        }
+
         private void tDateTime_Tick(object sender, EventArgs e)
         {
             lblDate.Text = DateTime.Now.ToString("d");
@@ -114,14 +121,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         public void RaiseActionClick()
-        {
-            RaiseActionClick(new ActionClickEventArgs());
-        }
-
+            => RaiseActionClick(new ActionClickEventArgs());
+        
         protected virtual void RaiseActionClick(ActionClickEventArgs e)
-        {
-            ActionClick?.Invoke(this, e);
-        }
+            => ActionClick?.Invoke(this, e);
 
         [Category("Custom Events")]
         [Description("Occurs when the action button is clicked.")]
@@ -130,12 +133,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         public class ActionClickEventArgs : EventArgs
         {
             // You can add properties here if you want to pass additional data with the event
-        }
-
-        public float ButtonWidth
-        {
-            get => tlpContainer.ColumnStyles[4].Width;
-            set => tlpContainer.ColumnStyles[4].Width = value;
         }
     }
 }

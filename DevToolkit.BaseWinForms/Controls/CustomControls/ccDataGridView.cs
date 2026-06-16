@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevToolkit.Core.Guards;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
         public ccDataGridView()
         {
             InitializeComponent();
+
+            this.AutoGenerateColumns = false;
 
             this.DoubleBuffered = true;
 
@@ -53,6 +56,8 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
                 Color.FromArgb(232, 240, 254);
             this.DefaultCellStyle.SelectionForeColor = 
                 Color.FromArgb(33, 37, 41);
+            this.DefaultCellStyle.Alignment = 
+                DataGridViewContentAlignment.MiddleCenter;
 
             this.AlternatingRowsDefaultCellStyle.BackColor = 
                 Color.FromArgb(250, 251, 252);
@@ -61,7 +66,12 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
         }
 
         public object GetSelectedRow(string columnName)
-            => this.CurrentRow.Cells[columnName].Value;
+        {
+            if (Guard.HasValue(columnName) || this.CurrentRow == null)
+                return null;
+
+            return this.CurrentRow.Cells[columnName].Value;
+        }
 
         protected override void OnPaint(PaintEventArgs pe)
         {

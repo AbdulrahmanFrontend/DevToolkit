@@ -36,29 +36,32 @@
             // 
             // tlpContainer
             // 
-            this.tlpContainer.AutoSize = true;
             this.tlpContainer.ColumnCount = 2;
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tlpContainer.Controls.Add(this.lblTitle, 0, 0);
             this.tlpContainer.Controls.Add(this.btnAction, 1, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
+            this.tlpContainer.Margin = new System.Windows.Forms.Padding(0);
             this.tlpContainer.Name = "tlpContainer";
             this.tlpContainer.RowCount = 1;
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Size = new System.Drawing.Size(80, 30);
+            this.tlpContainer.Size = new System.Drawing.Size(936, 39);
             this.tlpContainer.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(44, 7);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(463, 5);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(33, 16);
+            this.lblTitle.Size = new System.Drawing.Size(55, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Title";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAction
             // 
@@ -70,25 +73,24 @@
             this.btnAction.Location = new System.Drawing.Point(0, 0);
             this.btnAction.Margin = new System.Windows.Forms.Padding(0);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(41, 30);
+            this.btnAction.Size = new System.Drawing.Size(44, 39);
             this.btnAction.TabIndex = 1;
             this.btnAction.UseVisualStyleBackColor = true;
             this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // ucHeaderbarWithButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tlpContainer);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ucHeaderbarWithButton";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Size = new System.Drawing.Size(80, 30);
+            this.Size = new System.Drawing.Size(936, 39);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

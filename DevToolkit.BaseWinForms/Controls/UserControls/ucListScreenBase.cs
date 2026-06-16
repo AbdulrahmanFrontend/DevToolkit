@@ -17,7 +17,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             InitializeComponent();
         }
 
+        [Category("Custom Properties")]
         public ucHeaderbarWithButton Headerbar => headerbar;
+
+        [Category("Custom Properties")]
         public ucDataGridView Grid => GridView;
     }
 }

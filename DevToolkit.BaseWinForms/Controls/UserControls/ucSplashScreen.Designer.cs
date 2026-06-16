@@ -33,9 +33,9 @@
             this.lblFooter = new System.Windows.Forms.Label();
             this.lblLoading = new System.Windows.Forms.Label();
             this.lblSubTitle = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.pbLoading = new System.Windows.Forms.ProgressBar();
             this.picbLogo = new System.Windows.Forms.PictureBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tSplash = new System.Windows.Forms.Timer(this.components);
             this.tlpContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picbLogo)).BeginInit();
@@ -43,34 +43,37 @@
             // 
             // tlpContainer
             // 
+            this.tlpContainer.AutoSize = true;
             this.tlpContainer.ColumnCount = 1;
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContainer.Controls.Add(this.lblFooter, 0, 5);
             this.tlpContainer.Controls.Add(this.lblLoading, 0, 3);
             this.tlpContainer.Controls.Add(this.lblSubTitle, 0, 2);
-            this.tlpContainer.Controls.Add(this.lblTitle, 0, 1);
             this.tlpContainer.Controls.Add(this.pbLoading, 0, 4);
             this.tlpContainer.Controls.Add(this.picbLogo, 0, 0);
+            this.tlpContainer.Controls.Add(this.lblTitle, 0, 1);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
+            this.tlpContainer.Margin = new System.Windows.Forms.Padding(0);
             this.tlpContainer.Name = "tlpContainer";
             this.tlpContainer.RowCount = 6;
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.4F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.53333F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.66667F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.13333F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tlpContainer.Size = new System.Drawing.Size(672, 424);
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.Size = new System.Drawing.Size(593, 450);
             this.tlpContainer.TabIndex = 2;
             // 
             // lblFooter
             // 
             this.lblFooter.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblFooter.AutoSize = true;
-            this.lblFooter.Location = new System.Drawing.Point(315, 396);
+            this.lblFooter.Location = new System.Drawing.Point(274, 423);
+            this.lblFooter.Margin = new System.Windows.Forms.Padding(0, 5, 0, 10);
             this.lblFooter.Name = "lblFooter";
-            this.lblFooter.Size = new System.Drawing.Size(41, 16);
+            this.lblFooter.Size = new System.Drawing.Size(45, 17);
             this.lblFooter.TabIndex = 6;
             this.lblFooter.Text = "الخاتمة";
             this.lblFooter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,9 +82,10 @@
             // 
             this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblLoading.AutoSize = true;
-            this.lblLoading.Location = new System.Drawing.Point(282, 317);
+            this.lblLoading.Location = new System.Drawing.Point(238, 376);
+            this.lblLoading.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(108, 16);
+            this.lblLoading.Size = new System.Drawing.Size(117, 17);
             this.lblLoading.TabIndex = 3;
             this.lblLoading.Text = "رسائل/رسالة التحميل";
             this.lblLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -90,46 +94,50 @@
             // 
             this.lblSubTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSubTitle.AutoSize = true;
-            this.lblSubTitle.Location = new System.Drawing.Point(274, 274);
+            this.lblSubTitle.Location = new System.Drawing.Point(227, 349);
+            this.lblSubTitle.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.lblSubTitle.Name = "lblSubTitle";
-            this.lblSubTitle.Size = new System.Drawing.Size(124, 16);
+            this.lblSubTitle.Size = new System.Drawing.Size(139, 17);
             this.lblSubTitle.TabIndex = 2;
             this.lblSubTitle.Text = "عنوان فرعي/رقم الإصدار";
             this.lblSubTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(274, 219);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(123, 16);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "اسم الشركة/المحل/النظام";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pbLoading
             // 
             this.pbLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLoading.Location = new System.Drawing.Point(65, 355);
+            this.pbLoading.Location = new System.Drawing.Point(103, 403);
+            this.pbLoading.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.pbLoading.MarqueeAnimationSpeed = 0;
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.RightToLeftLayout = true;
-            this.pbLoading.Size = new System.Drawing.Size(542, 21);
+            this.pbLoading.Size = new System.Drawing.Size(386, 10);
             this.pbLoading.Step = 1;
             this.pbLoading.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.pbLoading.TabIndex = 5;
             // 
             // picbLogo
             // 
-            this.picbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picbLogo.Location = new System.Drawing.Point(221, 12);
+            this.picbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picbLogo.Location = new System.Drawing.Point(5, 5);
+            this.picbLogo.Margin = new System.Windows.Forms.Padding(5);
             this.picbLogo.Name = "picbLogo";
-            this.picbLogo.Size = new System.Drawing.Size(229, 171);
+            this.picbLogo.Size = new System.Drawing.Size(583, 307);
             this.picbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picbLogo.TabIndex = 0;
             this.picbLogo.TabStop = false;
             this.picbLogo.WaitOnLoad = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(224, 322);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(144, 17);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "اسم الشركة/المحل/النظام";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tSplash
             // 
@@ -139,16 +147,19 @@
             // 
             // ucSplashScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpContainer);
+            this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ucSplashScreen";
-            this.Size = new System.Drawing.Size(672, 424);
+            this.Size = new System.Drawing.Size(593, 450);
             this.Load += new System.EventHandler(this.ucSplashScreen_Load);
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picbLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
