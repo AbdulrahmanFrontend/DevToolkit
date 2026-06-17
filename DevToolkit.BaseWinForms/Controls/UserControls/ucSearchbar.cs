@@ -87,12 +87,5 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             get => btnCancel.Visible;
             set => btnCancel.Visible = value;
         }
-
-        [Category("Custom Properties")]
-        public float ButtonWidth
-        {
-            get => tlpContainer.ColumnStyles[3].Width;
-            set => tlpContainer.ColumnStyles[3].Width = value;
-        }
     }
 }

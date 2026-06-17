@@ -38,13 +38,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             set => btnAction.Text = value;
         }
 
-        [Category("Custom Properties")]
-        public float ButtonWidth
-        {
-            get => tlpContainer.ColumnStyles[1].Width;
-            set => tlpContainer.ColumnStyles[1].Width = value;
-        }
-
         public void RaiseActionClicked() 
             => RaiseActionClicked(new ActionClickedEventArgs());
 

@@ -36,7 +36,6 @@
             // 
             this.headerbar.ButtonBackgroundImage = null;
             this.headerbar.ButtonText = "";
-            this.headerbar.ButtonWidth = 36F;
             this.headerbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerbar.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerbar.Location = new System.Drawing.Point(0, 0);

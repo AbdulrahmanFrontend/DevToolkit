@@ -41,13 +41,17 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
             this.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.ColumnHeadersDefaultCellStyle.Font = 
                 new Font("Segoe UI", 10, FontStyle.Bold);
+            this.ColumnHeadersDefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
             this.ColumnHeadersHeight = 40;
             this.ColumnHeadersHeightSizeMode = 
                 DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 
             this.EnableHeadersVisualStyles = false;
             this.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
+            this.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
             this.DefaultCellStyle.BackColor = Color.White;
             this.DefaultCellStyle.ForeColor = Color.FromArgb(33, 37, 41);
             this.DefaultCellStyle.Font = 
@@ -67,7 +71,7 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
 
         public object GetSelectedRow(string columnName)
         {
-            if (Guard.HasValue(columnName) || this.CurrentRow == null)
+            if (!Guard.HasValue(columnName) || this.CurrentRow == null)
                 return null;
 
             return this.CurrentRow.Cells[columnName].Value;

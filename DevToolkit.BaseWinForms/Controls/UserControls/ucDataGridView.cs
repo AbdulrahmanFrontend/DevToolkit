@@ -1,5 +1,6 @@
 ﻿using DevToolkit.BaseWinForms.Controls.CustomControls;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,10 +36,24 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         public object DataSource
         {
             get => ctrlDgvMain.DataSource;
-            set => ctrlDgvMain.DataSource = value;
+            set
+            {
+                ctrlDgvMain.DataSource = value;
+
+                if (value is IList list)
+                    _SetRecordsCount(list.Count);
+                else if (value is IListSource listSource)
+                    _SetRecordsCount(listSource.GetList().Count);
+                else if (value is IBindingList bindingList)
+                    _SetRecordsCount(bindingList.Count);
+                else if (value is IBindingListView listView)
+                    _SetRecordsCount(listView.Count);
+                else
+                    _SetRecordsCount(0);
+            }
         }
 
-        public void SetCountPages(int count)
+        private void _SetRecordsCount(int count)
         {
             if (RightToLeft == RightToLeft.Yes)
                 lblRecordsCount.Text = $"عدد الصفوف: {count}";
@@ -53,8 +68,12 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             cbPagesNumbers.Items.Clear();
 
-            for(int i = count; i > 0; i--)
+            int i = 1;
+            do
+            {
                 cbPagesNumbers.Items.Add(i.ToString());
+                i++;
+            } while (i <= count);
 
             cbPagesNumbers.SelectedIndex = 0;
         }
@@ -94,6 +113,56 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 lblPage.Text = "صفحة: ";
             else
                 lblPage.Text = "Page: ";
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            if (cbPagesNumbers.Items.Count == 0) return;
+
+            cbPagesNumbers.SelectedIndex = 0;
+
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
+                if (PageNumberSelected != null)
+                    RaisePageNumberSelected(value);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            int Index = cbPagesNumbers.SelectedIndex;
+
+            if (Index > 0)
+            {
+                cbPagesNumbers.SelectedIndex--;
+
+                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
+                    if (PageNumberSelected != null)
+                        RaisePageNumberSelected(value);
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int Index = cbPagesNumbers.SelectedIndex;
+
+            if (Index < cbPagesNumbers.Items.Count - 1)
+            {
+                cbPagesNumbers.SelectedIndex++;
+
+                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
+                    if (PageNumberSelected != null)
+                        RaisePageNumberSelected(value);
+            }
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            if (cbPagesNumbers.Items.Count == 0) return;
+
+            cbPagesNumbers.SelectedIndex = cbPagesNumbers.Items.Count - 1;
+
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
+                if (PageNumberSelected != null)
+                    RaisePageNumberSelected(value);
         }
     }
 }

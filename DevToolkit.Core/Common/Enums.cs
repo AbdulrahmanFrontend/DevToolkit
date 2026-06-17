@@ -30,4 +30,6 @@ namespace DevToolkit.Core.Common
         Error,
         Debug
     }
+
+    public enum Language { ar, en }
 }

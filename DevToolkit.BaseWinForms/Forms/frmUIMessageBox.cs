@@ -13,6 +13,24 @@ namespace DevToolkit.BaseWinForms.Forms
         public frmUIMessageBox(MessageBoxModel MessageBoxData)
         {
             InitializeComponent();
+
+            if (MessageBoxData.Lang == Language.ar)
+            {
+                RightToLeft = RightToLeft.Yes;
+                RightToLeftLayout = true;
+                btnOK.Text = "حسنا";
+                btnNo.Text = "لا";
+                btnYes.Text = "نعم";
+            }
+            else
+            {
+                RightToLeft = RightToLeft.No;
+                RightToLeftLayout = false;
+                btnOK.Text = "OK";
+                btnNo.Text = "No";
+                btnYes.Text = "Yes";
+            }
+
             _Initialize(MessageBoxData);
         }
 
@@ -53,33 +71,63 @@ namespace DevToolkit.BaseWinForms.Forms
             {
                 case DialogType.Success:
                     System.Media.SystemSounds.Asterisk.Play();
-                    lblMessageCaption.Text = "Success";
-                    pbIcon.Image = SystemIcons.Information.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "عملية ناجحة";
+                    else
+                        lblMessageCaption.Text = "Success";
+
+                    btnClose.BackgroundImage = SystemIcons.Information.ToBitmap();
                     break;
                 case DialogType.Error:
                     System.Media.SystemSounds.Hand.Play();
-                    lblMessageCaption.Text = "Error";
-                    pbIcon.Image = SystemIcons.Error.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "عملية فاشلة";
+                    else
+                        lblMessageCaption.Text = "Error";
+
+                    btnClose.BackgroundImage = SystemIcons.Error.ToBitmap();
                     break;
                 case DialogType.Warning:
                     System.Media.SystemSounds.Exclamation.Play();
-                    lblMessageCaption.Text = "Warning";
-                    pbIcon.Image = SystemIcons.Warning.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "تحذير";
+                    else
+                        lblMessageCaption.Text = "Warning";
+
+                    btnClose.BackgroundImage = SystemIcons.Warning.ToBitmap();
                     break;
                 case DialogType.Info:
                     System.Media.SystemSounds.Asterisk.Play();
-                    lblMessageCaption.Text = "Information";
-                    pbIcon.Image = SystemIcons.Information.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "هام";
+                    else
+                        lblMessageCaption.Text = "Information";
+
+                    btnClose.BackgroundImage = SystemIcons.Information.ToBitmap();
                     break;
                 case DialogType.Confirm:
                     System.Media.SystemSounds.Question.Play();
-                    lblMessageCaption.Text = "Confirmation";
-                    pbIcon.Image = SystemIcons.Question.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "تأكيد";
+                    else
+                        lblMessageCaption.Text = "Confirmation";
+
+                    btnClose.BackgroundImage = SystemIcons.Question.ToBitmap();
                     break;
                 default:
                     System.Media.SystemSounds.Asterisk.Play();
-                    lblMessageCaption.Text = "Information";
-                    pbIcon.Image = SystemIcons.Information.ToBitmap();
+
+                    if (MessageBoxData.Lang == Language.ar)
+                        lblMessageCaption.Text = "هام";
+                    else
+                        lblMessageCaption.Text = "Information";
+
+                    btnClose.BackgroundImage = SystemIcons.Information.ToBitmap();
                     break;
             }
         }
@@ -87,12 +135,6 @@ namespace DevToolkit.BaseWinForms.Forms
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -121,6 +163,12 @@ namespace DevToolkit.BaseWinForms.Forms
         private void _DragMouseUp(object sender, MouseEventArgs e)
         {
             WindowDragHelper.DragMouseUp(sender, e);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.No;
+            this.Close();
         }
     }
 }

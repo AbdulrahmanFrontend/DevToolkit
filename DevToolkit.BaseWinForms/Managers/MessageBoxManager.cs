@@ -13,20 +13,20 @@ namespace DevToolkit.BaseWinForms.Managers
 {
     public class MessageBoxManager
     {
-        public static DialogResult ShowSuccess(string Message)
-            => Show(_Success(Message));
+        public static DialogResult ShowSuccess(string message, Language lang)
+            => Show(_Success(message, lang));
 
-        public static DialogResult ShowError(string Message)
-            => Show(_Error(Message));
+        public static DialogResult ShowError(string message, Language lang)
+            => Show(_Error(message, lang));
 
-        public static DialogResult ShowWarning(string Message)
-            => Show(_Warning(Message));
+        public static DialogResult ShowWarning(string Message, Language lang)
+            => Show(_Warning(Message, lang));
 
-        public static DialogResult ShowConfirm(string Message)
-            => Show(_Confirm(Message));
+        public static DialogResult ShowConfirm(string Message, Language lang)
+            => Show(_Confirm(Message, lang));
 
-        public static DialogResult ShowInfo(string Message)
-            => Show(_Info(Message));
+        public static DialogResult ShowInfo(string Message, Language lang)
+            => Show(_Info(Message, lang));
 
         public static DialogResult Show(MessageBoxModel MessageBoxData)
         {
@@ -34,40 +34,45 @@ namespace DevToolkit.BaseWinForms.Managers
             return messageBox.ShowDialog();
         }
 
-        private static MessageBoxModel _Success(string msg) =>
+        private static MessageBoxModel _Success(string msg, Language lang) =>
             new MessageBoxModel
             {
                 Message = msg,
-                DialogType = DialogType.Success
+                DialogType = DialogType.Success,
+                Lang = lang,
             };
 
-        private static MessageBoxModel _Error(string msg) =>
+        private static MessageBoxModel _Error(string msg, Language lang) =>
             new MessageBoxModel
             {
                 Message = msg,
-                DialogType = DialogType.Error
+                DialogType = DialogType.Error,
+                Lang = lang,
             };
 
-        private static MessageBoxModel _Warning(string msg) =>
+        private static MessageBoxModel _Warning(string msg, Language lang) =>
             new MessageBoxModel
             {
                 Message = msg,
-                DialogType = DialogType.Warning
+                DialogType = DialogType.Warning,
+                Lang = lang,
             };
 
-        private static MessageBoxModel _Info(string msg) =>
+        private static MessageBoxModel _Info(string msg, Language lang) =>
             new MessageBoxModel
             {
                 Message = msg,
-                DialogType = DialogType.Info
+                DialogType = DialogType.Info,
+                Lang = lang,
             };
 
-        private static MessageBoxModel _Confirm(string msg) => 
+        private static MessageBoxModel _Confirm(string msg, Language lang) => 
             new MessageBoxModel
             {
                 Message = msg,
                 Buttons = MessageBoxButtons.YesNo,
-                DialogType = DialogType.Confirm
+                DialogType = DialogType.Confirm,
+                Lang = lang,
             };
     }
 }

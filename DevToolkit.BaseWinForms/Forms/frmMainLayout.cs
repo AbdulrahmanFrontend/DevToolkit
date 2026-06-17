@@ -18,10 +18,13 @@ namespace DevToolkit.BaseWinForms.Forms
             InitializeComponent();
         }
 
+        [Category("Custom Properties")]
         protected Panel pnlContent => pnlContainer;
 
+        [Category("Custom Properties")]
         protected ucSidebar Sidebar => sidebar;
 
+        [Category("Custom Properties")]
         protected ucHeaderbar Headerbar => headerbar;
     }
 }
