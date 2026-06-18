@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DevToolkit.BaseWPF.Services
+namespace DevToolkit.BaseWPF.Services.Navigation
 {
-    public class NavigationService
+    public class NavigationService : INavigationService
     {
         public void NavigateTo<TWindow>(Window currentWindow)
         where TWindow : Window, new()
