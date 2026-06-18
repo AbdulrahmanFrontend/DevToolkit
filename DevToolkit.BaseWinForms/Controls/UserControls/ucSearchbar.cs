@@ -36,12 +36,12 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         private void tbInput_TextChanged(object sender, EventArgs e)
         {
             if (InputChanged != null)
-                RaiseInputChanged(Input, SelectedFilter);
+                RaiseInputChanged(SelectedFilterIndex, Input);
         }
 
-        public void RaiseInputChanged(string filteringMethod, string input)
+        public void RaiseInputChanged(int filteringMethodIndex, string input)
             => RaiseInputChanged(
-                new InputChangedEventArgs(filteringMethod, input));
+                new InputChangedEventArgs(filteringMethodIndex, input));
 
         protected virtual void RaiseInputChanged(InputChangedEventArgs e)
             => InputChanged?.Invoke(this, e);
@@ -51,19 +51,14 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         public class InputChangedEventArgs : EventArgs
         {
-            public string FilteringMethod { get; }
+            public int FilteringMethodIndex { get; }
             public string Input { get; }
-            public InputChangedEventArgs(string filteringMethod, string input)
+            public InputChangedEventArgs(int filteringMethodIndex, string input)
             {
-                FilteringMethod = filteringMethod;
+                FilteringMethodIndex = filteringMethodIndex;
                 Input = input;
             }
         }
-
-        private void cbFilterMethod_SelectedIndexChanged(
-            object sender,
-            EventArgs e)
-            => tbInput.Enabled = cbFilterMethod.Text != string.Empty;
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -79,7 +74,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public string SelectedFilter => cbFilterMethod?.Text.ToString();
+        public int SelectedFilterIndex => cbFilterMethod.SelectedIndex;
 
         [Category("Custom Properties")]
         public bool ShowCancelButton
