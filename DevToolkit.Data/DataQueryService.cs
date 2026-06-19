@@ -44,7 +44,12 @@ namespace DevToolkit.Data
                 .GetFirstRow(commandType, CommandText, Parameters);
 
             if (drResult != null && drResult.IsSuccess)
-                return Result<T>.Success(DataMapper.Map<T>(drResult.Data));
+            {
+                if (drResult.Data != null)
+                    return Result<T>.Success(DataMapper.Map<T>(drResult.Data));
+
+                return Result<T>.Success((T)default);
+            }
 
             return Result<T>.Failure(drResult?.Message);
         }
