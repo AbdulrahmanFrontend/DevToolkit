@@ -33,14 +33,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpFooter = new System.Windows.Forms.TableLayoutPanel();
             this.tlpPagination = new System.Windows.Forms.TableLayoutPanel();
-            this.lblPage = new System.Windows.Forms.Label();
-            this.cbPagesNumbers = new System.Windows.Forms.ComboBox();
-            this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.cbPagesNumbers = new System.Windows.Forms.ComboBox();
+            this.lblPage = new System.Windows.Forms.Label();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
+            this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
             this.ctrlDgvMain = new DevToolkit.BaseWinForms.Controls.CustomControls.ccDataGridView();
             this.searchbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar();
             this.tlpFooter.SuspendLayout();
@@ -89,62 +89,6 @@
             this.tlpPagination.Size = new System.Drawing.Size(259, 34);
             this.tlpPagination.TabIndex = 12;
             // 
-            // lblPage
-            // 
-            this.lblPage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblPage.AutoSize = true;
-            this.lblPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPage.Location = new System.Drawing.Point(143, 7);
-            this.lblPage.Name = "lblPage";
-            this.lblPage.Size = new System.Drawing.Size(56, 20);
-            this.lblPage.TabIndex = 0;
-            this.lblPage.Text = "صفحة: ";
-            // 
-            // cbPagesNumbers
-            // 
-            this.cbPagesNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbPagesNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbPagesNumbers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPagesNumbers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPagesNumbers.FormattingEnabled = true;
-            this.cbPagesNumbers.ItemHeight = 20;
-            this.cbPagesNumbers.Location = new System.Drawing.Point(58, 3);
-            this.cbPagesNumbers.MaxDropDownItems = 3;
-            this.cbPagesNumbers.Name = "cbPagesNumbers";
-            this.cbPagesNumbers.Size = new System.Drawing.Size(71, 28);
-            this.cbPagesNumbers.Sorted = true;
-            this.cbPagesNumbers.TabIndex = 1;
-            this.cbPagesNumbers.SelectedIndexChanged += new System.EventHandler(this.cbPagesNumbers_SelectedIndexChanged);
-            // 
-            // lblRecordsCount
-            // 
-            this.lblRecordsCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblRecordsCount.AutoSize = true;
-            this.lblRecordsCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(917, 10);
-            this.lblRecordsCount.Name = "lblRecordsCount";
-            this.lblRecordsCount.Size = new System.Drawing.Size(108, 20);
-            this.lblRecordsCount.TabIndex = 0;
-            this.lblRecordsCount.Text = "عدد الصفوف: 0";
-            // 
-            // tlpContainer
-            // 
-            this.tlpContainer.ColumnCount = 1;
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Controls.Add(this.ctrlDgvMain, 0, 1);
-            this.tlpContainer.Controls.Add(this.tlpFooter, 0, 2);
-            this.tlpContainer.Controls.Add(this.searchbar, 0, 0);
-            this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpContainer.Location = new System.Drawing.Point(0, 0);
-            this.tlpContainer.Name = "tlpContainer";
-            this.tlpContainer.Padding = new System.Windows.Forms.Padding(5);
-            this.tlpContainer.RowCount = 3;
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContainer.Size = new System.Drawing.Size(1044, 557);
-            this.tlpContainer.TabIndex = 14;
-            // 
             // btnLast
             // 
             this.btnLast.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -175,6 +119,33 @@
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
+            // cbPagesNumbers
+            // 
+            this.cbPagesNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPagesNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbPagesNumbers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPagesNumbers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPagesNumbers.FormattingEnabled = true;
+            this.cbPagesNumbers.ItemHeight = 20;
+            this.cbPagesNumbers.Location = new System.Drawing.Point(58, 3);
+            this.cbPagesNumbers.MaxDropDownItems = 3;
+            this.cbPagesNumbers.Name = "cbPagesNumbers";
+            this.cbPagesNumbers.Size = new System.Drawing.Size(71, 28);
+            this.cbPagesNumbers.Sorted = true;
+            this.cbPagesNumbers.TabIndex = 1;
+            this.cbPagesNumbers.SelectedIndexChanged += new System.EventHandler(this.cbPagesNumbers_SelectedIndexChanged);
+            // 
+            // lblPage
+            // 
+            this.lblPage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPage.AutoSize = true;
+            this.lblPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPage.Location = new System.Drawing.Point(143, 7);
+            this.lblPage.Name = "lblPage";
+            this.lblPage.Size = new System.Drawing.Size(56, 20);
+            this.lblPage.TabIndex = 0;
+            this.lblPage.Text = "صفحة: ";
+            // 
             // btnFirst
             // 
             this.btnFirst.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -204,6 +175,35 @@
             this.btnBack.TabIndex = 3;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lblRecordsCount
+            // 
+            this.lblRecordsCount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblRecordsCount.AutoSize = true;
+            this.lblRecordsCount.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordsCount.Location = new System.Drawing.Point(917, 10);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Size = new System.Drawing.Size(108, 20);
+            this.lblRecordsCount.TabIndex = 0;
+            this.lblRecordsCount.Text = "عدد الصفوف: 0";
+            // 
+            // tlpContainer
+            // 
+            this.tlpContainer.ColumnCount = 1;
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpContainer.Controls.Add(this.ctrlDgvMain, 0, 1);
+            this.tlpContainer.Controls.Add(this.tlpFooter, 0, 2);
+            this.tlpContainer.Controls.Add(this.searchbar, 0, 0);
+            this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpContainer.Location = new System.Drawing.Point(0, 0);
+            this.tlpContainer.Name = "tlpContainer";
+            this.tlpContainer.Padding = new System.Windows.Forms.Padding(5);
+            this.tlpContainer.RowCount = 3;
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpContainer.Size = new System.Drawing.Size(1044, 557);
+            this.tlpContainer.TabIndex = 14;
             // 
             // ctrlDgvMain
             // 

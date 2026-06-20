@@ -82,5 +82,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             get => btnCancel.Visible;
             set => btnCancel.Visible = value;
         }
+
+        private void cbFilterMethod_SelectedIndexChanged(object sender, EventArgs e)
+            => tbInput.Enabled = cbFilterMethod.SelectedIndex != -1;
     }
 }

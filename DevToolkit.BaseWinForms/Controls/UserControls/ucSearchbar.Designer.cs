@@ -69,10 +69,12 @@
             this.cbFilterMethod.Name = "cbFilterMethod";
             this.cbFilterMethod.Size = new System.Drawing.Size(167, 28);
             this.cbFilterMethod.TabIndex = 4;
+            this.cbFilterMethod.SelectedIndexChanged += new System.EventHandler(this.cbFilterMethod_SelectedIndexChanged);
             // 
             // tbInput
             // 
             this.tbInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbInput.Enabled = false;
             this.tbInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbInput.Location = new System.Drawing.Point(41, 7);
             this.tbInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
