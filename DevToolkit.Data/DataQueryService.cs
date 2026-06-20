@@ -16,15 +16,18 @@ namespace DevToolkit.Data
 {
     public static class DataQueryService
     {
-        public static Result<IEnumerable<T>> Query<T>(CommandType commandType, 
-            string CommandText, IEnumerable<DbParameterInfo> Parameters = null) where T : new()
+        public static Result<IEnumerable<T>> Query<T>(
+            CommandType commandType, 
+            string CommandText, 
+            IEnumerable<DbParameterInfo> Parameters = null) 
+            where T : new()
         {
             List<T> ObjsList = new List<T>();
 
             Result<DataTable> dtResult = DbManager.Current?
                 .GetDataTable(commandType, CommandText, Parameters);
 
-            if (dtResult == null || !dtResult.IsSuccess)
+            if (!dtResult.IsSuccess)
                 return Result<IEnumerable<T>>.Failure(dtResult?.Message);
 
             DataTable dt = dtResult.Data;
@@ -37,8 +40,11 @@ namespace DevToolkit.Data
             return Result<IEnumerable<T>>.Success(ObjsList);
         }
 
-        public static Result<T> FirstOrDefault<T>(CommandType commandType, string CommandText,
-                IEnumerable<DbParameterInfo> Parameters = null) where T : new()
+        public static Result<T> FirstOrDefault<T>(
+            CommandType commandType, 
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null)
+            where T : new()
         {
             Result<DataRow> drResult = DbManager.Current?
                 .GetFirstRow(commandType, CommandText, Parameters);
@@ -54,8 +60,13 @@ namespace DevToolkit.Data
             return Result<T>.Failure(drResult?.Message);
         }
 
-        public static Result<T> Scalar<T>(CommandType commandType, string commandText,
+        public static Result<T> Scalar<T>(
+            CommandType commandType, 
+            string commandText,
             IEnumerable<DbParameterInfo> Parameters = null)
-            => DbManager.Current?.GetScalar<T>(commandType, commandText, Parameters);
+            => DbManager.Current?.GetScalar<T>(
+                commandType, 
+                commandText, 
+                Parameters);
     }
 }

@@ -17,8 +17,11 @@ namespace DevToolkit.Data.Executors
 {
     public class SqlServerExecutor : IDbExecutor
     {
-        private SqlCommand _PrepareCommand(SqlConnection con,
-            CommandType commandType, string CommandText, IEnumerable<SqlParameter> Parameters)
+        private SqlCommand _PrepareCommand(
+            SqlConnection con,
+            CommandType commandType, 
+            string CommandText, 
+            IEnumerable<SqlParameter> Parameters)
         {
             SqlCommand cmd = new SqlCommand(CommandText, con);
             cmd.CommandType = commandType;
@@ -34,8 +37,8 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
-        private IEnumerable<SqlParameter> 
-            _CreateParameters(IEnumerable<DbParameterInfo> Parameters)
+        private IEnumerable<SqlParameter> _CreateParameters(
+            IEnumerable<DbParameterInfo> Parameters)
         {
             if (!Guard.HasItems(Parameters))
                 return new SqlParameter[0];
@@ -56,13 +59,19 @@ namespace DevToolkit.Data.Executors
             }).ToArray();
         }
 
-        public Result<DataTable> GetDataTable(CommandType commandType, string CommandText,
+        public Result<DataTable> GetDataTable(
+            CommandType commandType,
+            string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(DataConfiguration.ConnectionString))
-                    using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SqlConnection con = new SqlConnection(
+                    DataConfiguration.ConnectionString))
+                    using (SqlCommand cmd = _PrepareCommand(
+                        con, 
+                        commandType, 
+                        CommandText,
                         _CreateParameters(Parameters)))
                     {
                         DataTable dt = new DataTable();
@@ -78,31 +87,47 @@ namespace DevToolkit.Data.Executors
             }
             catch (Exception ex)
             {
-                LogManager.LogError($"GetDataTable Failed. Command: {CommandText}", ex);
+                LogManager.LogError(
+                    $"GetDataTable Failed. Command: {CommandText}",
+                    ex);
                 return Result<DataTable>.Failure("Failed to retrieve data table.");
             }
         }
 
-        public Result<DataRow> GetFirstRow(CommandType commandType, string CommandText,
+        public Result<DataRow> GetFirstRow(
+            CommandType commandType, 
+            string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null)
         {
-            Result<DataTable> dtResult = GetDataTable(commandType, CommandText, Parameters);
-            if (!dtResult.IsSuccess)
+            Result<DataTable> dtResult = GetDataTable(
+                commandType, 
+                CommandText, 
+                Parameters);
+
+            if (dtResult == null || !dtResult.IsSuccess)
                 return Result<DataRow>.Failure("Failed to retrieve data row.");
 
             DataTable dt = dtResult.Data;
-            return dt.Rows.Count > 0 ?
-                Result<DataRow>.Success(dt.Rows[0]) :
-                Result<DataRow>.Success(default(DataRow) ,"No rows found.");
+
+            return Result<DataRow>.Success(
+                dt.Rows.Count > 0 ?
+                dt.Rows[0] :
+                default(DataRow));
         }
 
-        public Result<T> GetScalar<T>(CommandType commandType, string CommandText,
+        public Result<T> GetScalar<T>(
+            CommandType commandType,
+            string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(DataConfiguration.ConnectionString))
-                    using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SqlConnection con = new SqlConnection(
+                    DataConfiguration.ConnectionString))
+                    using (SqlCommand cmd = _PrepareCommand(
+                        con, 
+                        commandType,
+                        CommandText,
                         _CreateParameters(Parameters)))
                     {
                         con.Open();
@@ -110,26 +135,35 @@ namespace DevToolkit.Data.Executors
                         object result = cmd.ExecuteScalar();
 
                         if (result == null || result == DBNull.Value)
-                            return Result<T>.Success(default 
-                                ,"Failed to retrieve scalar value.");
+                            return Result<T>.Success(default);
 
-                        return Result<T>.Success((T)Convert.ChangeType(result, typeof(T)));
+                        return Result<T>.Success(
+                            (T)Convert.ChangeType(result, typeof(T)));
                     }
             }
             catch (Exception ex)
             {
-                LogManager.LogError($"GetScalar Failed. Command: {CommandText}", ex);
+                LogManager.LogError(
+                    $"GetScalar Failed. Command: {CommandText}", 
+                    ex);
+
                 return Result<T>.Failure("Failed to retrieve scalar value.");
             }
         }
 
-        public Result<int> ExecuteNonQuery(CommandType commandType, string CommandText,
+        public Result<int> ExecuteNonQuery(
+            CommandType commandType,
+            string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(DataConfiguration.ConnectionString))
-                    using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SqlConnection con = new SqlConnection(
+                    DataConfiguration.ConnectionString))
+                    using (SqlCommand cmd = _PrepareCommand(
+                        con, 
+                        commandType,
+                        CommandText,
                         _CreateParameters(Parameters)))
                     {
                         con.Open();
@@ -138,19 +172,28 @@ namespace DevToolkit.Data.Executors
             }
             catch (Exception ex)
             {
-                LogManager.LogError($"ExecuteNonQuery Failed. Command: {CommandText}", ex);
+                LogManager.LogError(
+                    $"ExecuteNonQuery Failed. Command: {CommandText}",
+                    ex);
+
                 return Result<int>.Failure("Failed to execute non-query.");
             }
         }
 
 
-        public Result<DataSet> GetDataSet(CommandType commandType, string CommandText,
+        public Result<DataSet> GetDataSet(
+            CommandType commandType,
+            string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(DataConfiguration.ConnectionString))
-                    using (SqlCommand cmd = _PrepareCommand(con, commandType, CommandText,
+                using (SqlConnection con = new SqlConnection(
+                    DataConfiguration.ConnectionString))
+                    using (SqlCommand cmd = _PrepareCommand(
+                        con,
+                        commandType, 
+                        CommandText,
                         _CreateParameters(Parameters)))
                     {
                         DataSet ds = new DataSet();
@@ -163,16 +206,22 @@ namespace DevToolkit.Data.Executors
             }
             catch (Exception ex)
             {
-                LogManager.LogError($"GetDataSet Failed. Command: {CommandText}", ex);
+                LogManager.LogError(
+                    $"GetDataSet Failed. Command: {CommandText}",
+                    ex);
+
                 return Result<DataSet>.Failure("Failed to retrieve data set.");
             }
         }
 
-        public Result ExecuteTransaction(Action<IDbConnection, IDbTransaction> action)
+        public Result ExecuteTransaction(
+            Action<IDbConnection,
+                IDbTransaction> action)
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(DataConfiguration.ConnectionString))
+                using (SqlConnection con = new SqlConnection(
+                    DataConfiguration.ConnectionString))
                 {
                     con.Open();
 
@@ -186,9 +235,14 @@ namespace DevToolkit.Data.Executors
                         }
                         catch (Exception ex)
                         {
-                            LogManager.LogError("Transaction Failed. Rolling back.", ex);
+                            LogManager.LogError(
+                                "Transaction Failed. Rolling back.",
+                                ex);
+
                             transaction?.Rollback();
-                            return Result.Failure("Failed to execute transaction.");
+
+                            return Result.Failure(
+                                "Failed to execute transaction.");
                         }
                     }
                 }
