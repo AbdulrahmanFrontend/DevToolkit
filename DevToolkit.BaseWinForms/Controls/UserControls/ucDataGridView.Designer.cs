@@ -247,6 +247,7 @@
             this.ctrlDgvMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ctrlDgvMain.Size = new System.Drawing.Size(1028, 453);
             this.ctrlDgvMain.TabIndex = 17;
+            this.ctrlDgvMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctrlDgvMain_CellDoubleClick);
             // 
             // searchbar
             // 

@@ -164,5 +164,26 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 if (PageNumberSelected != null)
                     RaisePageNumberSelected(value);
         }
+
+        private void ctrlDgvMain_CellDoubleClick(
+            object sender, 
+            DataGridViewCellEventArgs e)
+        {
+            if (RowDoubleClicked != null)
+                RaiseRowDoubleClicked();
+        }
+
+        public void RaiseRowDoubleClicked()
+            => RaiseRowDoubleClicked(new RowDoubleClickedEventArgs());
+
+        protected virtual void RaiseRowDoubleClicked(RowDoubleClickedEventArgs e)
+            => RowDoubleClicked?.Invoke(this, e);
+
+        public event EventHandler<RowDoubleClickedEventArgs> RowDoubleClicked;
+
+        public class RowDoubleClickedEventArgs : EventArgs
+        {
+            
+        }
     }
 }

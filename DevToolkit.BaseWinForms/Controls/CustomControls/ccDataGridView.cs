@@ -71,15 +71,12 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
 
         public object GetSelectedRow(string columnName)
         {
-            if (!Guard.HasValue(columnName) || this.CurrentRow == null)
+            if (!Guard.HasValue(columnName) ||
+                this.CurrentRow == null || 
+                this.CurrentRow.Cells[columnName] == null)
                 return null;
 
             return this.CurrentRow.Cells[columnName].Value;
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
         }
     }
 }
