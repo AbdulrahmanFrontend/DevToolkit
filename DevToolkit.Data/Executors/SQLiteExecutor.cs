@@ -36,6 +36,28 @@ namespace DevToolkit.Data.Executors
             return cmd;
         }
 
+        private SQLiteCommand _PrepareCommand(
+            SQLiteConnection con,
+            SQLiteTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<SQLiteParameter> Parameters)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(CommandText, con, trans);
+            cmd.CommandType = commandType;
+
+            if (Guard.HasItems(Parameters))
+                foreach (var p in Parameters)
+                {
+                    if (p.Value == null)
+                        p.Value = DBNull.Value;
+
+                    cmd.Parameters.Add(p);
+                }
+
+            return cmd;
+        }
+
         private IEnumerable<SQLiteParameter> _CreateParameters(
             IEnumerable<DbParameterInfo> Parameters)
         {
@@ -150,6 +172,41 @@ namespace DevToolkit.Data.Executors
             }
         }
 
+        public Result<T> GetScalar<T>(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = _PrepareCommand(
+                    (SQLiteConnection)con,
+                    (SQLiteTransaction)trans,
+                    commandType,
+                    CommandText,
+                    _CreateParameters(Parameters)))
+                {
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                        return Result<T>.Success(default(T));
+
+                    return Result<T>.Success(
+                        (T)Convert.ChangeType(result, typeof(T)));
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogError(
+                    $"GetScalar Failed. Command: {CommandText}",
+                    ex);
+
+                return Result<T>.Failure("Failed to retrieve scalar value.");
+            }
+        }
+
         public Result<int> ExecuteNonQuery(
             CommandType commandType,
             string CommandText,
@@ -168,6 +225,35 @@ namespace DevToolkit.Data.Executors
                         con.Open();
                         return Result<int>.Success(cmd.ExecuteNonQuery());
                     }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogError(
+                    $"ExecuteNonQuery Failed. Command: {CommandText}",
+                    ex);
+
+                return Result<int>.Failure("Failed to execute non-query.");
+            }
+        }
+
+        public Result<int> ExecuteNonQuery(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = _PrepareCommand(
+                    (SQLiteConnection)con,
+                    (SQLiteTransaction)trans,
+                    commandType,
+                    CommandText,
+                    _CreateParameters(Parameters)))
+                {
+                    return Result<int>.Success(cmd.ExecuteNonQuery());
+                }
             }
             catch (Exception ex)
             {
@@ -218,8 +304,7 @@ namespace DevToolkit.Data.Executors
         }
 
         public Result ExecuteTransaction(
-            Action<IDbConnection, 
-                IDbTransaction> action)
+            Action<IDbConnection, IDbTransaction> action)
         {
             try
             {

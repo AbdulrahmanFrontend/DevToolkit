@@ -26,10 +26,24 @@ namespace DevToolkit.Data.Core
             string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null);
 
+        Result<T> GetScalar<T>(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null);
+
         Result<int> ExecuteNonQuery(
             CommandType commandType,
             string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null);
+
+        Result<int> ExecuteNonQuery(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string commandText,
+            IEnumerable<DbParameterInfo> parameters = null);
 
         Result<DataSet> GetDataSet(
             CommandType commandType,
