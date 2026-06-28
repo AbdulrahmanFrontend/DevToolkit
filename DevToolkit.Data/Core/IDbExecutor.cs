@@ -16,6 +16,13 @@ namespace DevToolkit.Data.Core
             string CommandText,
             IEnumerable<DbParameterInfo> Parameters = null);
 
+        Result<DataTable> GetDataTable(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null);
+
         Result<DataRow> GetFirstRow(
             CommandType commandType,
             string CommandText,

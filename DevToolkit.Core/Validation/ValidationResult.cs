@@ -8,8 +8,9 @@ namespace DevToolkit.Core.Validation
 {
     public class ValidationResult
     {
-        public List<ValidationError> Errors { get; set; } = new List<ValidationError>();
+        public List<ValidationError> Errors { get; set; } = 
+            new List<ValidationError>();
 
-        public bool IsValid => Errors.Count == 0;
+        public bool IsValid => !Errors.Any();
     }
 }

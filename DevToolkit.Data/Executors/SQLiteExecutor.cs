@@ -115,6 +115,41 @@ namespace DevToolkit.Data.Executors
             }
         }
 
+        public Result<DataTable> GetDataTable(
+            IDbConnection con,
+            IDbTransaction trans,
+            CommandType commandType,
+            string CommandText,
+            IEnumerable<DbParameterInfo> Parameters = null)
+        {
+            try
+            {
+                using (SQLiteCommand cmd = _PrepareCommand(
+                    (SQLiteConnection)con,
+                    (SQLiteTransaction)trans,
+                    commandType,
+                    CommandText,
+                    _CreateParameters(Parameters)))
+                {
+                    DataTable dt = new DataTable();
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                        if (reader.HasRows)
+                            dt.Load(reader);
+
+                    return Result<DataTable>.Success(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogError(
+                    $"GetDataTable Failed. Command: {CommandText}",
+                    ex);
+
+                return Result<DataTable>.Failure("Failed to retrieve data table.");
+            }
+        }
+
         public Result<DataRow> GetFirstRow(
             CommandType commandType,
             string CommandText,

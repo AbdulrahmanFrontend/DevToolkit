@@ -14,19 +14,11 @@ namespace DevToolkit.Core
     public abstract class BaseBusiness
     {
         public Mode Mode { get; protected set; }
-        public virtual ValidationResult Validate() => new ValidationResult();
+        protected virtual ValidationResult Validate() => new ValidationResult();
         protected abstract Result _AddNew();
         protected abstract Result _Update();
-        public Result Save()
+        public virtual Result Save()
         {
-            var validationResult = Validate();
-            if (!validationResult.IsValid)
-            {
-                return Result.Failure(
-                    string.Join(
-                        Environment.NewLine,
-                        validationResult.Errors.Select(e => $"{e.PropertyName}: {e.ErrorMessage}")));
-            }
             switch (Mode)
             {
                 case Mode.AddNew:
@@ -37,7 +29,7 @@ namespace DevToolkit.Core
                 case Mode.Update:
                     return _Update();
                 default:
-                    return Result.Failure("Invalid Mode");
+                    return Result.Failure("Invalid Mode!");
             }
         }
     }

@@ -63,7 +63,7 @@
             this.cbFilterMethod.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbFilterMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterMethod.FormattingEnabled = true;
-            this.cbFilterMethod.Location = new System.Drawing.Point(628, 7);
+            this.cbFilterMethod.Location = new System.Drawing.Point(628, 9);
             this.cbFilterMethod.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbFilterMethod.MaxDropDownItems = 5;
             this.cbFilterMethod.Name = "cbFilterMethod";
