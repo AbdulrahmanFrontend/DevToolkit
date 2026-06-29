@@ -29,15 +29,17 @@ namespace DevToolkit.Core.Validation
             return Result;
         }
 
-        public static List<ValidationError> ValidateProperty<T>(PropertyInfo Prop, T obj)
+        public static List<ValidationError> ValidateProperty<T>(PropertyInfo Prop,
+            T obj)
         {
             List<ValidationError> Errors = new List<ValidationError>();
 
             var Value = Prop.GetValue(obj);
-            RequiredAttribute RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
+            var RequiredAttr = Prop.GetCustomAttribute<RequiredAttribute>();
             if (RequiredAttr != null)
             {
-                if(Value == null || (Value is string Str && !Guard.HasValue(Str)))
+                if(Value == null || 
+                    (Value is string Str && !Guard.HasValue(Str)))
                 {
                     _AddError(ref Errors, Prop.Name, RequiredAttr.ErrorMessage);
                     return Errors; // No need to check other attributes if required validation fails
@@ -60,44 +62,69 @@ namespace DevToolkit.Core.Validation
                 }
                 catch
                 {
-                    _AddError(ref Errors, Prop.Name, "Invalid RangeAttribute configuration.");
+                    _AddError(ref Errors, Prop.Name,
+                        "Invalid RangeAttribute configuration.");
                 }
 
             var StrValue = Value as string;
             bool HasValue = Guard.HasValue(StrValue);
 
-            LengthAttribute LengthAttr = Prop.GetCustomAttribute<LengthAttribute>();
+            var LengthAttr = Prop.GetCustomAttribute<LengthAttribute>();
             if (LengthAttr != null)
+            {
                 if (HasValue)
+                {
                     if (StrValue.Length != LengthAttr.Length)
                         _AddError(ref Errors, Prop.Name, LengthAttr.ErrorMessage);
+                }
+            }
 
             var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
             if (MaxLengthAttr != null)
+            {
                 if (HasValue)
+                {
                     if (StrValue.Length > MaxLengthAttr.Length)
-                        _AddError(ref Errors, Prop.Name, MaxLengthAttr.ErrorMessage);
+                        _AddError(
+                            ref Errors, 
+                            Prop.Name,
+                            MaxLengthAttr.ErrorMessage);
+                }
+            }
 
             var MinLengthAttr = Prop.GetCustomAttribute<MinLengthAttribute>();
             if (MinLengthAttr != null)
+            {
                 if (HasValue)
+                {
                     if (StrValue.Length < MinLengthAttr.Length)
-                        _AddError(ref Errors, Prop.Name, MinLengthAttr.ErrorMessage);
+                        _AddError(
+                            ref Errors, 
+                            Prop.Name, 
+                            MinLengthAttr.ErrorMessage);
+                }
+            }
 
             RegexAttribute RegexAttr = Prop.GetCustomAttribute<RegexAttribute>();
-            if (RegexAttr != null && HasValue)
-                if (!Guard.MatchesPattern(StrValue, RegexAttr.Pattern))
+            if (RegexAttr != null)
+            {
+                if (!RegexAttr.IsValid(StrValue))
                     _AddError(ref Errors, Prop.Name, RegexAttr.ErrorMessage);
+            }
 
             return Errors;
         }
 
-        private static void _AddError(ref List<ValidationError> Errors, string PropertyName,
-            string errorMessage) =>
+        private static void _AddError(
+            ref List<ValidationError> Errors,
+            string PropertyName,
+            string errorMessage)
+        {
             Errors.Add(new ValidationError
             {
                 PropertyName = PropertyName,
                 ErrorMessage = errorMessage
             });
+        }
     }
 }

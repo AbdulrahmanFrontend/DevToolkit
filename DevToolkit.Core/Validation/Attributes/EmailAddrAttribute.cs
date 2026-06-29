@@ -10,7 +10,7 @@ namespace DevToolkit.Core.Validation.Attributes
     public class EmailAddrAttribute : RegexAttribute
     {
         public EmailAddrAttribute(string errorMessage = "Invalid Email Address") 
-            : base(ValidationPatterns.EmailAddrPattern)
+            : base(ValidationPatterns.EmailAddress)
         {
             this.ErrorMessage = errorMessage;
         }

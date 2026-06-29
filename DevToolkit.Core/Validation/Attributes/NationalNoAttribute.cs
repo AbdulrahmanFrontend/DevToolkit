@@ -10,7 +10,7 @@ namespace DevToolkit.Core.Validation.Attributes
     public class NationalNoAttribute : RegexAttribute
     {
         public NationalNoAttribute(string errorMessage = "Invalid National Number")
-             : base(ValidationPatterns.NationalNoPattern)
+             : base(ValidationPatterns.NationalNumber)
         {
             this.ErrorMessage = errorMessage;
         }

@@ -32,4 +32,11 @@ namespace DevToolkit.Core.Common
     }
 
     public enum Language { ar, en }
+
+    public enum frmMode
+    {
+        AddNew = 0,
+        Update = 1,
+        Edit = 2,
+    }
 }
