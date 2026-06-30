@@ -10,7 +10,7 @@ namespace DevToolkit.Core.Validation.Attributes
     public class PhoneNoAttribute : RegexAttribute
     {
         public PhoneNoAttribute(string errorMessage = "Invalid Phone Number")
-             : base(ValidationPatterns.NationalNumber)
+             : base(ValidationPatterns.PhoneNumber)
         {
             this.ErrorMessage = errorMessage;
         }

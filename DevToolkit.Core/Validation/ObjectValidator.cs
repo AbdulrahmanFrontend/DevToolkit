@@ -74,34 +74,30 @@ namespace DevToolkit.Core.Validation
             {
                 if (HasValue)
                 {
-                    if (StrValue.Length != LengthAttr.Length)
-                        _AddError(ref Errors, Prop.Name, LengthAttr.ErrorMessage);
-                }
-            }
-
-            var MaxLengthAttr = Prop.GetCustomAttribute<MaxLengthAttribute>();
-            if (MaxLengthAttr != null)
-            {
-                if (HasValue)
-                {
-                    if (StrValue.Length > MaxLengthAttr.Length)
-                        _AddError(
-                            ref Errors, 
-                            Prop.Name,
-                            MaxLengthAttr.ErrorMessage);
-                }
-            }
-
-            var MinLengthAttr = Prop.GetCustomAttribute<MinLengthAttribute>();
-            if (MinLengthAttr != null)
-            {
-                if (HasValue)
-                {
-                    if (StrValue.Length < MinLengthAttr.Length)
-                        _AddError(
-                            ref Errors, 
-                            Prop.Name, 
-                            MinLengthAttr.ErrorMessage);
+                    if (LengthAttr is MaxLengthAttribute)
+                    {
+                        if (StrValue.Length > LengthAttr.Length)
+                            _AddError(
+                                ref Errors,
+                                Prop.Name,
+                                LengthAttr.ErrorMessage);
+                    }
+                    else if (LengthAttr is MinLengthAttribute)
+                    {
+                        if (StrValue.Length > LengthAttr.Length)
+                            _AddError(
+                                ref Errors,
+                                Prop.Name,
+                                LengthAttr.ErrorMessage);
+                    }
+                    else
+                    {
+                        if (StrValue.Length != LengthAttr.Length)
+                            _AddError(
+                                ref Errors,
+                                Prop.Name,
+                                LengthAttr.ErrorMessage);
+                    }
                 }
             }
 
