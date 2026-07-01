@@ -52,15 +52,20 @@ namespace DevToolkit.BaseWinForms.Forms
             {
                 case MessageBoxButtons.OK:
                     btnOK.Visible = true;
+                    AcceptButton = btnOK;
                     break;
                 case MessageBoxButtons.YesNo:
                     btnYes.Visible = true;
                     btnNo.Visible = true;
+                    AcceptButton = btnYes;
+                    CancelButton = btnNo;
                     break;
                 default:
                     btnOK.Visible = true;
                     btnYes.Visible = false;
                     btnNo.Visible = false;
+                    AcceptButton = btnYes;
+                    CancelButton = btnNo;
                     break;
             }
         }

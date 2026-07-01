@@ -100,11 +100,10 @@ namespace DevToolkit.Data.Executors
 
                         con.Open();
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                            if (reader.HasRows)
-                                dt.Load(reader);
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                            da.Fill(dt);
 
-                        return Result<DataTable>.Success(dt);
+                    return Result<DataTable>.Success(dt);
                     }
             }
             catch (Exception ex)
@@ -136,9 +135,8 @@ namespace DevToolkit.Data.Executors
 
                     con.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                        if (reader.HasRows)
-                            dt.Load(reader);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        da.Fill(dt);
 
                     return Result<DataTable>.Success(dt);
                 }

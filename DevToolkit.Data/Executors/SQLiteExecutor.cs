@@ -98,11 +98,10 @@ namespace DevToolkit.Data.Executors
 
                         con.Open();
 
-                        using (SQLiteDataReader reader = cmd.ExecuteReader())
-                            if (reader.HasRows)
-                                dt.Load(reader);
+                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                        da.Fill(dt);
 
-                        return Result<DataTable>.Success(dt);
+                    return Result<DataTable>.Success(dt);
                     }
             }
             catch (Exception ex)
@@ -133,9 +132,8 @@ namespace DevToolkit.Data.Executors
                 {
                     DataTable dt = new DataTable();
 
-                    using (SQLiteDataReader reader = cmd.ExecuteReader())
-                        if (reader.HasRows)
-                            dt.Load(reader);
+                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                        da.Fill(dt);
 
                     return Result<DataTable>.Success(dt);
                 }

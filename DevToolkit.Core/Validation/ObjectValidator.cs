@@ -50,15 +50,12 @@ namespace DevToolkit.Core.Validation
             if (RangeAttr != null && Value != null)
                 try
                 {
-                    IComparable valueComparable = (IComparable)Value;
+                    double value = Convert.ToDouble(Value);
 
-                    IComparable minComparable = (IComparable)RangeAttr.Min;
-
-                    IComparable maxComparable = (IComparable)RangeAttr.Max;
-
-                    if (valueComparable.CompareTo(minComparable) < 0 ||
-                        valueComparable.CompareTo(maxComparable) > 0)
-                        _AddError(ref Errors, Prop.Name, RangeAttr.ErrorMessage);
+                    if (value < RangeAttr.Min || value > RangeAttr.Max)
+                        _AddError(ref Errors,
+                            Prop.Name,
+                            RangeAttr.ErrorMessage);
                 }
                 catch
                 {
