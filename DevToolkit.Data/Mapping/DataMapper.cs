@@ -41,7 +41,7 @@ namespace DevToolkit.Data.Mapping
 
                     if (TargetType.IsEnum)
                     {
-                        var SafeValue = Enum.ToObject(TargetType, Value);
+                        var SafeValue = Enum.ToObject(TargetType ,Value.ToString());
                         prop.SetValue(obj, SafeValue);
                     }
                     else if (TargetType == typeof(Guid))

@@ -185,5 +185,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             
         }
+
+        private void ctrlDgvMain_CellFormatting(
+            object sender, 
+            DataGridViewCellFormattingEventArgs e)
+            => CellFormatting?.Invoke(this, e);
+
+        [Category("Custom Events")]
+        public event EventHandler<DataGridViewCellFormattingEventArgs> CellFormatting;
     }
 }

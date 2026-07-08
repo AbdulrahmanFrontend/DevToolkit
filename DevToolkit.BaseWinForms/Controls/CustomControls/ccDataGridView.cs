@@ -17,6 +17,8 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
         {
             InitializeComponent();
 
+            this.Cursor = Cursors.Hand;
+
             this.AutoGenerateColumns = false;
 
             this.DoubleBuffered = true;

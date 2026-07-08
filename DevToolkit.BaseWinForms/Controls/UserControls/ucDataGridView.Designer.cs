@@ -226,6 +226,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ctrlDgvMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ctrlDgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctrlDgvMain.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,6 +249,7 @@
             this.ctrlDgvMain.Size = new System.Drawing.Size(1028, 453);
             this.ctrlDgvMain.TabIndex = 17;
             this.ctrlDgvMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctrlDgvMain_CellDoubleClick);
+            this.ctrlDgvMain.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ctrlDgvMain_CellFormatting);
             // 
             // searchbar
             // 
