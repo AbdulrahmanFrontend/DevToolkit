@@ -13,17 +13,16 @@ namespace DevToolkit.Logging.Providers
 {
     public class FileLogger : ILogger
     {
-        private static string _LogFilePath 
-            => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs", "AppLog.txt");
+        public static string LogFilePath { get; set; }
 
         static FileLogger()
         {
-            string Folder = Path.GetDirectoryName(_LogFilePath);
+            string Folder = Path.GetDirectoryName(LogFilePath);
             if (!Directory.Exists(Folder))
                 Directory.CreateDirectory(Folder);
 
-            else if (File.Exists(_LogFilePath) && new FileInfo(_LogFilePath).Length > 5_000_000)
-                File.WriteAllText(_LogFilePath, string.Empty);
+            else if (File.Exists(LogFilePath) && new FileInfo(LogFilePath).Length > 5_000_000)
+                File.WriteAllText(LogFilePath, string.Empty);
         }
 
         private static void _Log(StreamWriter Writer, LogLevel Level, string message)
@@ -38,7 +37,7 @@ namespace DevToolkit.Logging.Providers
         {
             try
             {
-                using (StreamWriter Writer = new StreamWriter(_LogFilePath, true))
+                using (StreamWriter Writer = new StreamWriter(LogFilePath, true))
                 {
                     _Log(Writer, Level, message);
                     if (Ex != null)
