@@ -30,5 +30,29 @@ namespace DevToolkit.BaseWinForms.Theming
 
         // لون حواف العنصر المحدد
         public override Color MenuItemBorder => Color.FromArgb(138, 180, 248);
+
+        public override Color MenuStripGradientBegin
+            => Color.FromArgb(15, 23, 42);
+
+        public override Color MenuStripGradientEnd
+            => Color.FromArgb(15, 23, 42);
+
+        public override Color MenuItemPressedGradientBegin
+            => Color.FromArgb(37, 99, 235);
+
+        public override Color MenuItemPressedGradientEnd
+            => Color.FromArgb(37, 99, 235);
+
+        public override Color MenuItemSelectedGradientBegin
+            => Color.FromArgb(30, 41, 59);
+
+        public override Color MenuItemSelectedGradientEnd
+            => Color.FromArgb(30, 41, 59);
+
+        public override Color SeparatorDark
+            => Color.FromArgb(71, 85, 105);
+
+        public override Color SeparatorLight
+            => Color.FromArgb(71, 85, 105);
     }
 }

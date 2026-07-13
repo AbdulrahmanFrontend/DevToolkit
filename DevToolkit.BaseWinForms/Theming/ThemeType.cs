@@ -11,4 +11,12 @@ namespace DevToolkit.BaseWinForms.Theming
         Light,
         Dark,
     }
+
+    public enum ButtonStyle
+    {
+        Primary,
+        Secondary,
+        Success,
+        Danger
+    }
 }

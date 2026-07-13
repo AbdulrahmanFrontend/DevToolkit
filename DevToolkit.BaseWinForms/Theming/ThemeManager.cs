@@ -10,7 +10,5 @@ namespace DevToolkit.BaseWinForms.Theming
     public static class ThemeManager
     {
         public static ThemeType CurrentTheme { get; set; } = ThemeType.Light;
-
-        public static ThemeColors CurrentColors { get; set; }
     }
 }

@@ -18,10 +18,9 @@ namespace DevToolkit.BaseWinForms.Forms
             InitializeComponent();
         }
 
-        protected virtual void _ApplyTheme(ThemeColors theme)
+        protected virtual void _ApplyTheme()
         {
-            this.BackColor = theme.Background;
-            this.ForeColor = theme.TextPrimary;
+            
         }
     }
 }
