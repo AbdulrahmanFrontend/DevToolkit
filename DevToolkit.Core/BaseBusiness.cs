@@ -14,11 +14,39 @@ namespace DevToolkit.Core
     public abstract class BaseBusiness
     {
         public Mode Mode { get; protected set; }
-        protected virtual ValidationResult Validate() => new ValidationResult();
+        protected Result _ValidateProperty<TProp, TObj>(TProp propName, TObj obj)
+        {
+            var ValResult = ObjectValidator.ValidateProperty<TObj>(
+                typeof(TObj).GetProperty(nameof(propName)), obj);
+
+            if (ValResult.Any())
+                return Result.Failure(
+                    string.Join(", ",
+                    ValResult.Select(x => x.ErrorMessage)) + "!");
+
+            return Result.Success();
+        }
+        public virtual Result Valid()
+        {
+            var ValResult = _Validate();
+
+            if (!ValResult.IsValid)
+                return Result.Failure(
+                    string.Join(", ",
+                    ValResult.Errors.Select(x => x.ErrorMessage)) + "!");
+
+            return Result.Success();
+        }
+        protected virtual ValidationResult _Validate() => new ValidationResult();
         protected abstract Result _AddNew();
         protected abstract Result _Update();
         public virtual Result Save()
         {
+            Result result = Valid();
+
+            if (!result.IsSuccess)
+                return result;
+
             switch (Mode)
             {
                 case Mode.AddNew:
