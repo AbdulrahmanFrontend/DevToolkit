@@ -15,14 +15,30 @@ namespace DevToolkit.Logging.Providers
     {
         public static string LogFilePath { get; set; }
 
-        static FileLogger()
+        public FileLogger()
         {
-            string Folder = Path.GetDirectoryName(LogFilePath);
-            if (!Directory.Exists(Folder))
-                Directory.CreateDirectory(Folder);
+            Initialize();
+        }
 
-            else if (File.Exists(LogFilePath) && new FileInfo(LogFilePath).Length > 5_000_000)
-                File.WriteAllText(LogFilePath, string.Empty);
+        private static void Initialize()
+        {
+            if (string.IsNullOrWhiteSpace(LogFilePath))
+                throw new InvalidOperationException(
+                    "LogFilePath has not been configured.");
+
+            string folder = Path.GetDirectoryName(LogFilePath);
+
+            Directory.CreateDirectory(folder);
+
+            if (File.Exists(LogFilePath))
+            {
+                FileInfo file = new FileInfo(LogFilePath);
+
+                if (file.Length > 5_000_000)
+                {
+                    File.WriteAllText(LogFilePath, string.Empty);
+                }
+            }
         }
 
         private static void _Log(StreamWriter Writer, LogLevel Level, string message)

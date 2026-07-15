@@ -40,6 +40,16 @@ namespace DevToolkit.Core
         protected virtual ValidationResult _Validate() => new ValidationResult();
         protected abstract Result _AddNew();
         protected abstract Result _Update();
+        protected static void _ThrowException(Result result)
+        {
+            if (!result.IsSuccess)
+                throw new InvalidOperationException(result?.Message ?? "خطأ غير متوقع!");
+        }
+        protected static void _ThrowException<T>(Result<T> result)
+        {
+            if (!result.IsSuccess)
+                throw new InvalidOperationException(result?.Message ?? "خطأ غير متوقع!");
+        }
         public virtual Result Save()
         {
             Result result = Valid();
