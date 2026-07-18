@@ -14,10 +14,10 @@ namespace DevToolkit.Core
     public abstract class BaseBusiness
     {
         public Mode Mode { get; protected set; }
-        protected Result _ValidateProperty<TProp, TObj>(TProp propName, TObj obj)
+        protected Result _ValidateProperty<TObj>(string propName, TObj obj)
         {
             var ValResult = ObjectValidator.ValidateProperty<TObj>(
-                typeof(TObj).GetProperty(nameof(propName)), obj);
+                typeof(TObj).GetProperty(propName), obj);
 
             if (ValResult.Any())
                 return Result.Failure(
