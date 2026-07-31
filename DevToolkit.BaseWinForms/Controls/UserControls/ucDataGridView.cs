@@ -64,6 +64,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         public object GetSelectedRow(string columnName) 
             => ctrlDgvMain.GetSelectedRow(columnName);
 
+        public object GetSelectedRow(int columnIndex)
+            => ctrlDgvMain.GetSelectedRow(columnIndex);
+
         public void SetPagesCount(int count)
         {
             cbPagesNumbers.Items.Clear();
@@ -83,17 +86,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             EventArgs e)
         {
             if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                if (PageNumberSelected != null)
-                    RaisePageNumberSelected(value);
+                PageNumberSelected?.Invoke(this, new PageNumberSelectedEventArgs(value));
         }
-
-        public void RaisePageNumberSelected(int pageNumber)
-            => RaisePageNumberSelected(
-                new PageNumberSelectedEventArgs(pageNumber));
-
-        protected virtual void RaisePageNumberSelected(
-            PageNumberSelectedEventArgs e)
-            => PageNumberSelected?.Invoke(this, e);
 
         [Category("Custom Events")]
         public event EventHandler<PageNumberSelectedEventArgs> PageNumberSelected;
@@ -122,8 +116,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             cbPagesNumbers.SelectedIndex = 0;
 
             if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                if (PageNumberSelected != null)
-                    RaisePageNumberSelected(value);
+                PageNumberSelected?.Invoke(this, new PageNumberSelectedEventArgs(value));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -135,8 +128,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 cbPagesNumbers.SelectedIndex--;
 
                 if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                    if (PageNumberSelected != null)
-                        RaisePageNumberSelected(value);
+                    PageNumberSelected?.Invoke(
+                        this, 
+                        new PageNumberSelectedEventArgs(value));
             }
         }
 
@@ -149,8 +143,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 cbPagesNumbers.SelectedIndex++;
 
                 if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                    if (PageNumberSelected != null)
-                        RaisePageNumberSelected(value);
+                    PageNumberSelected?.Invoke(
+                        this, 
+                        new PageNumberSelectedEventArgs(value));
             }
         }
 
@@ -161,30 +156,18 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             cbPagesNumbers.SelectedIndex = cbPagesNumbers.Items.Count - 1;
 
             if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                if (PageNumberSelected != null)
-                    RaisePageNumberSelected(value);
+                PageNumberSelected?.Invoke(
+                    this, 
+                    new PageNumberSelectedEventArgs(value));
         }
 
         private void ctrlDgvMain_CellDoubleClick(
-            object sender, 
+            object sender,
             DataGridViewCellEventArgs e)
-        {
-            if (RowDoubleClicked != null)
-                RaiseRowDoubleClicked();
-        }
-
-        public void RaiseRowDoubleClicked()
-            => RaiseRowDoubleClicked(new RowDoubleClickedEventArgs());
-
-        protected virtual void RaiseRowDoubleClicked(RowDoubleClickedEventArgs e)
             => RowDoubleClicked?.Invoke(this, e);
 
-        public event EventHandler<RowDoubleClickedEventArgs> RowDoubleClicked;
-
-        public class RowDoubleClickedEventArgs : EventArgs
-        {
-            
-        }
+        [Category("Custom Events")]
+        public event EventHandler RowDoubleClicked;
 
         private void ctrlDgvMain_CellFormatting(
             object sender, 

@@ -80,5 +80,14 @@ namespace DevToolkit.BaseWinForms.Controls.CustomControls
 
             return this.CurrentRow.Cells[columnName].Value;
         }
+
+        public object GetSelectedRow(int columnIndex)
+        {
+            if (this.CurrentRow == null ||
+                this.CurrentRow.Cells[columnIndex] == null)
+                return null;
+
+            return this.CurrentRow.Cells[columnIndex].Value;
+        }
     }
 }
