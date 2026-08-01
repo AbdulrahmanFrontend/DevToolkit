@@ -168,7 +168,7 @@ This project is currently released for portfolio and educational purposes.
 Abdelrahman Nasser
 
 GitHub:
-(Your GitHub Profile)
+(https://github.com/AbdulrahmanFrontend)
 
 LinkedIn:
-(Your LinkedIn Profile)
+(www.linkedin.com/in/abdulrahman-nasser-935213371)
