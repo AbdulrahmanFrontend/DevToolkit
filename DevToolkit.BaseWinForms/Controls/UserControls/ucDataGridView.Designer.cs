@@ -319,7 +319,6 @@
             // 
             this.searchbar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.searchbar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchbar.Input = "";
             this.searchbar.Location = new System.Drawing.Point(419, 0);
             this.searchbar.Margin = new System.Windows.Forms.Padding(0);
             this.searchbar.Name = "searchbar";

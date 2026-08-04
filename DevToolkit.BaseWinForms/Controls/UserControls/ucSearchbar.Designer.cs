@@ -82,6 +82,7 @@
             this.tbInput.Size = new System.Drawing.Size(581, 27);
             this.tbInput.TabIndex = 2;
             this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
+            this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
             // 
             // btnCancel
             // 
