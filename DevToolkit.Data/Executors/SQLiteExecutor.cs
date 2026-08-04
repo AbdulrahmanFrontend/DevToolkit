@@ -317,12 +317,8 @@ namespace DevToolkit.Data.Executors
 
                         DataSet ds = new DataSet();
 
-                        using(SQLiteDataReader reader = cmd.ExecuteReader())
-                        {
-                            DataTable dt = new DataTable();
-                            dt.Load(reader);
-                            ds.Tables.Add(dt);
-                        }
+                        using(SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+                            adapter.Fill(ds);
 
                         return Result<DataSet>.Success(ds);
                     }
