@@ -35,16 +35,11 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         private void tbInput_TextChanged(object sender, EventArgs e)
         {
-            if (InputChanged != null)
-                RaiseInputChanged(SelectedFilterIndex, Input);
+            InputChanged?.Invoke(this, 
+                new InputChangedEventArgs(
+                    cbFilterMethod.SelectedIndex,
+                    tbInput.Text));
         }
-
-        public void RaiseInputChanged(int filteringMethodIndex, string input)
-            => RaiseInputChanged(
-                new InputChangedEventArgs(filteringMethodIndex, input));
-
-        protected virtual void RaiseInputChanged(InputChangedEventArgs e)
-            => InputChanged?.Invoke(this, e);
 
         [Category("Custom Events")]
         public event EventHandler<InputChangedEventArgs> InputChanged;
@@ -52,8 +47,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         public class InputChangedEventArgs : EventArgs
         {
             public int FilteringMethodIndex { get; }
-            public string Input { get; }
-            public InputChangedEventArgs(int filteringMethodIndex, string input)
+            public object Input { get; }
+            public InputChangedEventArgs(int filteringMethodIndex, object input)
             {
                 FilteringMethodIndex = filteringMethodIndex;
                 Input = input;
@@ -67,11 +62,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         [Category("Custom Properties")]
-        public string Input
-        {
-            get => tbInput.Text?.ToString();
-            set => tbInput.Text = value;
-        }
+        public object Input => tbInput.Text?.ToString();
 
         [Category("Custom Properties")]
         public int SelectedFilterIndex => cbFilterMethod.SelectedIndex;
@@ -84,6 +75,17 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         private void cbFilterMethod_SelectedIndexChanged(object sender, EventArgs e)
-            => tbInput.Enabled = cbFilterMethod.SelectedIndex != -1;
+        {
+            tbInput.Enabled = cbFilterMethod.SelectedIndex != -1;
+            InputChanged?.Invoke(this,
+                new InputChangedEventArgs(
+                    cbFilterMethod.SelectedIndex,
+                    tbInput.Text));
+        }
+
+        private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
+            => InputEntered?.Invoke(this, EventArgs.Empty);
+
+        public event EventHandler InputEntered;
     }
 }

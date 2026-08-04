@@ -85,28 +85,63 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             object sender, 
             EventArgs e)
         {
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                PageNumberSelected?.Invoke(this, new PageNumberSelectedEventArgs(value));
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                Filter?.Invoke(this, 
+                    new FilterEventArgs(
+                        pageNumber, 
+                        pageSize,
+                        searchbar.SelectedFilterIndex,
+                        searchbar.Input, 
+                        cbFilterValues.SelectedIndex));
         }
 
         [Category("Custom Events")]
-        public event EventHandler<PageNumberSelectedEventArgs> PageNumberSelected;
+        public event EventHandler<FilterEventArgs> Filter;
 
-        public class PageNumberSelectedEventArgs : EventArgs
+        public class FilterEventArgs : EventArgs
         {
             public int PageNumber { get; }
-            public PageNumberSelectedEventArgs(int pageNumber)
+
+            public int PageSize { get; }
+            
+            public int FilteringMethodIndex { get; }
+
+            public object Input { get; }
+
+            public int FilteringValueIndex { get; }
+
+            public FilterEventArgs(
+                int pageNumber, 
+                int pageSize, 
+                int filteringMethodIndex,
+                object input, 
+                int filteringValueIndex)
             {
                 PageNumber = pageNumber;
+                PageSize = pageSize;
+                FilteringMethodIndex = filteringMethodIndex;
+                Input = input;
+                FilteringValueIndex = filteringValueIndex;
             }
         }
 
         private void ucDataGridView_Load(object sender, EventArgs e)
         {
             if (RightToLeft == RightToLeft.Yes)
+            { 
                 lblPage.Text = "صفحة: ";
+                lblPageSize.Text = "حجم الصفحة: ";
+                lblRecordsCount.Text = $"عدد الصفوف: 0";
+                searchbar.RightToLeft = RightToLeft.Yes;
+            }
             else
+            {
                 lblPage.Text = "Page: ";
+                lblPageSize.Text = "Page Size: ";
+                lblRecordsCount.Text = $"Records Count: 0";
+                searchbar.RightToLeft = RightToLeft.Yes;
+            }
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -115,8 +150,15 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
             cbPagesNumbers.SelectedIndex = 0;
 
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                PageNumberSelected?.Invoke(this, new PageNumberSelectedEventArgs(value));
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                Filter?.Invoke(this,
+                    new FilterEventArgs(
+                        pageNumber,
+                        pageSize,
+                        searchbar.SelectedFilterIndex,
+                        searchbar.Input,
+                        cbFilterValues.SelectedIndex));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -127,10 +169,15 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             {
                 cbPagesNumbers.SelectedIndex--;
 
-                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                    PageNumberSelected?.Invoke(
-                        this, 
-                        new PageNumberSelectedEventArgs(value));
+                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                    Filter?.Invoke(this,
+                        new FilterEventArgs(
+                            pageNumber,
+                            pageSize,
+                            searchbar.SelectedFilterIndex,
+                            searchbar.Input,
+                            cbFilterValues.SelectedIndex));
             }
         }
 
@@ -142,10 +189,15 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             {
                 cbPagesNumbers.SelectedIndex++;
 
-                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                    PageNumberSelected?.Invoke(
-                        this, 
-                        new PageNumberSelectedEventArgs(value));
+                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                    Filter?.Invoke(this,
+                        new FilterEventArgs(
+                            pageNumber,
+                            pageSize,
+                            searchbar.SelectedFilterIndex,
+                            searchbar.Input,
+                            cbFilterValues.SelectedIndex));
             }
         }
 
@@ -155,10 +207,15 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
             cbPagesNumbers.SelectedIndex = cbPagesNumbers.Items.Count - 1;
 
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int value))
-                PageNumberSelected?.Invoke(
-                    this, 
-                    new PageNumberSelectedEventArgs(value));
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                Filter?.Invoke(this,
+                    new FilterEventArgs(
+                        pageNumber,
+                        pageSize,
+                        searchbar.SelectedFilterIndex,
+                        searchbar.Input,
+                        cbFilterValues.SelectedIndex));
         }
 
         private void ctrlDgvMain_CellDoubleClick(
