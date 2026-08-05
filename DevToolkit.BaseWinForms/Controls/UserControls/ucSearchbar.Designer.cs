@@ -33,20 +33,23 @@
             this.tbInput = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblSearchBy = new System.Windows.Forms.Label();
+            this.cbFilterValue = new System.Windows.Forms.ComboBox();
             this.tlpContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpContainer
             // 
-            this.tlpContainer.ColumnCount = 4;
+            this.tlpContainer.ColumnCount = 5;
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tlpContainer.Controls.Add(this.cbFilterMethod, 1, 0);
-            this.tlpContainer.Controls.Add(this.tbInput, 2, 0);
-            this.tlpContainer.Controls.Add(this.btnCancel, 3, 0);
+            this.tlpContainer.Controls.Add(this.cbFilterValue, 2, 0);
             this.tlpContainer.Controls.Add(this.lblSearchBy, 0, 0);
+            this.tlpContainer.Controls.Add(this.btnCancel, 4, 0);
+            this.tlpContainer.Controls.Add(this.tbInput, 3, 0);
+            this.tlpContainer.Controls.Add(this.cbFilterMethod, 1, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
             this.tlpContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -63,11 +66,11 @@
             this.cbFilterMethod.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbFilterMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterMethod.FormattingEnabled = true;
-            this.cbFilterMethod.Location = new System.Drawing.Point(628, 9);
+            this.cbFilterMethod.Location = new System.Drawing.Point(616, 7);
             this.cbFilterMethod.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbFilterMethod.MaxDropDownItems = 5;
             this.cbFilterMethod.Name = "cbFilterMethod";
-            this.cbFilterMethod.Size = new System.Drawing.Size(167, 28);
+            this.cbFilterMethod.Size = new System.Drawing.Size(179, 28);
             this.cbFilterMethod.TabIndex = 4;
             this.cbFilterMethod.SelectedIndexChanged += new System.EventHandler(this.cbFilterMethod_SelectedIndexChanged);
             // 
@@ -79,7 +82,7 @@
             this.tbInput.Location = new System.Drawing.Point(41, 7);
             this.tbInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInput.Name = "tbInput";
-            this.tbInput.Size = new System.Drawing.Size(581, 27);
+            this.tbInput.Size = new System.Drawing.Size(471, 27);
             this.tbInput.TabIndex = 2;
             this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
             this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
@@ -110,6 +113,21 @@
             this.lblSearchBy.TabIndex = 0;
             this.lblSearchBy.Text = "بحث بواسطة:";
             // 
+            // cbFilterValue
+            // 
+            this.cbFilterValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFilterValue.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbFilterValue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbFilterValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterValue.FormattingEnabled = true;
+            this.cbFilterValue.Location = new System.Drawing.Point(518, 7);
+            this.cbFilterValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbFilterValue.MaxDropDownItems = 5;
+            this.cbFilterValue.Name = "cbFilterValue";
+            this.cbFilterValue.Size = new System.Drawing.Size(92, 28);
+            this.cbFilterValue.TabIndex = 5;
+            this.cbFilterValue.SelectedIndexChanged += new System.EventHandler(this.cbFilterValue_SelectedIndexChanged);
+            // 
             // ucSearchbar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -135,5 +153,6 @@
         private System.Windows.Forms.TextBox tbInput;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ComboBox cbFilterMethod;
+        private System.Windows.Forms.ComboBox cbFilterValue;
     }
 }

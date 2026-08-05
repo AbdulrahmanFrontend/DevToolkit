@@ -40,19 +40,18 @@
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblRecordsCount = new System.Windows.Forms.Label();
-            this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
-            this.ctrlDgvMain = new DevToolkit.BaseWinForms.Controls.CustomControls.ccDataGridView();
             this.tlpPageSize = new System.Windows.Forms.TableLayoutPanel();
             this.lblPageSize = new System.Windows.Forms.Label();
             this.cbPageSizes = new System.Windows.Forms.ComboBox();
+            this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
+            this.ctrlDgvMain = new DevToolkit.BaseWinForms.Controls.CustomControls.ccDataGridView();
             this.tlpTop = new System.Windows.Forms.TableLayoutPanel();
             this.searchbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar();
-            this.cbFilterValues = new System.Windows.Forms.ComboBox();
             this.tlpFooter.SuspendLayout();
             this.tlpPagination.SuspendLayout();
+            this.tlpPageSize.SuspendLayout();
             this.tlpContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).BeginInit();
-            this.tlpPageSize.SuspendLayout();
             this.tlpTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -195,6 +194,45 @@
             this.lblRecordsCount.TabIndex = 0;
             this.lblRecordsCount.Text = "عدد الصفوف: 0";
             // 
+            // tlpPageSize
+            // 
+            this.tlpPageSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpPageSize.AutoSize = true;
+            this.tlpPageSize.ColumnCount = 2;
+            this.tlpPageSize.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPageSize.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpPageSize.Controls.Add(this.lblPageSize, 0, 0);
+            this.tlpPageSize.Controls.Add(this.cbPageSizes, 1, 0);
+            this.tlpPageSize.Location = new System.Drawing.Point(3, 3);
+            this.tlpPageSize.Name = "tlpPageSize";
+            this.tlpPageSize.RowCount = 1;
+            this.tlpPageSize.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPageSize.Size = new System.Drawing.Size(180, 34);
+            this.tlpPageSize.TabIndex = 13;
+            // 
+            // lblPageSize
+            // 
+            this.lblPageSize.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblPageSize.AutoSize = true;
+            this.lblPageSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPageSize.Location = new System.Drawing.Point(81, 7);
+            this.lblPageSize.Name = "lblPageSize";
+            this.lblPageSize.Size = new System.Drawing.Size(96, 20);
+            this.lblPageSize.TabIndex = 0;
+            this.lblPageSize.Text = "حجم الصفحة: ";
+            // 
+            // cbPageSizes
+            // 
+            this.cbPageSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPageSizes.FormattingEnabled = true;
+            this.cbPageSizes.Location = new System.Drawing.Point(3, 3);
+            this.cbPageSizes.Name = "cbPageSizes";
+            this.cbPageSizes.Size = new System.Drawing.Size(72, 25);
+            this.cbPageSizes.TabIndex = 1;
+            this.cbPageSizes.SelectedIndexChanged += new System.EventHandler(this.cbPageSizes_SelectedIndexChanged);
+            // 
             // tlpContainer
             // 
             this.tlpContainer.ColumnCount = 1;
@@ -259,54 +297,14 @@
             this.ctrlDgvMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctrlDgvMain_CellDoubleClick);
             this.ctrlDgvMain.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ctrlDgvMain_CellFormatting);
             // 
-            // tlpPageSize
-            // 
-            this.tlpPageSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpPageSize.AutoSize = true;
-            this.tlpPageSize.ColumnCount = 2;
-            this.tlpPageSize.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPageSize.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpPageSize.Controls.Add(this.lblPageSize, 0, 0);
-            this.tlpPageSize.Controls.Add(this.cbPageSizes, 1, 0);
-            this.tlpPageSize.Location = new System.Drawing.Point(3, 3);
-            this.tlpPageSize.Name = "tlpPageSize";
-            this.tlpPageSize.RowCount = 1;
-            this.tlpPageSize.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPageSize.Size = new System.Drawing.Size(180, 34);
-            this.tlpPageSize.TabIndex = 13;
-            // 
-            // lblPageSize
-            // 
-            this.lblPageSize.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblPageSize.AutoSize = true;
-            this.lblPageSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPageSize.Location = new System.Drawing.Point(81, 7);
-            this.lblPageSize.Name = "lblPageSize";
-            this.lblPageSize.Size = new System.Drawing.Size(96, 20);
-            this.lblPageSize.TabIndex = 0;
-            this.lblPageSize.Text = "حجم الصفحة: ";
-            // 
-            // cbPageSizes
-            // 
-            this.cbPageSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPageSizes.FormattingEnabled = true;
-            this.cbPageSizes.Location = new System.Drawing.Point(3, 3);
-            this.cbPageSizes.Name = "cbPageSizes";
-            this.cbPageSizes.Size = new System.Drawing.Size(72, 25);
-            this.cbPageSizes.TabIndex = 1;
-            // 
             // tlpTop
             // 
             this.tlpTop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpTop.AutoSize = true;
-            this.tlpTop.ColumnCount = 2;
+            this.tlpTop.ColumnCount = 1;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.21401F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.78599F));
-            this.tlpTop.Controls.Add(this.cbFilterValues, 1, 0);
             this.tlpTop.Controls.Add(this.searchbar, 0, 0);
             this.tlpTop.Location = new System.Drawing.Point(8, 8);
             this.tlpTop.Name = "tlpTop";
@@ -324,18 +322,10 @@
             this.searchbar.Name = "searchbar";
             this.searchbar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.searchbar.ShowCancelButton = true;
+            this.searchbar.ShowFilterValue = true;
             this.searchbar.Size = new System.Drawing.Size(609, 33);
             this.searchbar.TabIndex = 14;
-            // 
-            // cbFilterValues
-            // 
-            this.cbFilterValues.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.cbFilterValues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterValues.FormattingEnabled = true;
-            this.cbFilterValues.Location = new System.Drawing.Point(3, 4);
-            this.cbFilterValues.Name = "cbFilterValues";
-            this.cbFilterValues.Size = new System.Drawing.Size(152, 25);
-            this.cbFilterValues.TabIndex = 15;
+            this.searchbar.Filter += new System.EventHandler<DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar.FilterEventArgs>(this.searchbar_Filter);
             // 
             // ucDataGridView
             // 
@@ -351,11 +341,11 @@
             this.tlpFooter.PerformLayout();
             this.tlpPagination.ResumeLayout(false);
             this.tlpPagination.PerformLayout();
+            this.tlpPageSize.ResumeLayout(false);
+            this.tlpPageSize.PerformLayout();
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).EndInit();
-            this.tlpPageSize.ResumeLayout(false);
-            this.tlpPageSize.PerformLayout();
             this.tlpTop.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -378,6 +368,5 @@
         private System.Windows.Forms.ComboBox cbPageSizes;
         private System.Windows.Forms.TableLayoutPanel tlpTop;
         private ucSearchbar searchbar;
-        private System.Windows.Forms.ComboBox cbFilterValues;
     }
 }

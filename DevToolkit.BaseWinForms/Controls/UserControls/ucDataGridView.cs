@@ -81,6 +81,19 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             cbPagesNumbers.SelectedIndex = 0;
         }
 
+        public void SetPageSizes(IEnumerable<int> pageSizes)
+        {
+            cbPageSizes.Items.Clear();
+
+            if (pageSizes != null && pageSizes.Any())
+            {
+                foreach (var size in pageSizes)
+                    cbPageSizes.Items.Add(size.ToString());
+
+                cbPageSizes.SelectedIndex = 0;
+            }
+        }
+
         private void cbPagesNumbers_SelectedIndexChanged(
             object sender, 
             EventArgs e)
@@ -91,9 +104,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                     new FilterEventArgs(
                         pageNumber, 
                         pageSize,
-                        searchbar.SelectedFilterIndex,
-                        searchbar.Input, 
-                        cbFilterValues.SelectedIndex));
+                        searchbar.SelectedFilterMethodIndex,
+                        searchbar.SelectedFilterValueIndex,
+                        searchbar.Input));
         }
 
         [Category("Custom Events")]
@@ -107,7 +120,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             
             public int FilteringMethodIndex { get; }
 
-            public object Input { get; }
+            public string Input { get; }
 
             public int FilteringValueIndex { get; }
 
@@ -115,8 +128,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 int pageNumber, 
                 int pageSize, 
                 int filteringMethodIndex,
-                object input, 
-                int filteringValueIndex)
+                int filteringValueIndex,
+                string input)
             {
                 PageNumber = pageNumber;
                 PageSize = pageSize;
@@ -156,9 +169,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                     new FilterEventArgs(
                         pageNumber,
                         pageSize,
-                        searchbar.SelectedFilterIndex,
-                        searchbar.Input,
-                        cbFilterValues.SelectedIndex));
+                        searchbar.SelectedFilterMethodIndex,
+                        searchbar.SelectedFilterValueIndex,
+                        searchbar.Input));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -175,9 +188,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                         new FilterEventArgs(
                             pageNumber,
                             pageSize,
-                            searchbar.SelectedFilterIndex,
-                            searchbar.Input,
-                            cbFilterValues.SelectedIndex));
+                            searchbar.SelectedFilterMethodIndex,
+                            searchbar.SelectedFilterValueIndex,
+                            searchbar.Input));
             }
         }
 
@@ -195,9 +208,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                         new FilterEventArgs(
                             pageNumber,
                             pageSize,
-                            searchbar.SelectedFilterIndex,
-                            searchbar.Input,
-                            cbFilterValues.SelectedIndex));
+                            searchbar.SelectedFilterMethodIndex,
+                            searchbar.SelectedFilterValueIndex,
+                            searchbar.Input));
             }
         }
 
@@ -213,9 +226,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                     new FilterEventArgs(
                         pageNumber,
                         pageSize,
-                        searchbar.SelectedFilterIndex,
-                        searchbar.Input,
-                        cbFilterValues.SelectedIndex));
+                        searchbar.SelectedFilterMethodIndex,
+                        searchbar.SelectedFilterValueIndex,
+                        searchbar.Input));
         }
 
         private void ctrlDgvMain_CellDoubleClick(
@@ -233,5 +246,31 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         [Category("Custom Events")]
         public event EventHandler<DataGridViewCellFormattingEventArgs> CellFormatting;
+
+        private void searchbar_Filter(object sender, ucSearchbar.FilterEventArgs e)
+        {
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                Filter?.Invoke(this,
+                    new FilterEventArgs(
+                        pageNumber,
+                        pageSize,
+                        e.FilteringMethodIndex,
+                        e.FilteringValueIndex,
+                        e.Input));
+        }
+
+        private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
+                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
+                Filter?.Invoke(this,
+                    new FilterEventArgs(
+                        pageNumber,
+                        pageSize,
+                        searchbar.SelectedFilterMethodIndex,
+                        searchbar.SelectedFilterValueIndex,
+                        searchbar.Input));
+        }
     }
 }
