@@ -171,7 +171,7 @@
     <Compile Include="Theming\DevColors.cs" />
     <Compile Include="Theming\DevFonts.cs" />
     <Compile Include="Theming\ThemeManager.cs" />
-    <Compile Include="Theming\ThemeType.cs" />
+    <Compile Include="Theming\Themes.cs" />
     <Compile Include="Models\MessageBoxModel.cs" />
     <Compile Include="Models\ToastModel.cs" />
     <Compile Include="Managers\MessageBoxManager.cs" />
@@ -213,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\UserControls\ucSidebar.resx">
       <DependentUpon>ucSidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBase.resx">
+      <DependentUpon>frmBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMainLayout.resx">
       <DependentUpon>frmMainLayout.cs</DependentUpon>

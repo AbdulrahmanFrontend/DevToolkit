@@ -1,5 +1,8 @@
-﻿using DevToolkit.Core.Guards;
+﻿using DevToolkit.Core.Common;
+using DevToolkit.Core.Guards;
+using DevToolkit.Core.Results;
 using DevToolkit.Data.Executors;
+using DevToolkit.Logging.Managers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -35,7 +38,7 @@ namespace DevToolkit.Data.Core
             }
         }
 
-        public static string ConnectionString { get; private set; }
+        internal static string ConnectionString { get; private set; }
 
         public static void Configure(string connectionString)
         {

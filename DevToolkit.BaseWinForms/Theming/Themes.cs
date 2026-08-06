@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.BaseWinForms.Theming
 {
-    public enum ThemeType
+    public enum Themes
     {
         Light,
         Dark,

@@ -29,24 +29,12 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             else
             {
                 tSplash.Stop();
-                if(SplashCompleted != null)
-                    RaiseSplashCompleted();
+                SplashCompleted?.Invoke(this, EventArgs.Empty);
             }
         }
 
-        public void RaiseSplashCompleted()
-            => RaiseSplashCompleted(new SplashCompletedEventArgs());
-
-        protected virtual void RaiseSplashCompleted(SplashCompletedEventArgs e)
-            => SplashCompleted?.Invoke(this, e);
-
         [Category("Custom Events")]
-        public event EventHandler<SplashCompletedEventArgs> SplashCompleted;
-
-        public class SplashCompletedEventArgs : EventArgs
-        {
-            // You can add custom properties here if needed
-        }
+        public event EventHandler SplashCompleted;
 
         [Category("Custom Properties")]
         public Image Logo
