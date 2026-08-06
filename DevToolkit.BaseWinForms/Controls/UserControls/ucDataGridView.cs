@@ -53,6 +53,55 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             }
         }
 
+        [Category("Custom Properties")]
+        public bool ImportButtonVisible
+        {
+            get => btnImport.Visible;
+            set => btnImport.Visible = value;
+        }
+
+        [Category("Custom Properties")]
+        public string AddNewButtonText
+        {
+            get => btnAddNew.Text;
+            set => btnAddNew.Text = value;
+        }
+
+        [Category("Custom Properties")]
+        public string ImportButtonText
+        {
+            get => btnImport.Text;
+            set => btnImport.Text = value;
+        }
+
+        [Category("Custom Properties")]
+        public Image AddNewButtonImage
+        {
+            get => btnAddNew.BackgroundImage;
+            set => btnAddNew.BackgroundImage = value;
+        }
+
+        [Category("Custom Properties")]
+        public Image ImportButtonImage
+        {
+            get => btnImport.BackgroundImage;
+            set => btnImport.BackgroundImage = value;
+        }
+
+        [Category("Custom Properties")]
+        public Color AddNewButtonColor
+        {
+            get => btnAddNew.BackColor;
+            set => btnAddNew.BackColor = value;
+        }
+
+        [Category("Custom Properties")]
+        public Color ImportButtonColor
+        {
+            get => btnImport.BackColor;
+            set => btnImport.BackColor = value;
+        }
+
         private void _SetRecordsCount(int count)
         {
             if (RightToLeft == RightToLeft.Yes)
@@ -272,5 +321,21 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                         searchbar.SelectedFilterValueIndex,
                         searchbar.Input));
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            AddNewClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        [Category("Custom Events")]
+        public event EventHandler AddNewClicked;
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            ImportClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        [Category("Custom Events")]
+        public event EventHandler ImportClicked;
     }
 }
