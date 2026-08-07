@@ -1,5 +1,4 @@
 ﻿using DevToolkit.Logging.Abstractions;
-using DevToolkit.Logging.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +9,26 @@ namespace DevToolkit.Logging.Managers
 {
     public class LogManager
     {
-        public static ILogger Current { get; set; } = LoggerConfiguration.CreateDefault();
+        private static ILogger _current;
+
+        public static void Initialize(ILogger logger)
+        {
+            if (_current != null)
+                throw new InvalidOperationException("LogManager is already initialized.");
+
+            _current = logger;
+        }
 
         public static void LogError(string ErrorMessage, Exception ex) 
-            => Current?.LogError(ErrorMessage, ex);
+            => _current?.LogError(ErrorMessage, ex);
 
-        public static void LogInfo(string InfoMessage) => Current?.LogInfo(InfoMessage);
+        public static void LogInfo(string InfoMessage) 
+            => _current?.LogInfo(InfoMessage);
 
-        public static void LogWarning(string WarningMessage) => Current?.LogWarning(WarningMessage);
+        public static void LogWarning(string WarningMessage) 
+            => _current?.LogWarning(WarningMessage);
 
         public static void LogDebug(string DebugMessage, Exception ex = null) 
-            => Current?.LogDebug(DebugMessage, ex);
+            => _current?.LogDebug(DebugMessage, ex);
     }
 }

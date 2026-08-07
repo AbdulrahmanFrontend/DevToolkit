@@ -11,7 +11,7 @@ namespace DevToolkit.Logging.Providers
     {
         private readonly List<ILogger> _loggers;
 
-        public CompositeLogger(ILogger[] loggers)
+        public CompositeLogger(params ILogger[] loggers)
             => _loggers = loggers?.ToList() ?? new List<ILogger>();
 
         public void LogError(string message, Exception ex = null)

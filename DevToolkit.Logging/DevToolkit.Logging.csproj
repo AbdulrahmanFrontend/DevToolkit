@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\ILogger.cs" />
-    <Compile Include="Configuration\LoggerConfiguration.cs" />
     <Compile Include="Managers\LogManager.cs" />
     <Compile Include="Models\LogEntry.cs" />
     <Compile Include="Providers\CompositeLogger.cs" />

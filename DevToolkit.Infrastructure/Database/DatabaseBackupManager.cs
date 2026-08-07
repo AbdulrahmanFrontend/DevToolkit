@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Infrastructure.Database
 {
-    internal class DatabaseBackupManager
+    public class DatabaseBackupManager
     {
+        //public static void Backup(...)
     }
 }

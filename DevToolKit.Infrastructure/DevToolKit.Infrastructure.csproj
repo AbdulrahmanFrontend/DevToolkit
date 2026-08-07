@@ -36,6 +36,9 @@
     <Reference Include="DevToolkit.Core">
       <HintPath>..\DevToolkit.Core\bin\Debug\DevToolkit.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DevToolkit.Data">
+      <HintPath>..\DevToolkit.Data\bin\Debug\DevToolkit.Data.dll</HintPath>
+    </Reference>
     <Reference Include="DevToolkit.Logging">
       <HintPath>..\DevToolkit.Logging\bin\Debug\DevToolkit.Logging.dll</HintPath>
     </Reference>
@@ -51,6 +54,9 @@
       <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.8\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Pipelines, Version=10.0.0.8, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.10.0.8\lib\net462\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -86,8 +92,13 @@
     <Compile Include="Database\DatabaseBackupManager.cs" />
     <Compile Include="Database\DatabaseInitializer.cs" />
     <Compile Include="Database\DatabaseOptions.cs" />
+    <Compile Include="Database\DatabaseScriptRunnerFactory.cs" />
     <Compile Include="Database\IDatabaseBackupProvider.cs" />
+    <Compile Include="Database\IDatabaseProvider.cs" />
+    <Compile Include="Database\IDatabaseScriptRunner.cs" />
     <Compile Include="Database\SQLiteBackupProvider.cs" />
+    <Compile Include="Database\SQLiteDatabaseProvider.cs" />
+    <Compile Include="Database\SQLiteDatabaseScriptRunner.cs" />
     <Compile Include="FileSystem\AppFolders.cs" />
     <Compile Include="FileSystem\AppFoldersInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,5 +122,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>

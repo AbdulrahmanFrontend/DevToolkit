@@ -1,47 +1,50 @@
-﻿using DevToolkit.Logging.Abstractions;
+﻿using DevToolkit.Core.Common;
+using DevToolkit.Core.Guards;
+using DevToolkit.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevToolkit.Core.Common;
-using System.Diagnostics;
 
 namespace DevToolkit.Logging.Providers
 {
     public class FileLogger : ILogger
     {
-        public static string LogFilePath { get; set; }
+        private readonly string _logFilePath = string.Empty;
 
-        public FileLogger()
+        public FileLogger(string logFilePath)
         {
+            Guard.AgainstNullOrWhiteSpace(logFilePath, nameof(logFilePath));
+
+            _logFilePath = Path.Combine(
+                logFilePath,
+                $"{DateTime.Today:yyyy-MM-dd}.log");
+
             Initialize();
         }
 
-        private static void Initialize()
+        private void Initialize()
         {
-            if (string.IsNullOrWhiteSpace(LogFilePath))
-                throw new InvalidOperationException(
-                    "LogFilePath has not been configured.");
-
-            string folder = Path.GetDirectoryName(LogFilePath);
-
-            Directory.CreateDirectory(folder);
-
-            if (File.Exists(LogFilePath))
+            if (!File.Exists(_logFilePath))
             {
-                FileInfo file = new FileInfo(LogFilePath);
-
-                if (file.Length > 5_000_000)
-                {
-                    File.WriteAllText(LogFilePath, string.Empty);
-                }
+                string Folder = Path.GetDirectoryName(_logFilePath);
+                Directory.CreateDirectory(Folder);
+                File.Create(_logFilePath).Dispose();
             }
+
+            FileInfo file = new FileInfo(_logFilePath);
+
+            if (file.Length > 10 * 1024 * 1024) // 10 MB
+                File.WriteAllText(_logFilePath, string.Empty);
         }
 
-        private static void _Log(StreamWriter Writer, LogLevel Level, string message)
+        private static void _WriteHeader(
+            StreamWriter Writer,
+            LogLevel Level, 
+            string message)
         {
             Writer.WriteLine("----------------------------------------");
             Writer.WriteLine("_____" + Level.ToString() + "_____");
@@ -49,13 +52,13 @@ namespace DevToolkit.Logging.Providers
             Writer.WriteLine("Message: {0};", message);
         }
 
-        private void _GeneralLog(string message, LogLevel Level, Exception Ex = null)
+        private void _Write(string message, LogLevel Level, Exception Ex = null)
         {
             try
             {
-                using (StreamWriter Writer = new StreamWriter(LogFilePath, true))
+                using (StreamWriter Writer = new StreamWriter(_logFilePath, true))
                 {
-                    _Log(Writer, Level, message);
+                    _WriteHeader(Writer, Level, message);
                     if (Ex != null)
                     {
                         Writer.WriteLine("Exception: {0};", Ex.Message);
@@ -70,13 +73,13 @@ namespace DevToolkit.Logging.Providers
         }
 
         public void LogError(string message, Exception Ex) =>
-            _GeneralLog(message, LogLevel.Error, Ex);
+            _Write(message, LogLevel.Error, Ex);
 
-        public void LogInfo(string message) => _GeneralLog(message, LogLevel.Info);
+        public void LogInfo(string message) => _Write(message, LogLevel.Info);
 
-        public void LogWarning(string message) => _GeneralLog(message, LogLevel.Warning);
+        public void LogWarning(string message) => _Write(message, LogLevel.Warning);
 
         public void LogDebug(string message, Exception ex = null) 
-            => _GeneralLog(message, LogLevel.Debug, ex);
+            => _Write(message, LogLevel.Debug, ex);
     }
 }

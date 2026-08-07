@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Infrastructure.Database
 {
-    public interface IDatabaseBackupProvider
+    internal interface IDatabaseScriptRunner
     {
+        void Run(DatabaseOptions options);
     }
 }

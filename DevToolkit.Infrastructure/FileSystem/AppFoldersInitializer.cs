@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Infrastructure.FileSystem
 {
-    public static class AppFoldersInitializer
+    internal static class AppFoldersInitializer
     {
         public static AppFolders Initialize(StartupOptions options)
         {

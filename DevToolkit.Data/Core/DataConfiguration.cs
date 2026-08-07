@@ -16,28 +16,6 @@ namespace DevToolkit.Data.Core
 {
     public static class DataConfiguration
     {
-        public static string DatabaseFilePath
-        {
-            get
-            {
-                SQLiteConnectionStringBuilder builder =
-                    new SQLiteConnectionStringBuilder(ConnectionString);
-
-                string databasePath = builder.DataSource;
-
-                if (databasePath.StartsWith("|DataDirectory|",
-                    StringComparison.OrdinalIgnoreCase))
-                {
-                    databasePath = databasePath.Replace(
-                        "|DataDirectory|",
-                        AppDomain.CurrentDomain.GetData("DataDirectory")?.ToString()
-                        ?? AppDomain.CurrentDomain.BaseDirectory);
-                }
-
-                return Path.GetFullPath(databasePath);
-            }
-        }
-
         internal static string ConnectionString { get; private set; }
 
         public static void Configure(string connectionString)

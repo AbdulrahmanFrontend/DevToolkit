@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Infrastructure.Database
 {
-    internal class SQLiteBackupProvider
+    public class SQLiteBackupProvider
     {
     }
 }

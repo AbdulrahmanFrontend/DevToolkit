@@ -11,37 +11,35 @@ namespace DevToolkit.Logging.Providers
 {
     public class EventLogger : ILogger
     {
-        public static string SourceName { get; set; } = string.Empty;
+        private string _sourceName = string.Empty;
         private const string _LogName = "Application";
 
-        private static bool _initialized = false;
-
-        private static void _Initialize()
+        public EventLogger(string sourceName)
         {
-            if (_initialized)
-                return;
+            _Initialize(sourceName);
+        }
 
-            if (!Guard.HasValue(SourceName))
-                throw new InvalidOperationException("EventLogger SourceName must be set before" +
-                    " logging.");
+        private void _Initialize(string sourceName)
+        {
+            _sourceName = sourceName;
+
+            if (!Guard.HasValue(_sourceName))
+                throw new InvalidOperationException("EventLogger SourceName must be " +
+                    "set before logging.");
 
             try
             {
-                if (!EventLog.SourceExists(SourceName))
-                    EventLog.CreateEventSource(SourceName, _LogName);
-
-                _initialized = true;
+                if (!EventLog.SourceExists(_sourceName))
+                    EventLog.CreateEventSource(_sourceName, _LogName);
             }
-            catch(Exception ex)
+            catch
             {
-                new FileLogger().LogError("Failed to initialize EventLogger.", ex);
+                //new FileLogger().LogError("Failed to initialize EventLogger.", ex);
             }
         }
 
         private void _Write(string message, EventLogEntryType type, Exception ex = null)
         {
-            _Initialize();
-
             string finalMessage = $"Date & Time: {DateTime.Now: yyyy-MM-dd HH:mm}";
             finalMessage += Environment.NewLine;
             finalMessage += $"Message: {message}";
@@ -56,20 +54,22 @@ namespace DevToolkit.Logging.Providers
 
             try
             {
-                EventLog.WriteEntry(SourceName, finalMessage, type);
+                EventLog.WriteEntry(_sourceName, finalMessage, type);
             }
-            catch(Exception EventEx)
+            catch
             {
-                new FileLogger().LogError("EventLogger Failed.", EventEx);
+                //new FileLogger().LogError("EventLogger Failed.", EventEx);
             }
         }
 
         public void LogError(string message, Exception ex = null) 
             => _Write(message, EventLogEntryType.Error, ex);
 
-        public void LogInfo(string message) => _Write(message, EventLogEntryType.Information);
+        public void LogInfo(string message) 
+            => _Write(message, EventLogEntryType.Information);
 
-        public void LogWarning(string message) => _Write(message, EventLogEntryType.Warning);
+        public void LogWarning(string message) 
+            => _Write(message, EventLogEntryType.Warning);
 
         public void LogDebug(string message, Exception ex = null) 
             => _Write(message, EventLogEntryType.Information, ex);
