@@ -15,6 +15,10 @@ namespace DevToolkit.Infrastructure.Startup
     {
         public static AppFolders Folders { get; private set; }
 
+        public static StartupOptions StartupOptions { get; private set; }
+
+        public static DatabaseOptions DatabaseOptions { get; private set; }
+
         private static bool _initialized;
 
         public static void Initialize(
@@ -28,37 +32,36 @@ namespace DevToolkit.Infrastructure.Startup
             if (Folders != null)
                 return;
 
-            Folders =
-                AppFoldersInitializer.Initialize(startupOptions);
+            StartupOptions = startupOptions;
+            DatabaseOptions = databaseOptions;
 
-            InitializeLogging(startupOptions);
+            Folders = AppFoldersInitializer.Initialize();
 
-            DatabaseInitializer.Initialize(
-                databaseOptions,
-                Folders);
+            InitializeLogging();
+
+            DatabaseInitializer.Initialize();
 
             _initialized = true;
         }
 
-        private static void InitializeLogging(
-            StartupOptions options)
+        private static void InitializeLogging()
         {
-            if (options.EnableFileLogging && !options.EnableEventLogging)
+            if (StartupOptions.EnableFileLogging && !StartupOptions.EnableEventLogging)
             {
                 LogManager.Initialize(new FileLogger(Path.Combine(Folders.Logs)));
             }
 
-            if (options.EnableEventLogging && !options.EnableFileLogging)
+            if (StartupOptions.EnableEventLogging && !StartupOptions.EnableFileLogging)
             {
-                LogManager.Initialize(new EventLogger(options.EventSourceName));
+                LogManager.Initialize(new EventLogger(StartupOptions.EventSourceName));
             }
 
-            if (options.EnableEventLogging && options.EnableFileLogging)
+            if (StartupOptions.EnableEventLogging && StartupOptions.EnableFileLogging)
             {
                 LogManager.Initialize(
                     new CompositeLogger(
                         new FileLogger(Path.Combine(Folders.Logs)),
-                        new EventLogger(options.EventSourceName)));
+                        new EventLogger(StartupOptions.EventSourceName)));
             }
         }
     }

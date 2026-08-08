@@ -8,6 +8,6 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal interface IDatabaseScriptRunner
     {
-        void Run(DatabaseOptions options);
+        void Run();
     }
 }

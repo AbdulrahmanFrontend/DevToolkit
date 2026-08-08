@@ -1,7 +1,10 @@
-﻿using DevToolkit.Infrastructure.FileSystem;
+﻿using DevToolkit.Core.Results;
 using DevToolkit.Data.Core;
+using DevToolkit.Infrastructure.FileSystem;
+using DevToolkit.Infrastructure.Startup;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,35 +13,30 @@ namespace DevToolkit.Infrastructure.Database
 {
     public class DatabaseBackupManager
     {
-        public static string Backup(
-            DatabaseOptions options,
-            AppFolders folders)
+        public static Result<string> Backup(string databaseName)
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+            if (StartupManager.DatabaseOptions == null)
+                throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));
 
-            if (folders == null)
-                throw new ArgumentNullException(nameof(folders));
+            if (StartupManager.DatabaseOptions == null)
+                throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));
 
-            IDatabaseBackupProvider provider =
-                CreateProvider(options.Provider);
+            IDatabaseBackupProvider provider = CreateProvider();
 
-            return provider.Backup(
-                options,
-                folders.Backups);
+            return provider.Backup(databaseName);
         }
 
-        private static IDatabaseBackupProvider CreateProvider(
-            DbProviderFactory.DbProvider provider)
+        private static IDatabaseBackupProvider CreateProvider()
         {
-            switch (provider)
+            switch (StartupManager.DatabaseOptions.Provider)
             {
                 case DbProviderFactory.DbProvider.SQLite:
                     return new SQLiteBackupProvider();
 
                 default:
                     throw new NotSupportedException(
-                        $"Backup provider for '{provider}' is not supported.");
+                        $"Backup provider for " +
+                        $"'{StartupManager.DatabaseOptions.Provider}' is not supported.");
             }
         }
     }

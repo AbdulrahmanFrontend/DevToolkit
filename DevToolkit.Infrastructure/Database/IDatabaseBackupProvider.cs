@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevToolkit.Core.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,6 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal interface IDatabaseBackupProvider
     {
-        string Backup(
-            DatabaseOptions options,
-            string backupDirectory);
+        Result<string> Backup(string databaseName);
     }
 }

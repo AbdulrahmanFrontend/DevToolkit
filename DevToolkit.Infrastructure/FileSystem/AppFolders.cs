@@ -14,11 +14,11 @@ namespace DevToolkit.Infrastructure.FileSystem
 
         public string Logs { get; }
 
-        public string Backups { get; }
+        public string Backups { get; set; }
 
         public string Settings { get; }
 
-        public string Prints { get; }
+        public string Prints { get; set; }
 
         internal AppFolders(
             string root,

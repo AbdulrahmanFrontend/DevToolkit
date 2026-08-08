@@ -11,39 +11,36 @@ namespace DevToolkit.Infrastructure.FileSystem
 {
     internal static class AppFoldersInitializer
     {
-        public static AppFolders Initialize(StartupOptions options)
+        public static AppFolders Initialize()
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+            if (StartupManager.StartupOptions == null)
+                throw new ArgumentNullException(
+                    nameof(StartupManager.StartupOptions));
 
-            if (string.IsNullOrWhiteSpace(options.ApplicationName))
+            if (string.IsNullOrWhiteSpace(
+                StartupManager.StartupOptions.ApplicationName))
             {
                 throw new ArgumentException(
                     "Application name is required.",
-                    nameof(options.ApplicationName));
+                    nameof(StartupManager.StartupOptions.ApplicationName));
             }
 
-            string documents =
-                Environment.GetFolderPath(
-                    Environment.SpecialFolder.MyDocuments);
+            string documents = Environment.GetFolderPath(
+                Environment.SpecialFolder.MyDocuments);
 
-            string root =
-                Path.Combine(documents, options.ApplicationName);
+            string root = Path.Combine(
+                documents, 
+                StartupManager.StartupOptions.ApplicationName);
 
-            string data =
-                Path.Combine(root, "Data");
+            string data = Path.Combine(root, "Data");
 
-            string logs =
-                Path.Combine(root, "Logs");
+            string logs = Path.Combine(root, "Logs");
 
-            string backups =
-                Path.Combine(root, "Backups");
+            string backups = Path.Combine(root, "Backups");
 
-            string settings =
-                Path.Combine(root, "Settings");
+            string settings = Path.Combine(root, "Settings");
 
-            string prints =
-                Path.Combine(root, "Prints");
+            string prints = Path.Combine(root, "Prints");
 
             Directory.CreateDirectory(root);
 

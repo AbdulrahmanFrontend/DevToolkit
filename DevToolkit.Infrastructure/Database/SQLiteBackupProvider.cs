@@ -1,4 +1,6 @@
 ﻿using DevToolkit.Core.Guards;
+using DevToolkit.Core.Results;
+using DevToolkit.Infrastructure.Startup;
 using DevToolkit.Logging.Managers;
 using System;
 using System.Collections.Generic;
@@ -11,48 +13,46 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal class SQLiteBackupProvider : IDatabaseBackupProvider
     {
-        public string Backup(
-            DatabaseOptions options,
-            string backupDirectory)
+        public Result<string> Backup(string databaseName)
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+            if (StartupManager.DatabaseOptions == null)
+                throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));
 
             Guard.AgainstNullOrWhiteSpace(
-                options.DatabasePath,
-                nameof(options.DatabasePath));
+                StartupManager.DatabaseOptions.DatabasePath,
+                nameof(StartupManager.DatabaseOptions.DatabasePath));
 
             Guard.AgainstNullOrWhiteSpace(
-                backupDirectory,
-                nameof(backupDirectory));
+                StartupManager.Folders.Backups,
+                nameof(StartupManager.Folders.Backups));
 
-            if (!File.Exists(options.DatabasePath))
+            if (!File.Exists(StartupManager.DatabaseOptions.DatabasePath))
                 throw new FileNotFoundException(
                     "Database file was not found.",
-                    options.DatabasePath);
+                    StartupManager.DatabaseOptions.DatabasePath);
 
-            Directory.CreateDirectory(backupDirectory);
+            Directory.CreateDirectory(StartupManager.Folders.Backups);
 
-            string databaseName =
-                Path.GetFileNameWithoutExtension(
-                    options.DatabasePath);
+            string backupFileName = $"{databaseName}.db";
 
-            string backupFileName =
-                $"{databaseName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss-fff}.db";
+            string backupPath = Path.Combine(
+                StartupManager.Folders.Backups,
+                backupFileName);
 
-            string backupPath =
-                Path.Combine(
-                    backupDirectory,
-                    backupFileName);
+            if(File.Exists(backupPath))
+            {
+                LogManager.LogWarning(
+                    $"Backup file already exists at: {backupPath}; " +
+                    $"Overwriting existing backup.");
 
-            File.Copy(
-                options.DatabasePath,
-                backupPath,
-                overwrite: false);
+                return Result<string>.Failure();
+            }
+
+            File.Copy(StartupManager.DatabaseOptions.DatabasePath, backupPath);
 
             LogManager.LogInfo($"Database backup created at: {backupPath};");
 
-            return backupPath;
+            return Result<string>.Success(backupPath);
         }
     }
 }

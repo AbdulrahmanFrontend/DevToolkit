@@ -1,6 +1,7 @@
 ﻿using DevToolkit.Core.Guards;
 using DevToolkit.Data.Core;
 using DevToolkit.Infrastructure.FileSystem;
+using DevToolkit.Infrastructure.Startup;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -13,56 +14,57 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal class SQLiteDatabaseProvider : IDatabaseProvider
     {
-        public bool EnsureCreated(DatabaseOptions options, AppFolders folders)
+        public bool EnsureCreated()
         {
-            Validate(options, folders);
+            Validate();
 
-            BuildDatabasePath(options, folders);
+            BuildDatabasePath();
 
-            ConfigureData(options);
+            ConfigureData();
 
-            return CreateDatabase(options);
+            return CreateDatabase();
         }
 
-        private static void Validate(DatabaseOptions options, AppFolders folders)
+        private static void Validate()
         {
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+            if (StartupManager.DatabaseOptions == null)
+                throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));
 
-            if (folders == null)
-                throw new ArgumentNullException(nameof(folders));
+            if (StartupManager.Folders == null)
+                throw new ArgumentNullException(nameof(StartupManager.Folders));
 
             Guard.AgainstNullOrWhiteSpace(
-                options.DatabaseName, 
-                nameof(options.DatabaseName));
+                StartupManager.DatabaseOptions.DatabaseName, 
+                nameof(StartupManager.DatabaseOptions.DatabaseName));
         }
 
-        private static void BuildDatabasePath(
-            DatabaseOptions options, 
-            AppFolders folders)
+        private static void BuildDatabasePath()
         {
-            string databaseName = Path.GetFileNameWithoutExtension(options.DatabaseName);
+            string databaseName = Path.GetFileNameWithoutExtension(
+                StartupManager.DatabaseOptions.DatabaseName);
 
-            options.DatabasePath = Path.Combine(folders.Data, databaseName + ".db");
+            StartupManager.DatabaseOptions.DatabasePath = Path.Combine(
+                StartupManager.Folders.Data, 
+                databaseName + ".db");
         }
 
-        private static void ConfigureData(DatabaseOptions options)
+        private static void ConfigureData()
         {
             DataConfiguration.Configure(
-                $"Data Source={options.DatabasePath};" +
+                $"Data Source={StartupManager.DatabaseOptions.DatabasePath};" +
                 $"Foreign Keys=True;" +
                 $"BusyTimeout=5000;");
         }
 
-        private static bool CreateDatabase(DatabaseOptions options)
+        private static bool CreateDatabase()
         {
-            if (!options.CreateIfNotExists)
+            if (!StartupManager.DatabaseOptions.CreateIfNotExists)
                 return false;
 
-            if (File.Exists(options.DatabasePath))
+            if (File.Exists(StartupManager.DatabaseOptions.DatabasePath))
                 return false;
 
-            SQLiteConnection.CreateFile(options.DatabasePath);
+            SQLiteConnection.CreateFile(StartupManager.DatabaseOptions.DatabasePath);
 
             return true;
         }

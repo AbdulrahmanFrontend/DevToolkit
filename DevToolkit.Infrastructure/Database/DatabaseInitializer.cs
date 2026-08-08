@@ -1,5 +1,6 @@
 ﻿using DevToolkit.Data.Core;
 using DevToolkit.Infrastructure.FileSystem;
+using DevToolkit.Infrastructure.Startup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +11,33 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal static class DatabaseInitializer
     {
-        public static void Initialize(
-        DatabaseOptions options,
-        AppFolders folders)
+        public static void Initialize()
         {
-            IDatabaseProvider provider = CreateProvider(options.Provider);
+            IDatabaseProvider provider = CreateProvider();
 
-            bool created = provider.EnsureCreated(options, folders);
+            bool created = provider.EnsureCreated();
 
-            if (created && options.RunScripts)
+            if (created && StartupManager.DatabaseOptions.RunScripts)
             {
                 DatabaseScriptRunnerFactory
-                    .Create(options.Provider)
-                    .Run(options);
+                    .Create()
+                    .Run();
             }
 
-            DbManager.Initialize(options.Provider);
+            DbManager.Initialize(StartupManager.DatabaseOptions.Provider);
         }
 
-        private static IDatabaseProvider CreateProvider(
-            DbProviderFactory.DbProvider provider)
+        private static IDatabaseProvider CreateProvider()
         {
-            switch (provider)
+            switch (StartupManager.DatabaseOptions.Provider)
             {
                 case DbProviderFactory.DbProvider.SQLite:
                     return new SQLiteDatabaseProvider();
 
                 default:
                     throw new NotSupportedException(
-                        $"Provider '{provider}' is not supported.");
+                        $"Provider '{StartupManager.DatabaseOptions.Provider}' " +
+                        $"is not supported.");
             }
         }
     }

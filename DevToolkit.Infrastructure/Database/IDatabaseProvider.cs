@@ -9,6 +9,6 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal interface IDatabaseProvider
     {
-        bool EnsureCreated(DatabaseOptions options, AppFolders folders);
+        bool EnsureCreated();
     }
 }

@@ -1,5 +1,6 @@
-﻿using System;
-using DevToolkit.Data.Core;
+﻿using DevToolkit.Data.Core;
+using DevToolkit.Infrastructure.Startup;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +10,17 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal class DatabaseScriptRunnerFactory
     {
-        public static IDatabaseScriptRunner Create(
-        DbProviderFactory.DbProvider provider)
+        public static IDatabaseScriptRunner Create()
         {
-            switch (provider)
+            switch (StartupManager.DatabaseOptions.Provider)
             {
                 case DbProviderFactory.DbProvider.SQLite:
                     return new SQLiteDatabaseScriptRunner();
 
                 default:
                     throw new NotSupportedException(
-                        $"Provider not supported: {provider}");
+                        $"Provider not supported: " +
+                        $"{StartupManager.DatabaseOptions.Provider}");
             }
         }
     }

@@ -18,8 +18,6 @@ namespace DevToolkit.BaseWinForms.Forms
             InitializeComponent();
         }
 
-        private Themes _CurrentTheme { get; set; }
-
         protected virtual void ApplyTheme()
         {
             
@@ -27,8 +25,6 @@ namespace DevToolkit.BaseWinForms.Forms
 
         private void frmBase_Load(object sender, EventArgs e)
         {
-            _CurrentTheme = ThemeManager.CurrentTheme;
-
             ApplyTheme();
         }
     }

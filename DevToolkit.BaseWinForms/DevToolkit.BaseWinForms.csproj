@@ -170,7 +170,6 @@
     <Compile Include="Theming\ArabicDarkColorTable.cs" />
     <Compile Include="Theming\DevColors.cs" />
     <Compile Include="Theming\DevFonts.cs" />
-    <Compile Include="Theming\ThemeManager.cs" />
     <Compile Include="Theming\Themes.cs" />
     <Compile Include="Models\MessageBoxModel.cs" />
     <Compile Include="Models\ToastModel.cs" />
