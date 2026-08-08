@@ -13,7 +13,7 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal class SQLiteDatabaseProvider : IDatabaseProvider
     {
-        public void EnsureCreated(DatabaseOptions options, AppFolders folders)
+        public bool EnsureCreated(DatabaseOptions options, AppFolders folders)
         {
             Validate(options, folders);
 
@@ -21,7 +21,7 @@ namespace DevToolkit.Infrastructure.Database
 
             ConfigureData(options);
 
-            CreateDatabase(options);
+            return CreateDatabase(options);
         }
 
         private static void Validate(DatabaseOptions options, AppFolders folders)
@@ -54,15 +54,17 @@ namespace DevToolkit.Infrastructure.Database
                 $"BusyTimeout=5000;");
         }
 
-        private static void CreateDatabase(DatabaseOptions options)
+        private static bool CreateDatabase(DatabaseOptions options)
         {
             if (!options.CreateIfNotExists)
-                return;
+                return false;
 
             if (File.Exists(options.DatabasePath))
-                return;
+                return false;
 
             SQLiteConnection.CreateFile(options.DatabasePath);
+
+            return true;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace DevToolkit.Data.Core
 {
     public static class DataConfiguration
     {
-        internal static string ConnectionString { get; private set; }
+        public static string ConnectionString { get; private set; }
 
         public static void Configure(string connectionString)
         {

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevToolkit.Infrastructure.Database
 {
-    public interface IDatabaseBackupProvider
+    internal interface IDatabaseBackupProvider
     {
+        string Backup(
+            DatabaseOptions options,
+            string backupDirectory);
     }
 }

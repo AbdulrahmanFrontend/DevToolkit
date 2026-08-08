@@ -12,8 +12,6 @@ namespace DevToolkit.Infrastructure.Startup
 
         public string CompanyName { get; set; }
 
-        public string LogFileName { get; set; } = "Application.log";
-
         public string EventSourceName { get; set; }
 
         public bool EnableFileLogging { get; set; }

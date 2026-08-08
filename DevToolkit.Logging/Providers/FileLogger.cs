@@ -49,7 +49,7 @@ namespace DevToolkit.Logging.Providers
             Writer.WriteLine("----------------------------------------");
             Writer.WriteLine("_____" + Level.ToString() + "_____");
             Writer.WriteLine($"[{DateTime.Now: yyyy-MM-dd HH:mm}]");
-            Writer.WriteLine("Message: {0};", message);
+            Writer.WriteLine("Message: {0}", message);
         }
 
         private void _Write(string message, LogLevel Level, Exception Ex = null)
@@ -61,8 +61,8 @@ namespace DevToolkit.Logging.Providers
                     _WriteHeader(Writer, Level, message);
                     if (Ex != null)
                     {
-                        Writer.WriteLine("Exception: {0};", Ex.Message);
-                        Writer.WriteLine("Stack Trace: {0};", Ex.StackTrace);
+                        Writer.WriteLine("Exception: {0}", Ex.Message);
+                        Writer.WriteLine("Stack Trace: {0}", Ex.StackTrace);
                     }
                 }
             }

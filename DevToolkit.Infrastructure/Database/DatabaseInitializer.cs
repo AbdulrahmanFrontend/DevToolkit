@@ -16,9 +16,9 @@ namespace DevToolkit.Infrastructure.Database
         {
             IDatabaseProvider provider = CreateProvider(options.Provider);
 
-            provider.EnsureCreated(options, folders);
+            bool created = provider.EnsureCreated(options, folders);
 
-            if (options.RunScripts)
+            if (created && options.RunScripts)
             {
                 DatabaseScriptRunnerFactory
                     .Create(options.Provider)

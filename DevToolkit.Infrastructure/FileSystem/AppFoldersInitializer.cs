@@ -42,6 +42,9 @@ namespace DevToolkit.Infrastructure.FileSystem
             string settings =
                 Path.Combine(root, "Settings");
 
+            string prints =
+                Path.Combine(root, "Prints");
+
             Directory.CreateDirectory(root);
 
             Directory.CreateDirectory(data);
@@ -52,12 +55,15 @@ namespace DevToolkit.Infrastructure.FileSystem
 
             Directory.CreateDirectory(settings);
 
+            Directory.CreateDirectory(prints);
+
             return new AppFolders(
                 root,
                 data,
                 logs,
                 backups,
-                settings);
+                settings,
+                prints);
         }
     }
 }

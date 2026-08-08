@@ -18,12 +18,15 @@ namespace DevToolkit.Infrastructure.FileSystem
 
         public string Settings { get; }
 
+        public string Prints { get; }
+
         internal AppFolders(
             string root,
             string data,
             string logs,
             string backups,
-            string settings)
+            string settings,
+            string prints)
         {
             Root = root;
 
@@ -34,6 +37,8 @@ namespace DevToolkit.Infrastructure.FileSystem
             Backups = backups;
 
             Settings = settings;
+
+            Prints = prints;
         }
     }
 }
