@@ -32,13 +32,17 @@ namespace DevToolkit.Infrastructure.FileSystem
                 documents, 
                 StartupManager.StartupOptions.ApplicationName);
 
-            string data = Path.Combine(root, "Data");
+            string data = Path.Combine(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                StartupManager.StartupOptions.ApplicationName), "Data");
 
             string logs = Path.Combine(root, "Logs");
 
             string backups = Path.Combine(root, "Backups");
 
-            string settings = Path.Combine(root, "Settings");
+            string settings = Path.Combine(Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                StartupManager.StartupOptions.ApplicationName), "Settings");
 
             string prints = Path.Combine(root, "Prints");
 

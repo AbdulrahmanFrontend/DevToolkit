@@ -9,6 +9,6 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal interface IDatabaseBackupProvider
     {
-        Result<string> Backup(string databaseName);
+        string Backup(string databaseName);
     }
 }

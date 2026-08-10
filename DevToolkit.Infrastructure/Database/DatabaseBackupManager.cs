@@ -13,7 +13,7 @@ namespace DevToolkit.Infrastructure.Database
 {
     public class DatabaseBackupManager
     {
-        public static Result<string> Backup(string databaseName)
+        public static string Backup(string databaseName)
         {
             if (StartupManager.DatabaseOptions == null)
                 throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));

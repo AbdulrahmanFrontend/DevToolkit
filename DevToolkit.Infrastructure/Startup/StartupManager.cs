@@ -15,9 +15,9 @@ namespace DevToolkit.Infrastructure.Startup
     {
         public static AppFolders Folders { get; private set; }
 
-        public static StartupOptions StartupOptions { get; private set; }
+        internal static StartupOptions StartupOptions { get; private set; }
 
-        public static DatabaseOptions DatabaseOptions { get; private set; }
+        internal static DatabaseOptions DatabaseOptions { get; private set; }
 
         private static bool _initialized;
 
@@ -28,6 +28,12 @@ namespace DevToolkit.Infrastructure.Startup
             if (_initialized)
                 throw new InvalidOperationException(
                     "StartupManager has already been initialized.");
+
+            if (startupOptions == null)
+                throw new ArgumentNullException(nameof(startupOptions));
+
+            if (databaseOptions == null)
+                throw new ArgumentNullException(nameof(databaseOptions));
 
             if (Folders != null)
                 return;

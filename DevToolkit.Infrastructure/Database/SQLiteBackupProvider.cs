@@ -13,7 +13,7 @@ namespace DevToolkit.Infrastructure.Database
 {
     internal class SQLiteBackupProvider : IDatabaseBackupProvider
     {
-        public Result<string> Backup(string databaseName)
+        public string Backup(string databaseName)
         {
             if (StartupManager.DatabaseOptions == null)
                 throw new ArgumentNullException(nameof(StartupManager.DatabaseOptions));
@@ -39,20 +39,11 @@ namespace DevToolkit.Infrastructure.Database
                 StartupManager.Folders.Backups,
                 backupFileName);
 
-            if(File.Exists(backupPath))
-            {
-                LogManager.LogWarning(
-                    $"Backup file already exists at: {backupPath}; " +
-                    $"Overwriting existing backup.");
-
-                return Result<string>.Failure();
-            }
-
-            File.Copy(StartupManager.DatabaseOptions.DatabasePath, backupPath);
+            File.Copy(StartupManager.DatabaseOptions.DatabasePath, backupPath, true);
 
             LogManager.LogInfo($"Database backup created at: {backupPath};");
 
-            return Result<string>.Success(backupPath);
+            return backupPath;
         }
     }
 }
