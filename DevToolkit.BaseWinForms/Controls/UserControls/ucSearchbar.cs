@@ -17,8 +17,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         [Category("Custom Properties")]
         public bool ShowFilterValue
         {
-            get => cbFilterValue.Visible;
-            set => cbFilterValue.Visible = value;
+            get => cbFilterValues.Visible;
+            set => cbFilterValues.Visible = value;
         }
 
         public ucSearchbar()
@@ -34,21 +34,21 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 lblSearchBy.Text = "Search by: ";
         }
 
-        public void SetFilteringMethod(IEnumerable<string> filterMethods)
+        public void SetFilteringMethods(IEnumerable<string> filterMethods)
         {
-            cbFilterMethod.Items.Clear();
+            cbFilterMethods.Items.Clear();
             if (Guard.HasItems(filterMethods))
-                cbFilterMethod.Items.AddRange(filterMethods.ToArray());
+                cbFilterMethods.Items.AddRange(filterMethods.ToArray());
         }
 
         public void SetFilteringValues(IEnumerable<string> filterValues)
         {
-            cbFilterValue.Items.Clear();
+            cbFilterValues.Items.Clear();
             if (Guard.HasItems(filterValues))
             {
-                cbFilterValue.Items.AddRange(filterValues.ToArray());
+                cbFilterValues.Items.AddRange(filterValues.ToArray());
 
-                cbFilterValue.SelectedIndex = 0;
+                cbFilterValues.SelectedIndex = 0;
             }
         }
 
@@ -56,8 +56,8 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             Filter?.Invoke(this, 
                 new FilterEventArgs(
-                    cbFilterMethod.SelectedIndex,
-                    cbFilterValue.SelectedIndex,
+                    cbFilterMethods.SelectedIndex,
+                    cbFilterValues.SelectedIndex,
                     tbInput.Text));
         }
 
@@ -83,17 +83,17 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         private void btnCancel_Click(object sender, EventArgs e)
         {
             tbInput.Text = string.Empty;
-            cbFilterMethod.SelectedIndex = -1;
+            cbFilterMethods.SelectedIndex = -1;
         }
 
         [Category("Custom Properties")]
         public string Input => tbInput.Text?.ToString();
 
         [Category("Custom Properties")]
-        public int SelectedFilterMethodIndex => cbFilterMethod.SelectedIndex;
+        public int SelectedFilterMethodIndex => cbFilterMethods.SelectedIndex;
 
         [Category("Custom Properties")]
-        public int SelectedFilterValueIndex => cbFilterValue.SelectedIndex;
+        public int SelectedFilterValueIndex => cbFilterValues.SelectedIndex;
 
         [Category("Custom Properties")]
         public bool ShowCancelButton
@@ -102,13 +102,13 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             set => btnCancel.Visible = value;
         }
 
-        private void cbFilterMethod_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbFilterMethods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbInput.Enabled = cbFilterMethod.SelectedIndex != -1;
+            tbInput.ReadOnly = cbFilterMethods.SelectedIndex == -1;
             Filter?.Invoke(this,
                 new FilterEventArgs(
-                    cbFilterMethod.SelectedIndex,
-                    cbFilterValue.SelectedIndex,
+                    cbFilterMethods.SelectedIndex,
+                    cbFilterValues.SelectedIndex,
                     tbInput.Text));
         }
 
@@ -118,12 +118,12 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         [Category("Custom Events")]
         public event EventHandler InputEntered;
 
-        private void cbFilterValue_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbFilterValues_SelectedIndexChanged(object sender, EventArgs e)
         {
             Filter?.Invoke(this,
                 new FilterEventArgs(
-                    cbFilterMethod.SelectedIndex,
-                    cbFilterValue.SelectedIndex,
+                    cbFilterMethods.SelectedIndex,
+                    cbFilterValues.SelectedIndex,
                     tbInput.Text));
         }
     }

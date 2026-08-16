@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
-            this.cbFilterValue = new System.Windows.Forms.ComboBox();
+            this.cbFilterValues = new System.Windows.Forms.ComboBox();
             this.lblSearchBy = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tbInput = new System.Windows.Forms.TextBox();
-            this.cbFilterMethod = new System.Windows.Forms.ComboBox();
+            this.cbFilterMethods = new System.Windows.Forms.ComboBox();
             this.tlpContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +45,11 @@
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tlpContainer.Controls.Add(this.cbFilterValue, 2, 0);
+            this.tlpContainer.Controls.Add(this.cbFilterValues, 2, 0);
             this.tlpContainer.Controls.Add(this.lblSearchBy, 0, 0);
             this.tlpContainer.Controls.Add(this.btnCancel, 4, 0);
             this.tlpContainer.Controls.Add(this.tbInput, 3, 0);
-            this.tlpContainer.Controls.Add(this.cbFilterMethod, 1, 0);
+            this.tlpContainer.Controls.Add(this.cbFilterMethods, 1, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
             this.tlpContainer.Margin = new System.Windows.Forms.Padding(0);
@@ -59,20 +59,20 @@
             this.tlpContainer.Size = new System.Drawing.Size(899, 42);
             this.tlpContainer.TabIndex = 0;
             // 
-            // cbFilterValue
+            // cbFilterValues
             // 
-            this.cbFilterValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbFilterValue.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbFilterValue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbFilterValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterValue.FormattingEnabled = true;
-            this.cbFilterValue.Location = new System.Drawing.Point(518, 9);
-            this.cbFilterValue.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbFilterValue.MaxDropDownItems = 5;
-            this.cbFilterValue.Name = "cbFilterValue";
-            this.cbFilterValue.Size = new System.Drawing.Size(92, 28);
-            this.cbFilterValue.TabIndex = 5;
-            this.cbFilterValue.SelectedIndexChanged += new System.EventHandler(this.cbFilterValue_SelectedIndexChanged);
+            this.cbFilterValues.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFilterValues.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbFilterValues.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbFilterValues.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterValues.FormattingEnabled = true;
+            this.cbFilterValues.Location = new System.Drawing.Point(518, 9);
+            this.cbFilterValues.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbFilterValues.MaxDropDownItems = 5;
+            this.cbFilterValues.Name = "cbFilterValues";
+            this.cbFilterValues.Size = new System.Drawing.Size(92, 28);
+            this.cbFilterValues.TabIndex = 5;
+            this.cbFilterValues.SelectedIndexChanged += new System.EventHandler(this.cbFilterValues_SelectedIndexChanged);
             // 
             // lblSearchBy
             // 
@@ -103,30 +103,30 @@
             // tbInput
             // 
             this.tbInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbInput.Enabled = false;
             this.tbInput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbInput.Location = new System.Drawing.Point(41, 7);
             this.tbInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInput.Name = "tbInput";
+            this.tbInput.ReadOnly = true;
             this.tbInput.Size = new System.Drawing.Size(471, 27);
             this.tbInput.TabIndex = 2;
             this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
             this.tbInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbInput_KeyPress);
             // 
-            // cbFilterMethod
+            // cbFilterMethods
             // 
-            this.cbFilterMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbFilterMethod.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbFilterMethod.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbFilterMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterMethod.FormattingEnabled = true;
-            this.cbFilterMethod.Location = new System.Drawing.Point(616, 9);
-            this.cbFilterMethod.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbFilterMethod.MaxDropDownItems = 5;
-            this.cbFilterMethod.Name = "cbFilterMethod";
-            this.cbFilterMethod.Size = new System.Drawing.Size(179, 28);
-            this.cbFilterMethod.TabIndex = 4;
-            this.cbFilterMethod.SelectedIndexChanged += new System.EventHandler(this.cbFilterMethod_SelectedIndexChanged);
+            this.cbFilterMethods.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbFilterMethods.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbFilterMethods.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbFilterMethods.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterMethods.FormattingEnabled = true;
+            this.cbFilterMethods.Location = new System.Drawing.Point(616, 9);
+            this.cbFilterMethods.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbFilterMethods.MaxDropDownItems = 5;
+            this.cbFilterMethods.Name = "cbFilterMethods";
+            this.cbFilterMethods.Size = new System.Drawing.Size(179, 28);
+            this.cbFilterMethods.TabIndex = 4;
+            this.cbFilterMethods.SelectedIndexChanged += new System.EventHandler(this.cbFilterMethods_SelectedIndexChanged);
             // 
             // ucSearchbar
             // 
@@ -152,7 +152,7 @@
         private System.Windows.Forms.Label lblSearchBy;
         private System.Windows.Forms.TextBox tbInput;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox cbFilterMethod;
-        private System.Windows.Forms.ComboBox cbFilterValue;
+        private System.Windows.Forms.ComboBox cbFilterMethods;
+        private System.Windows.Forms.ComboBox cbFilterValues;
     }
 }

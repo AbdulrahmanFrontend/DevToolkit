@@ -36,14 +36,14 @@
             // 
             this.GridView.AddNewButtonColor = System.Drawing.SystemColors.Control;
             this.GridView.AddNewButtonImage = null;
-            this.GridView.AddNewButtonText = "Add New";
+            this.GridView.AddNewButtonText = "";
             this.GridView.cmsData = null;
             this.GridView.DataSource = null;
             this.GridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GridView.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GridView.ImportButtonColor = System.Drawing.SystemColors.Control;
             this.GridView.ImportButtonImage = null;
-            this.GridView.ImportButtonText = "Import";
+            this.GridView.ImportButtonText = "";
             this.GridView.ImportButtonVisible = true;
             this.GridView.Location = new System.Drawing.Point(0, 139);
             this.GridView.Name = "GridView";

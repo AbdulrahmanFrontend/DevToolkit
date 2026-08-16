@@ -44,19 +44,19 @@
             this.lblPageSize = new System.Windows.Forms.Label();
             this.cbPageSizes = new System.Windows.Forms.ComboBox();
             this.tlpContainer = new System.Windows.Forms.TableLayoutPanel();
-            this.ctrlDgvMain = new DevToolkit.BaseWinForms.Controls.CustomControls.ccDataGridView();
             this.tlpTop = new System.Windows.Forms.TableLayoutPanel();
-            this.searchbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar();
             this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
+            this.ctrlDgvMain = new DevToolkit.BaseWinForms.Controls.CustomControls.ccDataGridView();
+            this.searchbar = new DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar();
             this.tlpFooter.SuspendLayout();
             this.tlpPagination.SuspendLayout();
             this.tlpPageSize.SuspendLayout();
             this.tlpContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).BeginInit();
             this.tlpTop.SuspendLayout();
             this.flpButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpFooter
@@ -134,9 +134,11 @@
             // 
             this.cbPagesNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbPagesNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbPagesNumbers.DropDownHeight = 100;
             this.cbPagesNumbers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPagesNumbers.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPagesNumbers.FormattingEnabled = true;
+            this.cbPagesNumbers.IntegralHeight = false;
             this.cbPagesNumbers.ItemHeight = 20;
             this.cbPagesNumbers.Location = new System.Drawing.Point(72, 3);
             this.cbPagesNumbers.MaxDropDownItems = 3;
@@ -229,9 +231,12 @@
             // 
             // cbPageSizes
             // 
+            this.cbPageSizes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPageSizes.DropDownHeight = 100;
             this.cbPageSizes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPageSizes.FormattingEnabled = true;
-            this.cbPageSizes.Location = new System.Drawing.Point(3, 3);
+            this.cbPageSizes.IntegralHeight = false;
+            this.cbPageSizes.Location = new System.Drawing.Point(3, 5);
             this.cbPageSizes.Name = "cbPageSizes";
             this.cbPageSizes.Size = new System.Drawing.Size(72, 25);
             this.cbPageSizes.TabIndex = 1;
@@ -241,8 +246,8 @@
             // 
             this.tlpContainer.ColumnCount = 1;
             this.tlpContainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpContainer.Controls.Add(this.ctrlDgvMain, 0, 1);
             this.tlpContainer.Controls.Add(this.tlpFooter, 0, 2);
+            this.tlpContainer.Controls.Add(this.ctrlDgvMain, 0, 1);
             this.tlpContainer.Controls.Add(this.tlpTop, 0, 0);
             this.tlpContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContainer.Location = new System.Drawing.Point(0, 0);
@@ -254,6 +259,66 @@
             this.tlpContainer.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpContainer.Size = new System.Drawing.Size(1044, 557);
             this.tlpContainer.TabIndex = 14;
+            // 
+            // tlpTop
+            // 
+            this.tlpTop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpTop.AutoSize = true;
+            this.tlpTop.ColumnCount = 2;
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.21401F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 378F));
+            this.tlpTop.Controls.Add(this.flpButtons, 1, 0);
+            this.tlpTop.Controls.Add(this.searchbar, 0, 0);
+            this.tlpTop.Location = new System.Drawing.Point(8, 8);
+            this.tlpTop.Name = "tlpTop";
+            this.tlpTop.RowCount = 1;
+            this.tlpTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpTop.Size = new System.Drawing.Size(1028, 39);
+            this.tlpTop.TabIndex = 18;
+            // 
+            // flpButtons
+            // 
+            this.flpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flpButtons.AutoSize = true;
+            this.flpButtons.Controls.Add(this.btnAddNew);
+            this.flpButtons.Controls.Add(this.btnImport);
+            this.flpButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flpButtons.Location = new System.Drawing.Point(3, 3);
+            this.flpButtons.Name = "flpButtons";
+            this.flpButtons.Size = new System.Drawing.Size(372, 33);
+            this.flpButtons.TabIndex = 15;
+            // 
+            // btnAddNew
+            // 
+            this.btnAddNew.AutoSize = true;
+            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNew.FlatAppearance.BorderSize = 0;
+            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNew.Location = new System.Drawing.Point(3, 3);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(72, 27);
+            this.btnAddNew.TabIndex = 0;
+            this.btnAddNew.UseVisualStyleBackColor = true;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.AutoSize = true;
+            this.btnImport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Location = new System.Drawing.Point(81, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(57, 27);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // ctrlDgvMain
             // 
@@ -301,24 +366,6 @@
             this.ctrlDgvMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ctrlDgvMain_CellDoubleClick);
             this.ctrlDgvMain.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ctrlDgvMain_CellFormatting);
             // 
-            // tlpTop
-            // 
-            this.tlpTop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpTop.AutoSize = true;
-            this.tlpTop.ColumnCount = 2;
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.21401F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 378F));
-            this.tlpTop.Controls.Add(this.searchbar, 0, 0);
-            this.tlpTop.Controls.Add(this.flpButtons, 1, 0);
-            this.tlpTop.Location = new System.Drawing.Point(8, 8);
-            this.tlpTop.Name = "tlpTop";
-            this.tlpTop.RowCount = 1;
-            this.tlpTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTop.Size = new System.Drawing.Size(1028, 39);
-            this.tlpTop.TabIndex = 18;
-            // 
             // searchbar
             // 
             this.searchbar.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -332,50 +379,6 @@
             this.searchbar.Size = new System.Drawing.Size(609, 33);
             this.searchbar.TabIndex = 14;
             this.searchbar.Filter += new System.EventHandler<DevToolkit.BaseWinForms.Controls.UserControls.ucSearchbar.FilterEventArgs>(this.searchbar_Filter);
-            // 
-            // flpButtons
-            // 
-            this.flpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpButtons.AutoSize = true;
-            this.flpButtons.Controls.Add(this.btnAddNew);
-            this.flpButtons.Controls.Add(this.btnImport);
-            this.flpButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flpButtons.Location = new System.Drawing.Point(3, 3);
-            this.flpButtons.Name = "flpButtons";
-            this.flpButtons.Size = new System.Drawing.Size(372, 33);
-            this.flpButtons.TabIndex = 15;
-            // 
-            // btnAddNew
-            // 
-            this.btnAddNew.AutoSize = true;
-            this.btnAddNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNew.FlatAppearance.BorderSize = 0;
-            this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Location = new System.Drawing.Point(3, 3);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(72, 27);
-            this.btnAddNew.TabIndex = 0;
-            this.btnAddNew.Text = "Add New";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.AutoSize = true;
-            this.btnImport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnImport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImport.FlatAppearance.BorderSize = 0;
-            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImport.Location = new System.Drawing.Point(81, 3);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(57, 27);
-            this.btnImport.TabIndex = 1;
-            this.btnImport.Text = "Import";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // ucDataGridView
             // 
@@ -395,11 +398,11 @@
             this.tlpPageSize.PerformLayout();
             this.tlpContainer.ResumeLayout(false);
             this.tlpContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).EndInit();
             this.tlpTop.ResumeLayout(false);
             this.tlpTop.PerformLayout();
             this.flpButtons.ResumeLayout(false);
             this.flpButtons.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlDgvMain)).EndInit();
             this.ResumeLayout(false);
 
         }

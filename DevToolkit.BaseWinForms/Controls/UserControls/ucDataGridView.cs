@@ -136,8 +136,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
             if (pageSizes != null && pageSizes.Any())
             {
-                foreach (var size in pageSizes)
-                    cbPageSizes.Items.Add(size.ToString());
+                pageSizes.ToList().ForEach(p => cbPageSizes.Items.Add(p.ToString()));
 
                 cbPageSizes.SelectedIndex = 0;
             }
@@ -149,7 +148,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         {
             if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
                 int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                Filter?.Invoke(this, 
+                PageNumberSelected?.Invoke(this, 
                     new FilterEventArgs(
                         pageNumber, 
                         pageSize,
@@ -160,6 +159,9 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         [Category("Custom Events")]
         public event EventHandler<FilterEventArgs> Filter;
+
+        [Category("Custom Events")]
+        public event EventHandler<FilterEventArgs> PageNumberSelected;
 
         public class FilterEventArgs : EventArgs
         {
@@ -211,16 +213,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             if (cbPagesNumbers.Items.Count == 0) return;
 
             cbPagesNumbers.SelectedIndex = 0;
-
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                Filter?.Invoke(this,
-                    new FilterEventArgs(
-                        pageNumber,
-                        pageSize,
-                        searchbar.SelectedFilterMethodIndex,
-                        searchbar.SelectedFilterValueIndex,
-                        searchbar.Input));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -228,19 +220,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             int Index = cbPagesNumbers.SelectedIndex;
 
             if (Index > 0)
-            {
                 cbPagesNumbers.SelectedIndex--;
-
-                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                    Filter?.Invoke(this,
-                        new FilterEventArgs(
-                            pageNumber,
-                            pageSize,
-                            searchbar.SelectedFilterMethodIndex,
-                            searchbar.SelectedFilterValueIndex,
-                            searchbar.Input));
-            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -248,19 +228,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             int Index = cbPagesNumbers.SelectedIndex;
 
             if (Index < cbPagesNumbers.Items.Count - 1)
-            {
                 cbPagesNumbers.SelectedIndex++;
-
-                if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                    Filter?.Invoke(this,
-                        new FilterEventArgs(
-                            pageNumber,
-                            pageSize,
-                            searchbar.SelectedFilterMethodIndex,
-                            searchbar.SelectedFilterValueIndex,
-                            searchbar.Input));
-            }
         }
 
         private void btnLast_Click(object sender, EventArgs e)
@@ -268,16 +236,6 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             if (cbPagesNumbers.Items.Count == 0) return;
 
             cbPagesNumbers.SelectedIndex = cbPagesNumbers.Items.Count - 1;
-
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                Filter?.Invoke(this,
-                    new FilterEventArgs(
-                        pageNumber,
-                        pageSize,
-                        searchbar.SelectedFilterMethodIndex,
-                        searchbar.SelectedFilterValueIndex,
-                        searchbar.Input));
         }
 
         private void ctrlDgvMain_CellDoubleClick(
@@ -298,42 +256,24 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         private void searchbar_Filter(object sender, ucSearchbar.FilterEventArgs e)
         {
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                Filter?.Invoke(this,
-                    new FilterEventArgs(
-                        pageNumber,
-                        pageSize,
-                        e.FilteringMethodIndex,
-                        e.FilteringValueIndex,
-                        e.Input));
+            if (cbPagesNumbers.Items.Count > 0)
+                cbPagesNumbers.SelectedIndex = 0;
         }
 
         private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                Filter?.Invoke(this,
-                    new FilterEventArgs(
-                        pageNumber,
-                        pageSize,
-                        searchbar.SelectedFilterMethodIndex,
-                        searchbar.SelectedFilterValueIndex,
-                        searchbar.Input));
+            if (cbPagesNumbers.Items.Count > 0)
+                cbPagesNumbers.SelectedIndex = 0;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
-        {
-            AddNewClicked?.Invoke(this, EventArgs.Empty);
-        }
+            => AddNewClicked?.Invoke(this, EventArgs.Empty);
 
         [Category("Custom Events")]
         public event EventHandler AddNewClicked;
 
         private void btnImport_Click(object sender, EventArgs e)
-        {
-            ImportClicked?.Invoke(this, EventArgs.Empty);
-        }
+            => ImportClicked?.Invoke(this, EventArgs.Empty);
 
         [Category("Custom Events")]
         public event EventHandler ImportClicked;
