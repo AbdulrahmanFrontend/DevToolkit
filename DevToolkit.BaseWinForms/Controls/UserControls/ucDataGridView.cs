@@ -127,7 +127,7 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
                 i++;
             } while (i <= count);
 
-            cbPagesNumbers.SelectedIndex = 0;
+            //cbPagesNumbers.SelectedIndex = 0;
         }
 
         public void SetPageSizes(IEnumerable<int> pageSizes)
@@ -146,15 +146,16 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
             object sender, 
             EventArgs e)
         {
-            if (int.TryParse(cbPagesNumbers.Text?.ToString(), out int pageNumber) &&
-                int.TryParse(cbPageSizes.Text?.ToString(), out int pageSize))
-                PageNumberSelected?.Invoke(this, 
-                    new FilterEventArgs(
-                        pageNumber, 
-                        pageSize,
-                        searchbar.SelectedFilterMethodIndex,
-                        searchbar.SelectedFilterValueIndex,
-                        searchbar.Input));
+            int pageNumber = _GetIntValue(cbPagesNumbers.Text?.ToString());
+            int pageSize = _GetIntValue(cbPageSizes.Text?.ToString());
+
+            PageNumberSelected?.Invoke(this,
+                new FilterEventArgs(
+                    pageNumber,
+                    pageSize,
+                    searchbar.SelectedFilterMethodIndex,
+                    searchbar.SelectedFilterValueIndex,
+                    searchbar.Input));
         }
 
         [Category("Custom Events")]
@@ -256,14 +257,33 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
 
         private void searchbar_Filter(object sender, ucSearchbar.FilterEventArgs e)
         {
-            if (cbPagesNumbers.Items.Count > 0)
-                cbPagesNumbers.SelectedIndex = 0;
+            int pageNumber = _GetIntValue(cbPagesNumbers.Text?.ToString());
+            int pageSize = _GetIntValue(cbPageSizes.Text?.ToString());
+
+            Filter?.Invoke(this,
+                new FilterEventArgs(
+                    pageNumber,
+                    pageSize,
+                    searchbar.SelectedFilterMethodIndex,
+                    searchbar.SelectedFilterValueIndex,
+                    searchbar.Input));
         }
+
+        private int _GetIntValue(string value)
+            => int.TryParse(value, out int intValue) ? intValue : 0;
 
         private void cbPageSizes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbPagesNumbers.Items.Count > 0)
-                cbPagesNumbers.SelectedIndex = 0;
+            int pageNumber = _GetIntValue(cbPagesNumbers.Text?.ToString());
+            int pageSize = _GetIntValue(cbPageSizes.Text?.ToString());
+
+            Filter?.Invoke(this,
+                new FilterEventArgs(
+                    pageNumber,
+                    pageSize,
+                    searchbar.SelectedFilterMethodIndex,
+                    searchbar.SelectedFilterValueIndex,
+                    searchbar.Input));
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)

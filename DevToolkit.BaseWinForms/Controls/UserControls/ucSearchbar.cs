@@ -105,6 +105,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         private void cbFilterMethods_SelectedIndexChanged(object sender, EventArgs e)
         {
             tbInput.ReadOnly = cbFilterMethods.SelectedIndex == -1;
+
+            if(!tbInput.ReadOnly)
+                tbInput.Focus();
+
             Filter?.Invoke(this,
                 new FilterEventArgs(
                     cbFilterMethods.SelectedIndex,
@@ -113,10 +117,10 @@ namespace DevToolkit.BaseWinForms.Controls.UserControls
         }
 
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
-            => InputEntered?.Invoke(this, EventArgs.Empty);
+            => InputEntered?.Invoke(this, e);
 
         [Category("Custom Events")]
-        public event EventHandler InputEntered;
+        public event EventHandler<KeyPressEventArgs> InputEntered;
 
         private void cbFilterValues_SelectedIndexChanged(object sender, EventArgs e)
         {
